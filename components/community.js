@@ -1,13 +1,13 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-export default function Community(props) {
+const Community = () => {
   return (
     <View style={styles.container}>
       <Text> Community </Text>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
@@ -16,3 +16,5 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 });
+
+export default Community;
