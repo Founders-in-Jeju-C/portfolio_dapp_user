@@ -13,7 +13,7 @@ const tempNavi = createBottomTabNavigator({
   Community: {
     screen: Community,
   },
-  포트폴리오: {
+  Portfolio: {
     screen: Portfolio,
   },
 });
