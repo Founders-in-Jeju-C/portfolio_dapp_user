@@ -1,23 +1,28 @@
-import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import React from "react";
+import { StyleSheet, Text, View, Button } from "react-native";
 
-
-export default function Login(props){
-    return (
-        <View style={styles.container}>
-            <Text style={styles.text}>로그인 화면</Text>
-        </View>
-    );
+export default function Login(props) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.text}>로그인 화면</Text>
+      <Button
+        onPress={() => {
+          props.gotoPage("Portfolio");
+        }}
+        title="포트폴리오"
+      />
+    </View>
+  );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center"
-    },
-    text: {
-        color: "black",
-        fontSize: 20
-    }
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+  },
+  text: {
+    color: "black",
+    fontSize: 20,
+  },
 });
