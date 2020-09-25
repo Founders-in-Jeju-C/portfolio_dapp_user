@@ -4,6 +4,7 @@ import { useState } from 'react';
 import { View, StyleSheet } from 'react-native';
 import Start from "./components/start";
 import Login from "./components/login";
+import fire from './firebase';
 
 export default function App() {
   const [page, setPage] = useState('Start');
