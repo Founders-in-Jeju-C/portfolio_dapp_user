@@ -1,10 +1,10 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 
-const Portfolio = () => {
+const Recommend = () => {
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Portfolio </Text>
+      <Text style={styles.text}> Recommend </Text>
     </View>
   );
 };
@@ -27,4 +27,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Portfolio;
+export default Recommend;
