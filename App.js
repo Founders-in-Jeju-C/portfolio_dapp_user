@@ -6,9 +6,9 @@ import { View, StyleSheet } from "react-native";
 import Start from "./components/start";
 import Login from "./components/login";
 import Bottom_navigation from "./components/bottom_navigation";
+import fire from "./firebase";
 
 const Navi = createAppContainer(Bottom_navigation);
-import fire from "./firebase";
 
 export default function App() {
   const [page, setPage] = useState("Start");

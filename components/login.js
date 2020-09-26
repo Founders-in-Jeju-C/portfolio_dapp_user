@@ -1,22 +1,7 @@
-// import React from "react";
-// import { StyleSheet, Text, View, Button } from "react-native";
-
-// export default function Login(props) {
-//   return (
-//     <View style={styles.container}>
-//       <Text style={styles.text}>로그인 화면</Text>
-//       <Button
-//         onPress={() => {
-//           props.gotoPage("Portfolio");
-//         }}
-//         title="포트폴리오"
-//       />
-//     </View>
-//   );
-// }
 import React, { Component } from "react";
 import { Text, Alert, View, StyleSheet } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
+import Portfolio from "./portfolio";
 
 export default class App extends Component {
   constructor(props) {
@@ -57,11 +42,14 @@ export default class App extends Component {
             <Text>Register</Text>
           </Button>
           <Button
+            block
+            style={{ marginTop: 20, backgroundColor: "white" }}
             onPress={() => {
-              props.gotoPage("Portfolio");
+              this.props.gotoPage("Portfolio");
             }}
-            title="포트폴리오"
-          />
+          >
+            <Text>go to portfolio page(test)</Text>
+          </Button>
         </Form>
       </Container>
     );
