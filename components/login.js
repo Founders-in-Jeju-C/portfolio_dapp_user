@@ -1,21 +1,22 @@
-import React, { Component } from 'react';
-import { Text, Alert, View, StyleSheet } from 'react-native';
+import React, { Component } from "react";
+import { Text, Alert, View, StyleSheet } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
+import Portfolio from "./portfolio";
 
 export default class App extends Component {
   constructor(props) {
     super(props);
-    
+
     this.state = {
-      username: '',
-      password: '',
+      username: "",
+      password: "",
     };
   }
-  
+
   onLogin() {
     const { username, password } = this.state;
 
-    Alert.alert('Credentials', `${username} + ${password}`);
+    Alert.alert("Credentials", `${username} + ${password}`);
   }
 
   render() {
@@ -39,6 +40,15 @@ export default class App extends Component {
           </Button>
           <Button block style={{ marginTop: 20, backgroundColor: "white" }}>
             <Text>Register</Text>
+          </Button>
+          <Button
+            block
+            style={{ marginTop: 20, backgroundColor: "white" }}
+            onPress={() => {
+              this.props.gotoPage("Portfolio");
+            }}
+          >
+            <Text>go to portfolio page(test)</Text>
           </Button>
         </Form>
       </Container>
