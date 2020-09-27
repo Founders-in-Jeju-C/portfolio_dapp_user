@@ -1,18 +1,17 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import PortfolioBox from "./portfolioBox";
 import sample from "../database/sample";
 
 const Portfolio = () => {
-  let data = [...sample];
-  let user = "동재";
+  let getData = { ...sample };
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
         <Image source={require("../images/logo_renew_remove.png")} />
-        <Text style={styles.userText}>" {user} " 님 안녕하세요 !</Text>
+        <Text style={styles.userText}>" {getData.user} " 님</Text>
       </View>
-      <PortfolioBox data={data} />
+      <PortfolioBox data={getData.data} />
     </View>
   );
 };

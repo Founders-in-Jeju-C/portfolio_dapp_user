@@ -7,6 +7,7 @@ import Start from "./components/start";
 import Login from "./components/login";
 import Bottom_navigation from "./components/bottom_navigation";
 import fire from "./firebase";
+import Issuer from "./components/issuer";
 
 const Navi = createAppContainer(Bottom_navigation);
 

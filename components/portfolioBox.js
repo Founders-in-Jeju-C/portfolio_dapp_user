@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { StyleSheet, View, TextInput, Text, Dimensions } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import { Input, Form, Label, Item, Button } from "native-base";
@@ -7,8 +7,11 @@ const deviceHeight = Dimensions.get("window").height;
 const deviceWidth = Dimensions.get("window").width;
 
 const PortfolioBox = ({ data }) => {
-  const [currentData, setCurrentData] = useState(data);
+  let [currentData, setCurrentData] = useState(data);
   const [searchWord, setSearchWord] = useState("");
+  useEffect(() => {
+    setCurrentData(data);
+  }, data);
 
   const onKeyPress = () => {
     const tempData = data.filter((v) => v["name"].includes(searchWord));
