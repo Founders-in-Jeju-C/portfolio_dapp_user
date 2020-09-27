@@ -7,6 +7,9 @@ import Start from "./components/start";
 import Login from "./components/login";
 import Bottom_navigation from "./components/bottom_navigation";
 import fire from "./firebase";
+import Portfolio from "./components/portfolio";
+import Register from "./components/register"
+
 
 const Navi = createAppContainer(Bottom_navigation);
 
@@ -20,6 +23,8 @@ export default function App() {
   //화면 이동
   let content = <Start gotoPage={gotoPage} />;
   if (page === "Login") content = <Login gotoPage={gotoPage} />;
+  if (page == "Portfolio") content = <Portfolio gotoPage={gotoPage} />
+  if (page === "Register") content = <Register gotoPage={gotoPage} />;
 
   const notNaviPages = ["Start", "Login"];
 
