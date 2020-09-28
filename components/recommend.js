@@ -1,13 +1,17 @@
-import React from "react";
-import { StyleSheet, Text, View } from "react-native";
+import React, { Component } from "react";
+import { StyleSheet, Text, View, TouchableOpacity ,Button } from "react-native";
+import Recommend_result from "./recommend_result";
 
-const Recommend = () => {
+class Recommend extends React.Component {
+  render(){
   return (
     <View style={styles.container}>
-      <Text style={styles.text}> Recommend </Text>
+      <Button onPress={() => this.props.navigation.navigate('Second')}
+             title = 'recommend' /> 
     </View>
   );
-};
+}
+}
 
 const styles = StyleSheet.create({
   header: {

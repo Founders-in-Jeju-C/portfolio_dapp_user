@@ -7,9 +7,12 @@ import Start from "./components/start";
 import Login from "./components/login";
 import Bottom_navigation from "./components/bottom_navigation";
 import fire from "./firebase";
-import Issuer from "./components/issuer";
 import Portfolio from "./components/portfolio";
 import Register from "./components/register";
+import Recommend_result from "./components/recommend_result";
+import { NavigationContainer } from "@react-navigation/native";
+import Issuer from "./components/issuer";
+
 
 const Navi = createAppContainer(Bottom_navigation);
 
@@ -32,7 +35,7 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      {notNaviPages.includes(page) ? content : <Navi />}
+      {notNaviPages.includes(page) ? content : <NavigationContainer><Navi /></NavigationContainer>}
     </View>
   );
 }
