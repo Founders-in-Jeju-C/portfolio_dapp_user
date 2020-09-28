@@ -1,19 +1,19 @@
-import * as firebase from "firebase";
+// import * as firebase from "firebase";
 
-var firebaseConfig = {
-    apiKey: "AIzaSyAyFmGEVceEz5lLGT9CEYaFSKzKOEQ54F0",
-    authDomain: "react-native-on-fire-29f77.firebaseapp.com",
-    databaseURL: "https://react-native-on-fire-29f77.firebaseio.com",
-    projectId: "react-native-on-fire-29f77",
-    storageBucket: "react-native-on-fire-29f77.appspot.com",
-    messagingSenderId: "833727544389",
-    appId: "1:833727544389:web:d7d78a7f8115eb472c372c",
-    measurementId: "G-8BB8W2CYLN"
-  };
-  // Initialize Firebase
+// var firebaseConfig = {
+//   apiKey: "AIzaSyAe7qc8BLodg6HSug9NfVUSAztlNXrGhac",
+//   authDomain: "react-dapp.firebaseapp.com",
+//   databaseURL: "https://react-dapp.firebaseio.com",
+//   projectId: "react-dapp",
+//   storageBucket: "react-dapp.appspot.com",
+//   messagingSenderId: "651159514519",
+//   appId: "1:651159514519:web:7032929cd761cab7b228d2",
+//   measurementId: "G-7BLDSVEYPJ"
+// };
+// // Initialize Firebase
 
-  var fire = firebase.initializeApp(firebaseConfig);
+// var fire = firebase.initializeApp(firebaseConfig);
 
-  export default fire;
-  
- // firebase.analytics();
+// export default fire;
+
+//  // firebase.analytics();
