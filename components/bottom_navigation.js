@@ -5,6 +5,7 @@ import Community from "./community";
 import Portfolio from "./portfolio";
 import Recommend from "./recommend";
 import { Ionicons } from "@expo/vector-icons";
+import Issuer from "./issuer";
 
 const Bottom_navigation = createBottomTabNavigator({
   Community: {
@@ -32,6 +33,15 @@ const Bottom_navigation = createBottomTabNavigator({
     navigationOptions: {
       tabBarIcon: ({ tintColor }) => (
         <Ionicons name="logo-android" size={25} style={{ color: tintColor }} />
+      ),
+    },
+  },
+  // for test
+  Issuer: {
+    screen: Issuer,
+    navigationOptions: {
+      tabBarIcon: ({ tintColor }) => (
+        <Ionicons name="md-people" size={25} style={{ color: tintColor }} />
       ),
     },
   },

@@ -1,5 +1,5 @@
 let sample = {
-  user: "장동재",
+  user: "OOO",
   data: [
     {
       name: "운전면허",
