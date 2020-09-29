@@ -1,14 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { StyleSheet, Text, View, Image } from "react-native";
 import PortfolioBox from "./portfolioBox";
 import sample from "../database/sample";
+import { Button } from "native-base";
 
-const Portfolio = () => {
-  let getData = { ...sample };
+const Portfolio = ({ navigation }) => {
+  const [getData, setData] = useState(sample);
+  useEffect(() => {
+    setData(sample);
+  }, sample.data);
   return (
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
         <Image source={require("../images/logo_renew_remove.png")} />
+        <Button
+          onPress={() => navigation.navigate("Portfolio_enrollment", getData)}
+        >
+          <Text> 추가 </Text>
+        </Button>
         <Text style={styles.userText}>" {getData.user} " 님</Text>
       </View>
       <PortfolioBox data={getData.data} />

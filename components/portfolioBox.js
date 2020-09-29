@@ -22,7 +22,7 @@ const PortfolioBox = ({ data }) => {
     setSearchWord("");
   };
 
-  const head = ["NAME", "FROM", "VALUE"];
+  const head = ["NAME", "FROM", "VALUE", "VERIFY"];
   return (
     <View style={{ alignItems: "center" }}>
       <View style={styles.big_container}>
@@ -55,7 +55,12 @@ const PortfolioBox = ({ data }) => {
             />
             <Rows
               textStyle={styles.text}
-              data={currentData.map((v) => [v["name"], v["from"], v["value"]])}
+              data={currentData.map((v) => [
+                v["name"],
+                v["from"],
+                v["value"],
+                v["verify"],
+              ])}
             />
           </Table>
         </View>
