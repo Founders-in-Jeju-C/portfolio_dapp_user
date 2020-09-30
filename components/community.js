@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
 import {
   MaterialIcons,
   Entypo,
@@ -7,6 +7,10 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 import { Container } from "native-base";
+
+
+const deviceHeight = Dimensions.get("window").height;
+const deviceWidth = Dimensions.get("window").width;
 
 const Community = () => {
   const [title, content, time] = useState([
@@ -97,6 +101,7 @@ const Community = () => {
   ]);
   return (
     <View style={styles.container}>
+      <View ></View>
       <ScrollView>
         {title.map((user) => {
           return (
@@ -107,20 +112,19 @@ const Community = () => {
                 <Text style={styles.date}>{user.time}</Text>
               </View>
               <Text style={styles.title}>{user.title}</Text>
-              <Text>{user.content}</Text>
+              <Text style={{ width: deviceWidth - 60 }}>{user.content}</Text>
               <View style={styles.icon_wrap}>
                 {user.image ? (
                   <Entypo name="image" size={14} color="#4A485C" />
                 ) : (
-                  <Text />
-                )}
+                    <Text />
+                  )}
                 <AntDesign name="like2" size={14} color="red" />
                 <FontAwesome name="comment-o" size={14} color="blue" />
               </View>
             </View>
           );
         })}
-        <View style={{ height: 65 }}></View>
       </ScrollView>
     </View>
   );
@@ -148,28 +152,28 @@ const styles = StyleSheet.create({
   profile_wrap: {
     flexDirection: "row",
     alignItems: "center",
-    paddingBottom: 5,
+    paddingBottom: "1%",
   },
   data: {
     width: "90%",
-    padding: 20,
+    padding: 13,
     borderBottomColor: "gray",
     borderBottomWidth: 0.3,
-    marginTop: 5,
+    marginTop: "2%"
   },
   name: {
     paddingLeft: 2,
   },
   date: {
-    paddingLeft: 190,
+    paddingLeft: deviceWidth - 110,
     fontSize: 13,
   },
   icon_wrap: {
-    width: "17%",
+    width: "15%",
     flexDirection: "row",
     marginTop: 5,
     justifyContent: "space-between",
-    marginLeft: 210,
+    marginLeft: deviceWidth - 100,
   },
 });
 
