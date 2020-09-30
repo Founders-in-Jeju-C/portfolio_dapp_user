@@ -10,6 +10,7 @@ import {
   CheckBox,
 } from "native-base";
 import Portfolio from "./portfolio";
+import Company from "./company";
 // import firebase from '../firebase';
 
 const database = "https://react-dapp.firebaseio.com";
@@ -55,7 +56,8 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          alert("기업용뷰로 이동");
+          <Company address={this.state.address} />;
+          this.props.gotoPage("Company");
         });
     }
   }
