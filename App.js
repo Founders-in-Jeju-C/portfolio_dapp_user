@@ -22,8 +22,6 @@ export default function App() {
   let content = <Start gotoPage={gotoPage} />;
   if (page === "Login") content = <Login gotoPage={gotoPage} />;
   else if (page === "Register") content = <Register gotoPage={gotoPage} />;
-  else {
-  }
 
   const notNaviPages = ["Start", "Login", "Register"];
 

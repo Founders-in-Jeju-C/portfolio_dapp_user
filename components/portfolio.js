@@ -13,12 +13,15 @@ const Portfolio = ({ navigation }) => {
     <View style={styles.container}>
       <View style={{ alignItems: "center" }}>
         <Image source={require("../images/logo_renew_remove.png")} />
-        <Button
-          onPress={() => navigation.navigate("Portfolio_enrollment", getData)}
-        >
-          <Text> 추가 </Text>
-        </Button>
-        <Text style={styles.userText}>" {getData.user} " 님</Text>
+        <View style={{ flexDirection: "row" }}>
+          <Text style={styles.userText}>" {getData.user} " 님</Text>
+          <Button
+            style={{ backgroundColor: "grey" }}
+            onPress={() => navigation.navigate("Portfolio_enrollment", getData)}
+          >
+            <Text style={{ fontWeight: "bold" }}> 추가 </Text>
+          </Button>
+        </View>
       </View>
       <PortfolioBox data={getData.data} />
     </View>
@@ -33,7 +36,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#025880",
   },
   container: {
-    paddingTop: 30,
     flex: 1,
     // justifyContent: "center",
     // alignItems: "center",

@@ -10,6 +10,7 @@ import Recommend_result from "./recommend_result";
 import Portfolio_enrollment from "./portfolio_enrollment";
 import Issuer from "./issuer";
 import { NavigationContainer } from "@react-navigation/native";
+import Hiring from "./hiring";
 
 const CommunityStack = createStackNavigator({
   Community: { screen: Community },
@@ -45,6 +46,13 @@ const RecommendStack = createStackNavigator({
   },
 });
 
+const HiringStack = createStackNavigator({
+  Hiring: {
+    screen: Hiring,
+    navigationOptions: { title: "채용 공고" },
+  },
+});
+
 const Bottom_navigation = createBottomTabNavigator(
   {
     Community: {
@@ -61,6 +69,18 @@ const Bottom_navigation = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Ionicons
             name="md-finger-print"
+            size={25}
+            style={{ color: tintColor }}
+          />
+        ),
+      },
+    },
+    Hiring: {
+      screen: HiringStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons
+            name="md-clipboard"
             size={25}
             style={{ color: tintColor }}
           />
