@@ -133,9 +133,10 @@ const Hiring = () => {
         <Text style={{ textAlign: "center", fontWeight: "bold", fontSize: 30 }}>
           Hiring Page
         </Text>
-        {data.map((value) => {
+        {data.map((value, i) => {
           return (
             <View
+              key={i}
               style={{
                 borderWidth: 1,
                 flexDirection: "row",
