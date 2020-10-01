@@ -1,12 +1,12 @@
 import React from "react";
 import { StyleSheet, Text, View, Button } from "react-native";
 
-export default function Start(props) {
+export default function Start({ navigation }) {
   return (
     <View style={styles.container}>
       <Button
         onPress={() => {
-          props.gotoPage("Login");
+          console.log(navigation.navigate("Login"));
         }}
         title="시작하기"
       />

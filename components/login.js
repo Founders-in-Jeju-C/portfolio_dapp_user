@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet } from "react-native";
+import { Text, Alert, View, StyleSheet, Image } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import Portfolio from "./portfolio";
 
@@ -21,10 +21,13 @@ export default class App extends Component {
 
   render() {
     return (
-      <Container>
+      <Container style={{ backgroundColor: "#112f4c" }}>
+        <View style={{ paddingTop: 200, alignItems: "center" }}>
+          <Image source={require("../images/foliochain.png")} />
+        </View>
         <Form>
           <Item floatingLabel>
-            <Label>Address</Label>
+            <Label style={{ color: "white" }}>Address</Label>
             <Input
               autoCapitalize="none"
               autoCorrect={false}
@@ -35,7 +38,7 @@ export default class App extends Component {
             />
           </Item>
           <Item floatingLabel>
-            <Label>Private Key</Label>
+            <Label style={{ color: "white" }}>Private Key</Label>
             <Input
               secureTextEntry={true}
               autoCapitalize="none"
@@ -46,13 +49,15 @@ export default class App extends Component {
               }}
             />
           </Item>
-          <Button
-            block
-            style={{ marginTop: 20, backgroundColor: "white" }}
-            onPress={this.onLogin}
-          >
-            <Text>Login</Text>
-          </Button>
+          <View style={{ alignSelf: "center" }}>
+            <Button
+              block
+              style={{ width: 200, marginTop: 20, backgroundColor: "white" }}
+              onPress={this.onLogin}
+            >
+              <Text>Login</Text>
+            </Button>
+          </View>
 
           <Text
             style={styles.text}
@@ -72,5 +77,6 @@ const styles = StyleSheet.create({
   text: {
     textAlign: "center",
     marginTop: 40,
+    color: "white",
   },
 });
