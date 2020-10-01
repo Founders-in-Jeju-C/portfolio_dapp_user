@@ -7,7 +7,7 @@ import {
   FlatList,
 } from 'react-native';
 
-export default class NotificationsView extends Component {
+export default class Company extends Component {
 
   constructor(props) {
     super(props);
@@ -29,9 +29,20 @@ export default class NotificationsView extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <View style={styles.body}>
-        <Text style={{ textAlign: "center", fontSize: 20, marginBottom: 25 }}>
-        지원자 관리 </Text>
+         <View style={styles.header}>
+        <Image style={styles.bookIcon}  
+        source={require('../images/book.png')}/>
+        <Text style={styles.logoText}>
+            Folio Chain
+        </Text>
+        </View>
+        <View style={{backgroundColor: '#112f4c', flexDirection: "row"}} >
+        <Text style={styles.item1}>
+         지원자 
+        </Text>
+        <Text style={styles.item2}>
+         현황
+        </Text>
         </View>
         <FlatList 
           style={styles.notificationList} 
@@ -44,12 +55,12 @@ export default class NotificationsView extends Component {
             return (
               <View style={styles.notificationBox}>
                 <Image style={styles.icon}
-                  source={{uri: 'https://img.icons8.com/color/70/000000/administrator-male.png'}}/>
+                  source={require('../images/personal-information.png')}/>
                 <Text style={styles.username}>{item.username}</Text>
               </View>
             )}}/>
       </View>
-      
+     
       
     );
   }
@@ -57,23 +68,41 @@ export default class NotificationsView extends Component {
 
 const styles = StyleSheet.create({
   container:{
-    marginTop:100,
-    backgroundColor:'#F2F2F2'
+    flex:1,
   },
-  body: {
-    //padding:20,
-    backgroundColor :"white",
+  header: {
+    flex: 0.2,
+    flexDirection: "row",
+    backgroundColor: '#112f4c',
+  },
+  bookIcon: {
+    marginLeft: 13,
+    marginTop: 35,  
+    width:50, 
+    height: 50, 
+    resizeMode: 'contain',
+  },
+  logoText: {
+    textAlign: "center", 
+    fontWeight: "bold", 
+    fontSize: 30, 
+    marginLeft: 7,
+    marginTop: 42, 
+    marginBottom: 10,
+    color: 'white',
   },
   notificationList:{
-    padding:20,
+    flex:10,
+    paddingRight:20,
+    paddingLeft:20,
+    backgroundColor: '#112f4c',
   },
   notificationBox: {
-    padding:20,
+    padding:10,
     marginTop:5,
     marginBottom:5,
     backgroundColor: '#FFFFFF',
     flexDirection: 'row',
-    borderRadius:10,
   },
   icon:{
     width:45,
@@ -81,8 +110,24 @@ const styles = StyleSheet.create({
   },
   username:{
     color: "black",
-    fontSize:20,
+    fontSize:17,
     alignSelf:'center',
     marginLeft:10
-  }
+  },
+  item1:{
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 20,
+    fontSize: 25,
+    fontWeight: "bold", 
+    color: 'white',
+  },
+  item2:{
+    marginTop: 10,
+    marginBottom: 10,
+    marginLeft: 10,
+    fontSize: 25,
+    fontWeight: "bold", 
+    color: 'rgb(241, 196, 15)',
+  },
 });

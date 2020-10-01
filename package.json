@@ -11,6 +11,7 @@
     "@react-native-community/masked-view": "0.1.10",
     "@react-navigation/compat": "^5.2.6",
     "@react-navigation/native": "^5.7.4",
+    "@react-navigation/stack": "^5.9.2",
     "expo": "^39.0.3",
     "expo-status-bar": "~1.0.2",
     "firebase": "^7.21.1",

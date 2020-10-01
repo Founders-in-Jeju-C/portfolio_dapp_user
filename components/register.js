@@ -10,7 +10,7 @@ import {
   CheckBox,
 } from "native-base";
 import Portfolio from "./portfolio";
-import Company from "./company";
+import Company_main from "./company_main";
 // import firebase from '../firebase';
 
 const database = "https://react-dapp.firebaseio.com";
@@ -56,8 +56,8 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          <Company address={this.state.address} />;
-          this.props.gotoPage("Company");
+          <Company_main address={this.state.address} />;
+          this.props.gotoPage("Company_main");
         });
     }
   }

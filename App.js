@@ -8,7 +8,7 @@ import Login from "./components/login";
 import Bottom_navigation from "./components/bottom_navigation";
 import fire from "./firebase";
 import Register from "./components/register";
-import Company from "./components/company";
+import Company_main from "./components/company_main";
 import { NavigationContainer } from "@react-navigation/native";
 
 const BottomNavi = createAppContainer(Bottom_navigation);
@@ -23,9 +23,10 @@ export default function App() {
   let content = <Start gotoPage={gotoPage} />;
   if (page === "Login") content = <Login gotoPage={gotoPage} />;
   else if (page === "Register") content = <Register gotoPage={gotoPage} />;
-  else if (page === "Company") content = <Company gotoPage={gotoPage} />;
+  else if (page === "Company_main") content = <Company_main gotoPage={gotoPage} />;
 
-  const notNaviPages = ["Start", "Login", "Register", "Company"];
+
+  const notNaviPages = ["Start", "Login", "Register", "Company_main"];
 
   return (
     <View style={styles.container}>
