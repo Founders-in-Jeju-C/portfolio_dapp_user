@@ -52,7 +52,7 @@ export default class Company_employment extends Component {
             </View>
             </View>
             <View style={styles.case2}>
-            <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Company_employment')}>
+            <TouchableOpacity style={styles.button}>
           <Text style={{fontSize: 20, fontWeight: "bold", color: "#424242"}}>
               채용 공고 올리기</Text>
         </TouchableOpacity>
