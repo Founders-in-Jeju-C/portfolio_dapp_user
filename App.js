@@ -29,7 +29,7 @@ export default function App() {
   else if (page === "Register") content = <Register gotoPage={gotoPage} />;
   else if (page === "Company_main") content = <Company_main gotoPage={gotoPage} />;
   else if (page === "Portfolio") {
-    content = <Portfolio gotoPage={gotoPage} ids={this.props.ids} />;
+    content = <Portfolio gotoPage={gotoPage} ids={props.ids} />;
     return (
       <NavigationContainer>
         <BottomNavi />

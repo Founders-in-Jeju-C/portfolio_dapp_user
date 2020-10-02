@@ -81,7 +81,7 @@ const Portfolio = ({ ids }) => {
           <Text style={styles.title}>학력</Text>
           <AntDesign name="right" size={24} color="white" />
         </View>
-        <View style={{ borderBottomColor: 'white', borderBottomWidth: 0.5, width: '100%', height: '56%' }}>
+        <View style={{ borderBottomColor: 'white', borderBottomWidth: 0.5, width: '100%', height: '55%' }}>
           <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <Text style={styles.title}>자격증</Text>
             <AntDesign name="right" size={24} color="white" style={{ alignSelf: 'center' }} />
@@ -91,7 +91,7 @@ const Portfolio = ({ ids }) => {
             data.map((v) => {
               if (v['name'] != '' && v['name'] != null) {
                 return (
-                  <View style={{ width: '100%', height: '10%', alignItems: "center", flexDirection: 'row', backgroundColor: '#112f4c' }}>
+                  <View style={{ width: '100%', height: '11%', alignItems: "center", flexDirection: 'row', backgroundColor: '#112f4c' }}>
                     <Text style={{ marginLeft: '10%', fontSize: 20, color: 'white' }}><FontAwesome name="circle" size={8} color="white" />   {v["name"]}</Text>
                     <Text style={{ fontSize: 20, color: 'white' }}>  {v["verify"]}</Text>
                   </View>
