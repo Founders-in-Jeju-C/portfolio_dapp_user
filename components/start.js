@@ -28,6 +28,6 @@ const styles = StyleSheet.create({
     Image: {
         width: 70,
         height: 70,
-        marginTop: '45%'
+        marginTop: '50%'
     }
 });

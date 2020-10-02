@@ -152,10 +152,10 @@ const Hiring = () => {
                     <Text> 지원 </Text>
                   </Button>
                 ) : (
-                  <Button style={{ backgroundColor: "orange" }}>
-                    <Text> 마감 </Text>
-                  </Button>
-                )}
+                    <Button style={{ backgroundColor: "orange" }}>
+                      <Text> 마감 </Text>
+                    </Button>
+                  )}
               </View>
             </View>
           );
