@@ -92,7 +92,7 @@ export default class App extends Component {
     return (
       <Container style={styles.container}>
         <View style={{ marginTop: '30%', alignItems: "center", flexDirection: "row" }}>
-          <Image source={require('../images/book.jpg')} style={styles.image} />
+          <Image source={require('../images/book.png')} style={styles.image} />
           <Text style={styles.title}>Folio Chain</Text>
         </View>
         <Form style={{ marginTop: '10%', height: 270, width: '100%', alignItems: 'center' }}>

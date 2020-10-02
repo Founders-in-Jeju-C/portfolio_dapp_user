@@ -12,7 +12,7 @@ export default function Start(props) {
 
     return (
         <View style={styles.container}>
-            <Image style={styles.Image} source={require('../images/book.jpg')} />
+            <Image style={styles.Image} source={require('../images/book.png')} />
         </View>
     );
 }
