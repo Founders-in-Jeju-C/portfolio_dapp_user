@@ -32,23 +32,15 @@ const PortfolioStack = createStackNavigator({
   Portfolio: {
     screen: Portfolio,
     navigationOptions: {
-<<<<<<< HEAD
-      title: "포트폴리오", headerShown: false
-=======
       title: "포트폴리오",
       headerShown: false,
->>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
     },
   },
   Portfolio_enrollment: {
     screen: Portfolio_enrollment,
     navigationOptions: {
-<<<<<<< HEAD
-      title: "등록", headerShown: false
-=======
       title: "등록",
       headerShown: false,
->>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
     },
   },
 });
@@ -57,9 +49,6 @@ const RecommendStack = createStackNavigator({
   Recommend: {
     screen: Recommend,
     navigationOptions: {
-<<<<<<< HEAD
-      title: "추천", headerShown: false
-=======
       title: "추천",
       headerShown: false,
     },
@@ -69,18 +58,13 @@ const RecommendStack = createStackNavigator({
     navigationOptions: {
       title: "검색",
       headerShown: false,
->>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
     },
   },
   Recommend_chatbot: {
     screen: Recommend_chatbot,
     navigationOptions: {
-<<<<<<< HEAD
-      title: "결과", headerShown: false
-=======
       title: "챗봇",
       headerShown: false,
->>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
     },
   },
 });

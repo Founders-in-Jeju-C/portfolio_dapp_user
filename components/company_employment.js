@@ -43,6 +43,7 @@ export default class Company_employment extends Component {
         alert('채용 공고 작성 완료!');
       });
   }
+
   render() {
     return (
       <View style={styles.container}>
@@ -107,7 +108,6 @@ export default class Company_employment extends Component {
 }
 
 const styles = StyleSheet.create({
-
   container: {
     flex: 1,
   },
@@ -117,41 +117,40 @@ const styles = StyleSheet.create({
     backgroundColor: '#112f4c',
   },
   bookIcon: {
-    marginLeft: 13,
-    marginTop: 35,
-    width: 50,
-    height: 50,
+    marginLeft: "4%",
+    marginTop: "10%",
+    width: "10%",
+    height: "50%",
     resizeMode: 'contain',
   },
   logoText: {
     textAlign: "center",
     fontWeight: "bold",
     fontSize: 30,
-    marginLeft: 7,
-    marginTop: 42,
-    marginBottom: 10,
+    marginLeft: "2%",
+    marginTop: "11%",
     color: 'white',
   },
   item1: {
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 20,
+    marginTop: "2%",
+    marginBottom: "2%",
+    marginLeft: "5%",
     fontSize: 25,
     fontWeight: "bold",
     color: 'white',
   },
   item2: {
-    marginTop: 12,
-    marginBottom: 10,
-    marginLeft: 7,
+    marginTop: "2.6%",
+    marginBottom: "2%",
+    marginLeft: "2%",
     fontSize: 25,
     fontWeight: "bold",
     color: 'rgb(241, 196, 15)',
   },
   item3: {
-    marginTop: 10,
+    marginTop: "2%",
     //marginBottom: 10,
-    marginLeft: 23,
+    marginLeft: "5%",
     fontSize: 20,
     fontWeight: "bold",
     color: 'white',
@@ -159,8 +158,7 @@ const styles = StyleSheet.create({
   case1: {
     flex: 4,
     backgroundColor: '#112f4c',
-  },
-  case2: {
+  }, case2: {
     flex: 1,
     backgroundColor: '#112f4c',
     flexDirection: "row",
@@ -170,166 +168,44 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFFFFF',
     borderRadius: 10,
     borderBottomWidth: 1,
-    width: 340,
-    height: 50,
-    marginTop: 10,
-    marginBottom: 10,
-    marginLeft: 15,
+    width: "90%",
+    height: "12%",
+    marginTop: "2%",
+    marginBottom: "3%",
+    marginLeft: "4%",
     flexDirection: 'row',
     alignItems: 'center',
-
-    shadowColor: "#808080",
-    shadowOffset: {
-      width: 0,
-      height: 2,
-
-      container: {
-        flex: 1,
-      },
-      header: {
-        flex: 1,
-        flexDirection: "row",
-        backgroundColor: '#112f4c',
-      },
-      bookIcon: {
-        marginLeft: "4%",
-        marginTop: "10%",
-        width: "10%",
-        height: "50%",
-        resizeMode: 'contain',
-      },
-      logoText: {
-        textAlign: "center",
-        fontWeight: "bold",
-        fontSize: 30,
-        marginLeft: "2%",
-        marginTop: "11%",
-        color: 'white',
-      },
-      item1: {
-        marginTop: "2%",
-        marginBottom: "2%",
-        marginLeft: "5%",
-        fontSize: 25,
-        fontWeight: "bold",
-        color: 'white',
-      },
-      item2: {
-        marginTop: "2.6%",
-        marginBottom: "2%",
-        marginLeft: "2%",
-        fontSize: 25,
-        fontWeight: "bold",
-        color: 'rgb(241, 196, 15)',
-      },
-      item3: {
-        marginTop: "2%",
-        //marginBottom: 10,
-        marginLeft: "5%",
-        fontSize: 20,
-        fontWeight: "bold",
-        color: 'white',
-      },
-      case1: {
-        flex: 4,
-        backgroundColor: '#112f4c',
-
-      },
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-
-      elevation: 5,
-    },
-    inputContainer2: {
-      paddingVertical: 70,
-      borderBottomColor: '#F5FCFF',
-      backgroundColor: '#FFFFFF',
-      borderRadius: 10,
-      borderBottomWidth: 10,
-      width: 340,
-      height: 50,
-      marginTop: 10,
-      marginBottom: 10,
-      marginLeft: 15,
-      flexDirection: 'row',
-      alignItems: 'center',
-
-      shadowColor: "#808080",
-      shadowOffset: {
-        width: 0,
-        height: 2,
-      },
-
-      shadowOpacity: 0.25,
-      shadowRadius: 3.84,
-
-      elevation: 5,
-    },
-    inputs: {
-      height: 45,
-      marginLeft: 16,
-      borderBottomColor: '#FFFFFF',
-      flex: 1,
-      fontSize: 18,
-    },
-    button: {
-      flex: 1,
-      alignItems: 'center',
-      justifyContent: 'center',
-      marginTop: 20,
-      marginBottom: 25,
-      marginLeft: 18,
-      marginRight: 20,
-      borderRadius: 5,
-      backgroundColor: "rgb(241, 196, 15)"
-    },
-  });
-
-inputContainer1: {
-  borderBottomColor: '#F5FCFF',
-    backgroundColor: '#FFFFFF',
-      borderRadius: 10,
-        borderBottomWidth: 1,
-          width: "90%",
-            height: "12%",
-              marginTop: "2%",
-                marginBottom: "3%",
-                  marginLeft: "4%",
-                    flexDirection: 'row',
-                      alignItems: 'center',
-      },
-inputContainer2: {
-  paddingVertical: "18%",
+  },
+  inputContainer2: {
+    paddingVertical: "18%",
     borderBottomColor: '#F5FCFF',
-      backgroundColor: '#FFFFFF',
-        borderRadius: 10,
-          borderBottomWidth: 10,
-            width: "90%",
-              height: "12%",
-                marginTop: "2%",
-                  marginBottom: "3%",
-                    marginLeft: "4%",
-                      flexDirection: 'row',
-                        alignItems: 'center',
-      },
-inputs: {
-  height: 30,
-    marginLeft: "5%",
-      borderBottomColor: '#FFFFFF',
-        flex: 1,
-          fontSize: 18,
-      },
-button: {
-  flex: 1,
+    backgroundColor: '#FFFFFF',
+    borderRadius: 10,
+    borderBottomWidth: 10,
+    width: "90%",
+    height: "12%",
+    marginTop: "2%",
+    marginBottom: "3%",
+    marginLeft: "4%",
+    flexDirection: 'row',
     alignItems: 'center',
-      justifyContent: 'center',
-        marginTop: "5.5%",
-          marginBottom: "7%",
-            marginLeft: "5%",
-              marginRight: "5%",
-                borderRadius: 5,
-                  backgroundColor: "rgb(241, 196, 15)"
-},
-  });
-
-
+  },
+  inputs: {
+    height: 30,
+    marginLeft: "5%",
+    borderBottomColor: '#FFFFFF',
+    flex: 1,
+    fontSize: 18,
+  },
+  button: {
+    flex: 1,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginTop: "5.5%",
+    marginBottom: "7%",
+    marginLeft: "5%",
+    marginRight: "5%",
+    borderRadius: 5,
+    backgroundColor: "rgb(241, 196, 15)"
+  }
+});

@@ -104,7 +104,6 @@ export default class App extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
       <Container style={styles.container}>
         <View style={{ marginTop: '30%', alignItems: "center", flexDirection: "row" }}>
           <Image source={require('../images/book.png')} style={styles.image} />
@@ -161,47 +160,7 @@ export default class App extends Component {
             style={styles.checkbox}
             checked={this.state.agency_checked}
             onPress={() => this.setState({ agency_checked: !this.state.agency_checked })}
-=======
-      <Container key={this.state.id}>
-        <Form>
-          <Item floatingLabel>
-            <Label>Name</Label>
-            <Input
-              autoCapitalize="none"
               value={this.state.name}
-              autoCorrect={false}
-              onChangeText={(name) => {
-                this.setState({ name });
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Address</Label>
-            <Input
-              autoCapitalize="none"
-              value={this.state.address}
-              autoCorrect={false}
-              onChangeText={(address) => {
-                this.setState({ address });
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Private Key</Label>
-            <Input
-              autoCapitalize="none"
-              secureTextEntry={true}
-              value={this.state.key}
-              onChangeText={(key) => {
-                this.setState({ key });
-              }}
-            />
-          </Item>
-          <Text>기업 회원가입 체크 </Text>
-          <CheckBox
-            checked={this.state.checked}
-            onPress={() => this.setState({ checked: !this.state.checked })}
->>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
           />
 
           <Button
@@ -211,12 +170,11 @@ export default class App extends Component {
           >
             <Text>Register</Text>
           </Button>
-        </Form>
+        </View>
       </Container>
     );
   }
 }
-<<<<<<< HEAD
 
 const styles = StyleSheet.create({
   container: {
@@ -257,5 +215,3 @@ const styles = StyleSheet.create({
   }
 
 });
-=======
->>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
