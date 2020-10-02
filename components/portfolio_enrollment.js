@@ -34,7 +34,6 @@ const Portfolio_enrollment = (props) => {
     if (verify) {
       alert("검증 성공");
       setEnrollData({ ...enrollData, verify: "O" });
-      console.log(enrollData);
     } else {
       alert("검증 실패");
       setEnrollData({ ...enrollData, verify: "X" });
