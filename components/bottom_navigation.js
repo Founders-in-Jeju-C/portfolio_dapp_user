@@ -1,57 +1,88 @@
 import React from "react";
-import { StyleSheet } from "react-native";
-import { createBottomTabNavigator} from "react-navigation-tabs";
-import { createSwitchNavigator } from '@react-navigation/compat';
+import { createBottomTabNavigator } from "react-navigation-tabs";
+import { createStackNavigator } from "react-navigation-stack";
+import { createSwitchNavigator } from "@react-navigation/compat";
 import Community from "./community";
 import Portfolio from "./portfolio";
 import Recommend from "./recommend";
 import { Ionicons } from "@expo/vector-icons";
 import Recommend_result from "./recommend_result";
+import Portfolio_enrollment from "./portfolio_enrollment";
 import Issuer from "./issuer";
+import { NavigationContainer } from "@react-navigation/native";
 
-const RecommendNavigator = createSwitchNavigator({
-    First: {screen: Recommend}, 
-    Second: {screen: Recommend_result}
+const CommunityStack = createStackNavigator({
+  Community: { screen: Community },
 });
 
-const Bottom_navigation = createBottomTabNavigator({
-  Community: {
-    screen: Community,
-    navigationOptions: {
-      tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="md-people" size={25} style={{ color: tintColor }} />
-      ),
-    },
-  },
+const PortfolioStack = createStackNavigator({
   Portfolio: {
     screen: Portfolio,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => (
-        <Ionicons
-          name="md-finger-print"
-          size={25}
-          style={{ color: tintColor }}
-        />
-      ),
+      title: "포트폴리오",
     },
   },
-  Recommend: {
-    screen: RecommendNavigator,
+  Portfolio_enrollment: {
+    screen: Portfolio_enrollment,
     navigationOptions: {
-      tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="logo-android" size={25} style={{ color: tintColor }} />
-      ),
-    },
-  },
-  // for test
-  Issuer: {
-    screen: Issuer,
-    navigationOptions: {
-      tabBarIcon: ({ tintColor }) => (
-        <Ionicons name="md-people" size={25} style={{ color: tintColor }} />
-      ),
+      title: "등록",
     },
   },
 });
+
+const RecommendStack = createStackNavigator({
+  Recommend: {
+    screen: Recommend,
+    navigationOptions: {
+      title: "추천",
+    },
+  },
+  Recommend_result: {
+    screen: Recommend_result,
+    navigationOptions: {
+      title: "결과",
+    },
+  },
+});
+
+const Bottom_navigation = createBottomTabNavigator(
+  {
+    Community: {
+      screen: CommunityStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons name="md-people" size={25} style={{ color: tintColor }} />
+        ),
+      },
+    },
+    Portfolio: {
+      screen: PortfolioStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons
+            name="md-finger-print"
+            size={25}
+            style={{ color: tintColor }}
+          />
+        ),
+      },
+    },
+    Recommend: {
+      screen: RecommendStack,
+      navigationOptions: {
+        tabBarIcon: ({ tintColor }) => (
+          <Ionicons
+            name="logo-android"
+            size={25}
+            style={{ color: tintColor }}
+          />
+        ),
+      },
+    },
+  },
+  {
+    initialRouteName: "Portfolio",
+  }
+);
 
 export default Bottom_navigation;

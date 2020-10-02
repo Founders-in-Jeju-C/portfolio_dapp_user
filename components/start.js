@@ -1,22 +1,33 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button } from 'react-native';
+import { StyleSheet, Text, View, Button, Image } from 'react-native';
 
 
-export default function Start(props){
+export default function Start(props) {
+
+    setTimeout(function () {
+        props.gotoPage('Login');
+    }, 3500);
+
+
+
     return (
         <View style={styles.container}>
-            <Button 
-            onPress={()=>{ props.gotoPage('Login')} } 
-            title="시작하기"
-            />
+            <Image style={styles.Image} source={require('../images/book.jpg')} />
         </View>
     );
 }
 
+
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        justifyContent: "flex-end",
-        paddingVertical: 100
+        alignItems: 'center',
+        paddingVertical: 100,
+        backgroundColor: '#112f4c'
+    },
+    Image: {
+        width: 70,
+        height: 70,
+        marginTop: '45%'
     }
 });

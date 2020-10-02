@@ -1,18 +1,17 @@
 import React, { Component } from "react";
-import { StyleSheet, Text, View, TouchableOpacity ,Button } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 import Recommend_result from "./recommend_result";
 
-class Recommend extends React.Component {
-  render(){
+const Recommend = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <Button onPress={() => this.props.navigation.navigate('Second')}
-             title = 'recommend' /> 
+      <Button
+        onPress={() => navigation.navigate("Recommend_result")}
+        title="recommend"
+      />
     </View>
   );
-}
-}
-
+};
 const styles = StyleSheet.create({
   header: {
     flex: 1,

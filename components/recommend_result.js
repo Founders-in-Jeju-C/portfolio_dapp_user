@@ -1,15 +1,14 @@
 import React from "react";
-import { StyleSheet, Text, View, TouchableOpacity } from "react-native";
+import { StyleSheet, Text, View, TouchableOpacity, Button } from "react-native";
 
-class Recommend_result extends React.Component {
-  render(){
+const Recommend_result = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <Text style={styles.text}> Recommend_result </Text>
+      <Button onPress={() => navigation.goBack()} title="확인"></Button>
     </View>
   );
-  }
-}
+};
 
 const styles = StyleSheet.create({
   header: {
