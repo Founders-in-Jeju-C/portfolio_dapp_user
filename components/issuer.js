@@ -3,7 +3,14 @@ import React, { useState } from "react";
 import { View, Text, Image, StyleSheet } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 
-const Issuer = () => {
+const database = 'https://react-dapp.firebaseio.com';
+
+const Issuer = (props) => {
+  this.state = {
+    block: {},
+    users: {},
+    id: ''
+  }
   const firstData = {
     to: "",
     name: "",
@@ -17,6 +24,7 @@ const Issuer = () => {
   const onChangeTo = (e) => setTransferData({ ...transferData, to: e });
   const onChangeFrom = (e) => setTransferData({ ...transferData, from: e });
   const onChangeValue = (e) => setTransferData({ ...transferData, value: e });
+
   const onClickTransfer = () => {
     let element = ["name", "to", "from", "value"];
     for (let i = 0; i < element.length; i++)
@@ -27,8 +35,57 @@ const Issuer = () => {
     let addRecord = records.concat(transferData);
     setRecords(addRecord);
 
-    setTransferData(firstData);
+
+
+
   };
+
+  function _get() {
+
+    fetch(`${database}/address.json`).then(res => {
+      if (res.status != 200) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+    }).then(users => this.setState({
+      users: users
+    }));
+
+    Object.keys(this.state.users).map(id => {
+      fetch(`${database}/address/${id}.json`).then(res => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      }).then(result => this.setState({
+        block: result,
+        id: id
+      }));
+      Object.keys(this.state.block).map(add => {
+        if (add == this.firstData.to) {
+          return fetch(`${database}/address/${this.state.id}/${this.state.block.address}.json`, {
+            method: "POST",
+            body: JSON.stringify(firstData),
+          })
+            .then((res) => {
+              if (res.status != 200) {
+                throw new Error(res.statusText);
+              }
+              return res.json();
+            })
+            .then((data) => {
+              alert('성공');
+            });
+        }
+      })
+    });
+    //<Issuer userData={this.state.userData}/>
+
+  }
+
+  componentDidMount = () => {
+    this._get();
+  }
 
   const head = ["NAME", "TO", "FROM", "VALUE"];
   return (

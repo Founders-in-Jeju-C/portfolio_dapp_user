@@ -1,11 +1,12 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet } from "react-native";
+import { Text, Alert, View, StyleSheet, AsyncStorage } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import Portfolio from "./portfolio";
 
+
 const database = 'https://react-dapp.firebaseio.com';
 
-export default class App extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
 
@@ -14,19 +15,33 @@ export default class App extends Component {
       company: {},
       address: "",
       key: "",
+      ids: '',
+      result: 'dddddd'
     };
   }
 
-  onLogin = () => {
+
+  onLogin = async () => {
+
 
     Object.keys(this.state.users).map(id => {
       const user = this.state.users[id];
       if (user.address == this.state.address) {
         if (user.key == this.state.key) {
-          this.props.gotoPage("Portfolio");
+          this.setState({ ids: id });
+          //let user = this.state.ids;
+          //AsyncStorage.setItem('id', user);
+          //if (user != '')
+          if (this.state.ids != '' && this.state.ids != null) {
+            alert(this.state.ids);
+            //<Portfolio ids={this.state.ids} test="asdfasdfsd" />
+            this.props.gotoPage("Portfolio", { ids: this.state.users[this.state.ids] });
+          }
         }
       }
     });
+
+
 
     Object.keys(this.state.company).map(id => {
       const cp = this.state.company[id];
@@ -36,6 +51,7 @@ export default class App extends Component {
         }
       }
     });
+
 
   }
 

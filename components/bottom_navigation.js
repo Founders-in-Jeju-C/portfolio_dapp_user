@@ -19,13 +19,13 @@ const PortfolioStack = createStackNavigator({
   Portfolio: {
     screen: Portfolio,
     navigationOptions: {
-      title: "포트폴리오",
+      title: "포트폴리오", headerShown: false
     },
   },
   Portfolio_enrollment: {
     screen: Portfolio_enrollment,
     navigationOptions: {
-      title: "등록",
+      title: "등록", headerShown: false
     },
   },
 });
@@ -34,13 +34,13 @@ const RecommendStack = createStackNavigator({
   Recommend: {
     screen: Recommend,
     navigationOptions: {
-      title: "추천",
+      title: "추천", headerShown: false
     },
   },
   Recommend_result: {
     screen: Recommend_result,
     navigationOptions: {
-      title: "결과",
+      title: "결과", headerShown: false
     },
   },
 });
