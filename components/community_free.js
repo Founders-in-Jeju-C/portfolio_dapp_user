@@ -5,8 +5,6 @@ import {
   Entypo,
   FontAwesome,
   AntDesign,
-  MaterialCommunityIcons,
-  Feather,
 } from "@expo/vector-icons";
 
 const Community_free = () => {
@@ -97,19 +95,10 @@ const Community_free = () => {
     },
   ]);
   return (
-    <View style={{ backgroundColor: "white" }}>
-      <View
-        style={{
-          justifyContent: "space-between",
-          flexDirection: "row",
-          marginTop: "5%",
-        }}
-      >
-        <Feather name="menu" size={27} color="black" />
-        <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
-          FOLIO CHAIN
-        </Text>
-        <MaterialCommunityIcons name="bell" size={27} color="black" />
+    <View style={{ backgroundColor: "#112f4c" }}>
+      <View style={styles.imageLine}>
+        <Image source={require("../images/book_icon.png")} />
+        <Text style={styles._header}> Folio Chain</Text>
       </View>
       <View>
         <Text style={styles.boradName}>자유 게시판</Text>
@@ -166,12 +155,12 @@ const styles = StyleSheet.create({
   },
   boradName: {
     fontSize: 25,
-    color: "#112f4c",
+    color: "white",
     fontWeight: "bold",
-    paddingLeft: 20,
+    paddingLeft: "5%",
   },
   container: {
-    backgroundColor: "lightgrey",
+    backgroundColor: "white",
     borderWidth: 2,
     alignItems: "center",
   },
@@ -195,7 +184,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   name: {
-    paddingLeft: 2,
+    paddingLeft: "1%",
   },
   date: {
     paddingLeft: 190,

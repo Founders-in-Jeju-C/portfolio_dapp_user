@@ -9,7 +9,6 @@ import {
   Dimensions,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -87,18 +86,9 @@ const Hiring = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        <View
-          style={{
-            justifyContent: "space-between",
-            flexDirection: "row",
-            marginTop: "5%",
-          }}
-        >
-          <Feather name="menu" size={27} color="black" />
-          <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
-            FOLIO CHAIN
-          </Text>
-          <MaterialCommunityIcons name="bell" size={27} color="black" />
+        <View style={styles.imageLine}>
+          <Image source={require("../images/book_icon.png")} />
+          <Text style={styles.header}> Folio Chain</Text>
         </View>
         <View style={styles.card}>
           {data.map((value, i) => {
@@ -108,8 +98,8 @@ const Hiring = () => {
                 style={{
                   borderWidth: 1,
                   backgroundColor: "#112f4c",
-                  paddingBottom: 40,
-                  marginBottom: 20,
+                  paddingBottom: "10%",
+                  marginBottom: "5%",
                 }}
                 onPress={() => {
                   alert(`${i + 1}번째 공고에 지원합니다.(test)`);
@@ -159,14 +149,14 @@ const styles = StyleSheet.create({
     color: "white",
   },
   card: {
-    width: 380,
+    width: "93%",
     alignSelf: "center",
   },
   title: {
     fontSize: 40,
     color: "#f1c40f",
     fontWeight: "bold",
-    paddingBottom: 30,
+    paddingBottom: "8%",
   },
   content: {
     fontSize: 20,

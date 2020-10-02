@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet, Image } from "react-native";
+import { Text, Alert, View, StyleSheet } from "react-native";
 import {
   Container,
   Item,
@@ -10,7 +10,6 @@ import {
   CheckBox,
 } from "native-base";
 import Portfolio from "./portfolio";
-import Company_main from "./company_main";
 // import firebase from '../firebase';
 
 const database = "https://react-dapp.firebaseio.com";
@@ -163,7 +162,6 @@ export default class App extends Component {
           </Text>
           <Text style={{ color: "white", fontWeight: "bold" }}> 이신가요?</Text>
           <CheckBox
-            style={styles.checkbox}
             checked={this.state.checked}
             onPress={() => this.setState({ checked: !this.state.checked })}
           />
