@@ -6,7 +6,7 @@ export default function Start({ navigation }) {
     <View style={styles.container}>
       <Button
         onPress={() => {
-          console.log(navigation.navigate("Login"));
+          navigation.navigate("Login");
         }}
         title="시작하기"
       />

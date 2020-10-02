@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet, Image } from "react-native";
+import { Text, Alert, View, StyleSheet, Image, Dimensions } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import Portfolio from "./portfolio";
 
 const database = "https://react-dapp.firebaseio.com";
-
+const screenWidth = Math.round(Dimensions.get("window").width);
+const screenHeight = Math.round(Dimensions.get("window").height);
 export default class App extends Component {
   constructor(props) {
     super(props);
@@ -16,20 +17,19 @@ export default class App extends Component {
   }
 
   onLogin = () => {
-    this.props.gotoPage("Portfolio");
+    this.props.navigation.navigate("After");
   };
 
   render() {
     return (
-      <Container style={{ backgroundColor: "#112f4c" }}>
-        <View style={{ paddingTop: 200, alignItems: "center" }}>
+      <Container style={styles.container}>
+        <View style={styles.image}>
           <Image source={require("../images/foliochain.png")} />
         </View>
-        <Form>
-          <Item floatingLabel>
-            <Label style={{ color: "white" }}>Address</Label>
+        <Form style={{ alignItems: "center" }}>
+          <Item style={styles.inputBox}>
+            <Label>Address : </Label>
             <Input
-              autoCapitalize="none"
               autoCorrect={false}
               value={this.state.address}
               onChangeText={(address) => {
@@ -37,11 +37,10 @@ export default class App extends Component {
               }}
             />
           </Item>
-          <Item floatingLabel>
-            <Label style={{ color: "white" }}>Private Key</Label>
+          <Item style={styles.inputBox}>
+            <Label>Private Key : </Label>
             <Input
               secureTextEntry={true}
-              autoCapitalize="none"
               autoCorrect={false}
               value={this.state.key}
               onChangeText={(key) => {
@@ -50,22 +49,21 @@ export default class App extends Component {
             />
           </Item>
           <View style={{ alignSelf: "center" }}>
-            <Button
-              block
-              style={{ width: 200, marginTop: 20, backgroundColor: "white" }}
-              onPress={this.onLogin}
-            >
-              <Text>Login</Text>
+            <Button block style={styles.loginButton} onPress={this.onLogin}>
+              <Text style={styles.loginText}>Log in</Text>
             </Button>
           </View>
 
           <Text
-            style={styles.text}
+            style={styles.registerText}
             onPress={() => {
-              this.props.gotoPage("Register");
+              this.props.navigation.navigate("Register");
             }}
           >
-            처음 방문 하셨나요?
+            <Text style={{ color: "#f1c40f", textDecorationLine: "underline" }}>
+              처음
+            </Text>
+            이신가요?
           </Text>
         </Form>
       </Container>
@@ -74,9 +72,39 @@ export default class App extends Component {
 }
 
 const styles = StyleSheet.create({
-  text: {
+  container: {
+    width: screenWidth,
+    height: screenHeight,
+    backgroundColor: "#112f4c",
+  },
+  image: {
+    paddingTop: 100,
+    paddingBottom: 80,
+    alignItems: "center",
+  },
+  inputBox: {
+    marginBottom: 30,
+    width: screenWidth - 50,
+    backgroundColor: "white",
+    borderRadius: 5,
+    alignItems: "center",
+    textAlignVertical: "center",
+  },
+  loginButton: {
+    borderRadius: 5,
+    width: 100,
+    backgroundColor: "#f1c40f",
+    marginTop: 80,
+  },
+  loginText: {
+    fontWeight: "bold",
+    fontSize: 18,
+  },
+  registerText: {
     textAlign: "center",
-    marginTop: 40,
+    marginTop: 80,
     color: "white",
+    fontSize: 15,
+    fontWeight: "bold",
   },
 });

@@ -41,7 +41,7 @@ export default class App extends Component {
         })
         .then((data) => {
           <Portfolio address={this.state.address} />;
-          this.props.gotoPage("Portfolio");
+          this.props.navigation.navigate("After");
         });
     } else {
       return fetch(`${database}/company.json`, {
