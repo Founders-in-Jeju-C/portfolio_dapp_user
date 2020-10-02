@@ -23,7 +23,7 @@ const Recommend_search = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.imageLine}>
         <Image source={require("../images/book_icon.png")} />
-        <Text style={styles.header}> FolioChain</Text>
+        <Text style={styles.header}> Folio Chain</Text>
       </View>
       <View style={styles.searchBox}>
         <TextInput
@@ -71,7 +71,7 @@ const styles = StyleSheet.create({
   imageLine: {
     paddingLeft: 10,
     flexDirection: "row",
-    paddingTop: 10,
+    paddingTop: 30,
     paddingBottom: 50,
   },
   searchBox: {

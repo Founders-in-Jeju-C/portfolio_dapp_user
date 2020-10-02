@@ -18,7 +18,7 @@ const Recommend = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.imageLine}>
         <Image source={require("../images/book_icon.png")} />
-        <Text style={styles.header}> FolioChain</Text>
+        <Text style={styles.header}> Folio Chain</Text>
       </View>
       <View style={{ alignItems: "center", paddingBottom: 50 }}>
         <Text style={styles._header}>안녕하세요 !</Text>

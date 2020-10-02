@@ -17,7 +17,7 @@ const Community = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.imageLine}>
           <Image source={require("../images/book_icon.png")} />
-          <Text style={styles.header}> FolioChain</Text>
+          <Text style={styles.header}> Folio Chain</Text>
         </View>
         <View>
           <Button

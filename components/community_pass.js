@@ -98,7 +98,7 @@ const Community_pass = () => {
     <View style={{ backgroundColor: "#112f4c" }}>
       <View style={styles.imageLine}>
         <Image source={require("../images/book_icon.png")} />
-        <Text style={styles._header}> FolioChain</Text>
+        <Text style={styles._header}> Folio Chain</Text>
       </View>
       <View>
         <Text style={styles.boradName}>합격 게시판</Text>
