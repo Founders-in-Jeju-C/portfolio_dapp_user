@@ -17,12 +17,12 @@ import { StyleSheet, Text, View, Button, Image } from "react-native";
 
 export default function Start(props) {
   setTimeout(function () {
-    props.gotoPage("Login");
+    props.navigation.navigate("Login");
   }, 3500);
 
   return (
     <View style={styles.container}>
-      <Image style={styles.Image} source={require("../images/book.jpg")} />
+      <Image style={styles.Image} source={require("../images/book.png")} />
     </View>
   );
 }

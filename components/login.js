@@ -19,12 +19,13 @@ export default class App extends Component {
   }
 
   onLogin = () => {
+    // this.props.navigation.navigate("After");
     this.props.navigation.navigate("After");
     Object.keys(this.state.users).map((id) => {
       const user = this.state.users[id];
       if (user.address == this.state.address) {
         if (user.key == this.state.key) {
-          this.props.gotoPage("Portfolio");
+          this.props.navigation.navigate("After");
         }
       }
     });

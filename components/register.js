@@ -58,7 +58,7 @@ export default class App extends Component {
         })
         .then((data) => {
           <Company_main address={this.state.address} />;
-          this.props.gotoPage("Company_main");
+          this.props.navigation.navigate("After_Company");
         });
     }
   }
@@ -100,7 +100,7 @@ export default class App extends Component {
             flexDirection: "row",
           }}
         >
-          <Image source={require("../images/book.jpg")} style={styles.image} />
+          <Image source={require("../images/book.png")} style={styles.image} />
           <Text style={styles.title}>Folio Chain</Text>
         </View>
         <Form
