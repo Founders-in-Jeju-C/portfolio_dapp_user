@@ -11,6 +11,7 @@ import Register from "./components/register";
 import { NavigationContainer } from "@react-navigation/native";
 import Portfolio from './components/portfolio';
 import Enroll from './components/portfolio_enrollment';
+import Company_main from "./components/company_main";
 
 const BottomNavi = createAppContainer(Bottom_navigation);
 export default function App() {
@@ -26,6 +27,7 @@ export default function App() {
   let content = <Start gotoPage={gotoPage} />;
   if (page === "Login") content = <Login gotoPage={gotoPage} />;
   else if (page === "Register") content = <Register gotoPage={gotoPage} />;
+  else if (page === "Company_main") content = <Company_main gotoPage={gotoPage} />;
   else if (page === "Portfolio") {
     content = <Portfolio gotoPage={gotoPage} ids={this.props.ids} />;
     return (
@@ -38,7 +40,7 @@ export default function App() {
   else {
   }
 
-  const notNaviPages = ["Start", "Login", "Register", "Portfolio", "Portfolio_Enroll"];
+  const notNaviPages = ["Start", "Login", "Register", "Portfolio", "Portfolio_Enroll", "Company_main"];
 
   return (
     <View style={styles.container}>
