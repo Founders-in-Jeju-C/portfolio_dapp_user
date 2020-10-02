@@ -9,7 +9,6 @@ import {
 } from "react-native";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -17,18 +16,9 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 const Recommend = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          justifyContent: "space-between",
-          flexDirection: "row",
-          marginTop: "5%",
-        }}
-      >
-        <Feather name="menu" size={27} color="black" />
-        <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
-          FOLIO CHAIN
-        </Text>
-        <MaterialCommunityIcons name="bell" size={27} color="black" />
+      <View style={styles.imageLine}>
+        <Image source={require("../images/book_icon.png")} />
+        <Text style={styles.header}> Folio Chain</Text>
       </View>
       <View style={{ alignItems: "center", paddingBottom: "12%" }}>
         <Text style={styles._header}>안녕하세요 !</Text>
@@ -41,7 +31,7 @@ const Recommend = ({ navigation }) => {
             navigation.navigate("Recommend_search");
           }}
         >
-          <Ionicons name="md-search" size={50} color="#112f4c" />
+          <Ionicons name="md-search" size={50} color="#f1c40f" />
           <Text style={styles.text}> 관심 기업 검색하기</Text>
         </TouchableOpacity>
         <View>
@@ -53,7 +43,7 @@ const Recommend = ({ navigation }) => {
             navigation.navigate("Recommend_chatbot");
           }}
         >
-          <Ionicons name="md-chatbubbles" size={50} color="#112f4c" />
+          <Ionicons name="md-chatbubbles" size={50} color="#f1c40f" />
           <Text style={styles.text}> Chat bot</Text>
         </TouchableOpacity>
       </View>
@@ -64,7 +54,7 @@ const styles = StyleSheet.create({
   container: {
     width: screenWidth,
     height: screenHeight,
-    backgroundColor: "white",
+    backgroundColor: "#112f4c",
   },
   imageLine: {
     paddingLeft: 10,
@@ -82,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 30,
     paddingTop: 5,
     fontWeight: "bold",
-    color: "#112f4c",
+    color: "white",
     textAlign: "center",
     paddingBottom: "8%",
   },
@@ -90,8 +80,8 @@ const styles = StyleSheet.create({
     fontSize: 30,
     paddingTop: 5,
     fontWeight: "bold",
-    color: "#112f4c",
-    paddingLeft: "5%",
+    color: "white",
+    paddingLeft: 15,
   },
 });
 

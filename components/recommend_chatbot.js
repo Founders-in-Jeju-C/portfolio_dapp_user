@@ -13,7 +13,6 @@ import {
   Dimensions,
   KeyboardAvoidingView,
 } from "react-native";
-import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const { width, height } = Dimensions.get("window");
 
@@ -85,19 +84,12 @@ export default class Recommend_chatbot extends Component {
   render() {
     return (
       <View style={{ flex: 1 }}>
-        <View
-          style={{
-            justifyContent: "space-between",
-            flexDirection: "row",
-            marginTop: "5%",
-            backgroundColor: "white",
-          }}
-        >
-          <Feather name="menu" size={27} color="black" />
-          <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
-            FOLIO CHAIN
-          </Text>
-          <MaterialCommunityIcons name="bell" size={27} color="black" />
+        <View style={styles.header}>
+          <Image
+            style={styles.bookIcon}
+            source={require("../images/book.png")}
+          />
+          <Text style={styles.logoText}>Folio Chain</Text>
         </View>
         <View style={{ flex: 0.15, backgroundColor: "white" }}>
           <Text
