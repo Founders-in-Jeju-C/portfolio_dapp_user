@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView } from "react-native";
+import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
 import {
   MaterialIcons,
   Entypo,
@@ -7,7 +7,7 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 
-const Community_free = () => {
+const Community_pass = () => {
   const [title, content, time] = useState([
     {
       image: true,
@@ -95,35 +95,41 @@ const Community_free = () => {
     },
   ]);
   return (
-    <View style={styles.container}>
-      <View>
-        <Text>sdfasf</Text>
+    <View style={{ backgroundColor: "#112f4c" }}>
+      <View style={styles.imageLine}>
+        <Image source={require("../images/book_icon.png")} />
+        <Text style={styles._header}> FolioChain</Text>
       </View>
-      <ScrollView>
-        {title.map((user) => {
-          return (
-            <View key={user.key} style={styles.data}>
-              <View style={styles.profile_wrap}>
-                <MaterialIcons name="person-pin" size={24} color="#4A485C" />
-                <Text style={styles.name}> 익명 </Text>
-                <Text style={styles.date}>{user.time}</Text>
+      <View>
+        <Text style={styles.boradName}>합격 게시판</Text>
+      </View>
+      <View style={styles.container}>
+        <ScrollView>
+          {title.map((user) => {
+            return (
+              <View key={user.key} style={styles.data}>
+                <View style={styles.profile_wrap}>
+                  <MaterialIcons name="person-pin" size={24} color="#4A485C" />
+                  <Text style={styles.name}> 익명 </Text>
+                  <Text style={styles.date}>{user.time}</Text>
+                </View>
+                <Text style={styles.title}>{user.title}</Text>
+                <Text>{user.content}</Text>
+                <View style={styles.icon_wrap}>
+                  {user.image ? (
+                    <Entypo name="image" size={14} color="#4A485C" />
+                  ) : (
+                    <Text />
+                  )}
+                  <AntDesign name="like2" size={14} color="red" />
+                  <FontAwesome name="comment-o" size={14} color="blue" />
+                </View>
               </View>
-              <Text style={styles.title}>{user.title}</Text>
-              <Text>{user.content}</Text>
-              <View style={styles.icon_wrap}>
-                {user.image ? (
-                  <Entypo name="image" size={14} color="#4A485C" />
-                ) : (
-                  <Text />
-                )}
-                <AntDesign name="like2" size={14} color="red" />
-                <FontAwesome name="comment-o" size={14} color="blue" />
-              </View>
-            </View>
-          );
-        })}
-        <View style={{ height: 65 }}></View>
-      </ScrollView>
+            );
+          })}
+          <View style={{ height: 65 }}></View>
+        </ScrollView>
+      </View>
     </View>
   );
 };
@@ -135,9 +141,27 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "#025880",
   },
+  imageLine: {
+    paddingLeft: 10,
+    flexDirection: "row",
+    paddingTop: 30,
+    paddingBottom: 15,
+  },
+  _header: {
+    fontSize: 30,
+    paddingTop: 5,
+    fontWeight: "bold",
+    color: "white",
+  },
+  boradName: {
+    fontSize: 25,
+    color: "white",
+    fontWeight: "bold",
+    paddingLeft: 20,
+  },
   container: {
-    flex: 1,
-    justifyContent: "center",
+    backgroundColor: "white",
+    borderWidth: 2,
     alignItems: "center",
   },
   title: {
@@ -154,7 +178,7 @@ const styles = StyleSheet.create({
   },
   data: {
     width: "90%",
-    padding: 20,
+    // padding: 20,
     borderBottomColor: "gray",
     borderBottomWidth: 0.3,
     marginTop: 5,
@@ -175,4 +199,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Community_free;
+export default Community_pass;
