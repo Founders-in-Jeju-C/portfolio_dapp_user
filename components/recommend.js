@@ -30,13 +30,13 @@ const Recommend = ({ navigation }) => {
         </Text>
         <MaterialCommunityIcons name="bell" size={27} color="black" />
       </View>
-      <View style={{ alignItems: "center", paddingBottom: 50 }}>
+      <View style={{ alignItems: "center", paddingBottom: "12%" }}>
         <Text style={styles._header}>안녕하세요 !</Text>
         <Image source={require("../images/AI.png")} />
       </View>
       <View>
         <TouchableOpacity
-          style={{ flexDirection: "row", paddingLeft: 50 }}
+          style={{ flexDirection: "row", paddingLeft: "12%" }}
           onPress={() => {
             navigation.navigate("Recommend_search");
           }}
@@ -45,10 +45,10 @@ const Recommend = ({ navigation }) => {
           <Text style={styles.text}> 관심 기업 검색하기</Text>
         </TouchableOpacity>
         <View>
-          <Text style={{ paddingBottom: 30 }}></Text>
+          <Text style={{ paddingBottom: "8%" }}></Text>
         </View>
         <TouchableOpacity
-          style={{ flexDirection: "row", paddingLeft: 50 }}
+          style={{ flexDirection: "row", paddingLeft: "12%" }}
           onPress={() => {
             navigation.navigate("Recommend_chatbot");
           }}
@@ -84,14 +84,14 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     color: "#112f4c",
     textAlign: "center",
-    paddingBottom: 20,
+    paddingBottom: "8%",
   },
   text: {
     fontSize: 30,
     paddingTop: 5,
     fontWeight: "bold",
     color: "#112f4c",
-    paddingLeft: 15,
+    paddingLeft: "5%",
   },
 });
 

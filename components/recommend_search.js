@@ -87,7 +87,7 @@ const styles = StyleSheet.create({
   searchBox: {
     flexDirection: "row",
     backgroundColor: "#112f4c",
-    marginBottom: 50,
+    marginBottom: "15%",
   },
   header: {
     fontSize: 30,
@@ -99,23 +99,23 @@ const styles = StyleSheet.create({
     color: "#f1c40f",
     fontWeight: "bold",
     fontSize: 30,
-    width: 300,
-    marginLeft: 20,
+    width: "75%",
+    marginLeft: "5%",
     textAlign: "center",
     backgroundColor: "#112f4c",
   },
   messageBox: {
-    width: 300,
+    width: "75%",
     height: 400,
     backgroundColor: "#112f4c",
     borderWidth: 2,
-    marginLeft: 20,
+    marginLeft: "5%",
     fontSize: 17,
   },
   logoStyle: {
     flexDirection: "column",
     justifyContent: "center",
-    marginLeft: 20,
+    marginLeft: "5%",
   },
 });
 export default Recommend_search;

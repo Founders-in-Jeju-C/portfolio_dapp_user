@@ -78,12 +78,12 @@ const styles = StyleSheet.create({
     backgroundColor: "#112f4c",
   },
   image: {
-    paddingTop: 100,
-    paddingBottom: 80,
+    paddingTop: "30%",
+    paddingBottom: "20%",
     alignItems: "center",
   },
   inputBox: {
-    marginBottom: 30,
+    marginBottom: "8%",
     width: screenWidth - 50,
     backgroundColor: "white",
     borderRadius: 5,
@@ -94,7 +94,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 100,
     backgroundColor: "#f1c40f",
-    marginTop: 80,
+    marginTop: "23%",
   },
   loginText: {
     fontWeight: "bold",
@@ -102,7 +102,7 @@ const styles = StyleSheet.create({
   },
   registerText: {
     textAlign: "center",
-    marginTop: 80,
+    marginTop: "25%",
     color: "white",
     fontSize: 15,
     fontWeight: "bold",

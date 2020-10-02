@@ -105,7 +105,7 @@ export default class Recommend_chatbot extends Component {
               textAlign: "center",
               fontWeight: "bold",
               fontSize: 25,
-              marginTop: 20,
+              marginTop: "5%",
             }}
           >
             챗봇과 대화를 시작합니다.
@@ -151,13 +151,13 @@ const styles = StyleSheet.create({
     width,
     height,
   },
-  header: {
-    height: 65,
-    flexDirection: "row",
-    justifyContent: "space-between",
-    alignItems: "center",
-    backgroundColor: "#075e54",
-  },
+  //   header: {
+  //     height: 65,
+  //     flexDirection: "row",
+  //     justifyContent: "space-between",
+  //     alignItems: "center",
+  //     backgroundColor: "#075e54",
+  //   },
   left: {
     flexDirection: "row",
     alignItems: "center",
@@ -168,23 +168,23 @@ const styles = StyleSheet.create({
   input: {
     flexDirection: "row",
     alignSelf: "flex-end",
-    padding: 10,
-    height: 50,
+    padding: "3%",
+    height: "8%",
     width: width - 20,
     backgroundColor: "#fff",
-    margin: 10,
+    margin: "3%",
     borderColor: "#696969",
     borderWidth: 1,
   },
   eachMsg: {
     flexDirection: "row",
     alignItems: "flex-end",
-    margin: 5,
+    margin: "3%",
   },
   rightMsg: {
     flexDirection: "row",
     alignItems: "flex-end",
-    margin: 5,
+    margin: "3%",
     alignSelf: "flex-end",
   },
   userPic: {
@@ -195,16 +195,16 @@ const styles = StyleSheet.create({
     backgroundColor: "black",
   },
   msgBlock: {
-    width: 200,
+    width: "55%",
     borderRadius: 10,
     backgroundColor: "#112f4c",
-    padding: 20,
+    padding: "5%",
   },
   rightBlock: {
-    width: 200,
+    width: "55%",
     borderRadius: 10,
     backgroundColor: "#112f4c",
-    padding: 20,
+    padding: "5%",
   },
   msgTxt: {
     fontSize: 18,

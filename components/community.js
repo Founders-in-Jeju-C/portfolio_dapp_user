@@ -72,7 +72,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#112f4c",
     fontWeight: "bold",
-    paddingLeft: 20,
+    paddingLeft: "5%",
   },
   header: {
     fontSize: 30,
@@ -83,7 +83,7 @@ const styles = StyleSheet.create({
   button: {
     width: screenWidth - 80,
     height: screenHeight - 600,
-    marginVertical: 30,
+    marginVertical: "8%",
     alignSelf: "center",
     backgroundColor: "#112f4c",
   },

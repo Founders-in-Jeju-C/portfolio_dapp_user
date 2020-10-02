@@ -168,7 +168,7 @@ const styles = StyleSheet.create({
     fontSize: 25,
     color: "#112f4c",
     fontWeight: "bold",
-    paddingLeft: 20,
+    paddingLeft: "5%",
   },
   container: {
     backgroundColor: "lightgrey",
@@ -195,7 +195,7 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   name: {
-    paddingLeft: 2,
+    paddingLeft: "1%",
   },
   date: {
     paddingLeft: 190,
