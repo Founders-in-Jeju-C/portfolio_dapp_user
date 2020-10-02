@@ -50,7 +50,6 @@ const Portfolio = ({ ids }) => {
 
   }
 
-
   return (
 
     <View style={styles.container}>
@@ -59,9 +58,8 @@ const Portfolio = ({ ids }) => {
         <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: 'bold' }}>FOLIO CHAIN</Text>
         <MaterialCommunityIcons name="bell" size={28} color="#112f4c" style={{ marginRight: '2%' }} />
       </View>
-      <View style={{ justifyContent: "space-between", flexDirection: 'row' }}>
+      <View>
         <Text style={styles.userText}>님</Text>
-        <Button><Text>추가하기</Text></Button>
       </View>
       <View style={{ alignItems: "center" }}>
         <View style={{ alignItems: "center", flexDirection: 'row', marginBottom: '7%' }}>
@@ -83,7 +81,7 @@ const Portfolio = ({ ids }) => {
           <Text style={styles.title}>학력</Text>
           <AntDesign name="right" size={24} color="white" />
         </View>
-        <View style={{ borderBottomColor: 'white', borderBottomWidth: 0.5, width: '100%', height: '54%' }}>
+        <View style={{ borderBottomColor: 'white', borderBottomWidth: 0.5, width: '100%', height: '55%' }}>
           <View style={{ justifyContent: 'space-between', flexDirection: 'row' }}>
             <Text style={styles.title}>자격증</Text>
             <AntDesign name="right" size={24} color="white" style={{ alignSelf: 'center' }} />
