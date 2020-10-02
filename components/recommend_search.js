@@ -11,6 +11,7 @@ import {
 import { Input, Label, Item, Textarea } from "native-base";
 import { Ionicons } from "@expo/vector-icons";
 import { TouchableOpacity } from "react-native-gesture-handler";
+import { Feather, MaterialCommunityIcons } from "@expo/vector-icons";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
@@ -21,9 +22,18 @@ const Recommend_search = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imageLine}>
-        <Image source={require("../images/book_icon.png")} />
-        <Text style={styles.header}> Folio Chain</Text>
+      <View
+        style={{
+          justifyContent: "space-between",
+          flexDirection: "row",
+          marginTop: "5%",
+        }}
+      >
+        <Feather name="menu" size={27} color="black" />
+        <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
+          FOLIO CHAIN
+        </Text>
+        <MaterialCommunityIcons name="bell" size={27} color="black" />
       </View>
       <View style={styles.searchBox}>
         <TextInput
@@ -55,7 +65,7 @@ const Recommend_search = ({ navigation }) => {
         ></Textarea>
         <View style={styles.logoStyle}>
           <View>
-            <Ionicons name="logo-android" size={80} color={"#f1c40f"} />
+            <Ionicons name="logo-android" size={80} color={"#112f4c"} />
           </View>
         </View>
       </View>
@@ -66,7 +76,7 @@ const styles = StyleSheet.create({
   container: {
     width: screenWidth,
     height: screenHeight,
-    backgroundColor: "#112f4c",
+    backgroundColor: "white",
   },
   imageLine: {
     paddingLeft: 10,
@@ -76,7 +86,7 @@ const styles = StyleSheet.create({
   },
   searchBox: {
     flexDirection: "row",
-    backgroundColor: "lightgrey",
+    backgroundColor: "#112f4c",
     marginBottom: 50,
   },
   header: {
@@ -92,11 +102,12 @@ const styles = StyleSheet.create({
     width: 300,
     marginLeft: 20,
     textAlign: "center",
+    backgroundColor: "#112f4c",
   },
   messageBox: {
     width: 300,
     height: 400,
-    backgroundColor: "white",
+    backgroundColor: "#112f4c",
     borderWidth: 2,
     marginLeft: 20,
     fontSize: 17,

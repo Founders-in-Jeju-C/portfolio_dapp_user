@@ -5,6 +5,8 @@ import {
   Entypo,
   FontAwesome,
   AntDesign,
+  Feather,
+  MaterialCommunityIcons,
 } from "@expo/vector-icons";
 import { Button } from "native-base";
 
@@ -15,9 +17,21 @@ const Community = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: "white" }}>
       <View style={styles.container}>
-        <View style={styles.imageLine}>
-          <Image source={require("../images/book_icon.png")} />
-          <Text style={styles.header}> Folio Chain</Text>
+        <View
+          style={{
+            justifyContent: "space-between",
+            flexDirection: "row",
+            marginTop: "5%",
+          }}
+        >
+          <Feather name="menu" size={27} color="black" />
+          <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
+            FOLIO CHAIN
+          </Text>
+          <MaterialCommunityIcons name="bell" size={27} color="black" />
+        </View>
+        <View>
+          <Text style={styles.boradName}>커뮤니티</Text>
         </View>
         <View>
           <Button
@@ -46,13 +60,19 @@ const styles = StyleSheet.create({
   container: {
     width: screenWidth,
     height: screenHeight,
-    backgroundColor: "#112f4c",
+    backgroundColor: "white",
   },
   imageLine: {
     paddingLeft: 10,
     flexDirection: "row",
     paddingTop: 30,
     paddingBottom: 50,
+  },
+  boradName: {
+    fontSize: 25,
+    color: "#112f4c",
+    fontWeight: "bold",
+    paddingLeft: 20,
   },
   header: {
     fontSize: 30,
@@ -65,12 +85,12 @@ const styles = StyleSheet.create({
     height: screenHeight - 600,
     marginVertical: 30,
     alignSelf: "center",
-    backgroundColor: "#f1c40f",
+    backgroundColor: "#112f4c",
   },
   buttonText: {
     fontWeight: "bold",
     fontSize: 30,
-    color: "#112f4c",
+    color: "#f1c40f",
   },
 });
 
