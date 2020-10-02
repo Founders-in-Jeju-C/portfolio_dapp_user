@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet, Image } from "react-native";
+import { Text, Alert, View, StyleSheet } from "react-native";
 import {
   Container,
   Item,
@@ -10,7 +10,6 @@ import {
   CheckBox,
 } from "native-base";
 import Portfolio from "./portfolio";
-import Company_main from "./company_main";
 // import firebase from '../firebase';
 
 const database = "https://react-dapp.firebaseio.com";
@@ -42,7 +41,8 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          this.props.gotoPage("Portfolio", { ids: this.state.user });
+          <Portfolio address={this.state.address} />;
+          this.props.navigation.navigate("After");
         });
     } else if (this.state.agency_checked) {
       return fetch(`${database}/agency.json`, {
@@ -70,8 +70,7 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          <Company_main address={this.state.address} />;
-          this.props.gotoPage("Company_main");
+          alert("기업용뷰로 이동");
         });
     }
   }
@@ -105,6 +104,7 @@ export default class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <Container style={styles.container}>
         <View style={{ marginTop: '30%', alignItems: "center", flexDirection: "row" }}>
           <Image source={require('../images/book.png')} style={styles.image} />
@@ -161,24 +161,62 @@ export default class App extends Component {
             style={styles.checkbox}
             checked={this.state.agency_checked}
             onPress={() => this.setState({ agency_checked: !this.state.agency_checked })}
+=======
+      <Container key={this.state.id}>
+        <Form>
+          <Item floatingLabel>
+            <Label>Name</Label>
+            <Input
+              autoCapitalize="none"
+              value={this.state.name}
+              autoCorrect={false}
+              onChangeText={(name) => {
+                this.setState({ name });
+              }}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Address</Label>
+            <Input
+              autoCapitalize="none"
+              value={this.state.address}
+              autoCorrect={false}
+              onChangeText={(address) => {
+                this.setState({ address });
+              }}
+            />
+          </Item>
+          <Item floatingLabel>
+            <Label>Private Key</Label>
+            <Input
+              autoCapitalize="none"
+              secureTextEntry={true}
+              value={this.state.key}
+              onChangeText={(key) => {
+                this.setState({ key });
+              }}
+            />
+          </Item>
+          <Text>기업 회원가입 체크 </Text>
+          <CheckBox
+            checked={this.state.checked}
+            onPress={() => this.setState({ checked: !this.state.checked })}
+>>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
           />
-        </View>
-        <Button
-          block
-          style={styles.register_btn}
-          onPress={this.handleSubmit.bind(this)}
-        >
-          <Text style={{
-            color: '#112f4c',
-            fontWeight: 'bold',
-            fontSize: 21
-          }}>Register</Text>
-        </Button>
 
+          <Button
+            block
+            style={{ marginTop: 20, backgroundColor: "white" }}
+            onPress={this.handleSubmit.bind(this)}
+          >
+            <Text>Register</Text>
+          </Button>
+        </Form>
       </Container>
     );
   }
 }
+<<<<<<< HEAD
 
 const styles = StyleSheet.create({
   container: {
@@ -219,3 +257,5 @@ const styles = StyleSheet.create({
   }
 
 });
+=======
+>>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6

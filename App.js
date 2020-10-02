@@ -1,12 +1,11 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { createAppContainer } from "react-navigation";
-import { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
-import Start from "./components/start";
-import Login from "./components/login";
+import Start_navigation from "./components/start_navigation";
 import Bottom_navigation from "./components/bottom_navigation";
 import fire from "./firebase";
+<<<<<<< HEAD
 import Register from "./components/register";
 import { NavigationContainer } from "@react-navigation/native";
 import Portfolio from './components/portfolio';
@@ -41,8 +40,31 @@ export default function App() {
   }
 
   const notNaviPages = ["Start", "Login", "Register", "Portfolio", "Portfolio_Enroll", "Company_main"];
+=======
+import { NavigationContainer } from "@react-navigation/native";
+import { createStackNavigator } from "react-navigation-stack";
 
+const temp = createStackNavigator(
+  {
+    Before: {
+      screen: Start_navigation,
+      navigationOptions: { headerShown: false },
+    },
+    After: {
+      screen: Bottom_navigation,
+      navigationOptions: { headerShown: false },
+    },
+  },
+  {
+    initialRouteName: "Before",
+  }
+);
+>>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
+
+const Navi = createAppContainer(temp);
+export default function App() {
   return (
+<<<<<<< HEAD
     <View style={styles.container}>
       {notNaviPages.includes(page) ? (
         content
@@ -52,12 +74,10 @@ export default function App() {
           </NavigationContainer>
         )}
     </View>
+=======
+    <NavigationContainer>
+      <Navi />
+    </NavigationContainer>
+>>>>>>> 18bc96e217f804af9c3834cebf7539cdb4833ab6
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "flex-end",
-  },
-});

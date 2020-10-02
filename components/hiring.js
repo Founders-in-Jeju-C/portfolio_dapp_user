@@ -1,168 +1,167 @@
 import { Button } from "native-base";
 import React, { createRef, useState } from "react";
-import { View, Text, ScrollView } from "react-native";
+import {
+  View,
+  Text,
+  ScrollView,
+  StyleSheet,
+  Image,
+  Dimensions,
+} from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
+
+const screenWidth = Math.round(Dimensions.get("window").width);
+const screenHeight = Math.round(Dimensions.get("window").height);
 
 const Hiring = () => {
   const [hiringData, setHiringData] = useState([
     {
-      title: "삼성 전자 공채",
-      content: "넣으세요",
-      date: "2020-09-30",
-      isOpend: true,
+      title: "SAMSUNG",
+      content: "삼성전자 2020 신입사원 채용",
     },
     {
-      title: "LG CNS 공채",
-      content: "넣으세요",
-      date: "2020-10-12",
-      isOpend: true,
+      title: "LG",
+      content: "LG CNS 공개 채용",
     },
     {
-      title: "아",
-      content: "넣으세요",
-      date: "2020-10-13",
-      isOpend: true,
+      title: "NAVER",
+      content: "네이버웹툰 2020 하반기 채용",
     },
     {
-      title: "너무",
-      content: "넣으세요",
-      date: "2020-10-14",
-      isOpend: true,
+      title: "한국전력공사",
+      content: "한국전력공사 2020 하반기 신입직원 채용",
     },
     {
       title: "많다",
       content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
     },
     {
       title: "많다",
       content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
     },
     {
       title: "많다",
       content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
     },
     {
       title: "많다",
       content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
     },
     {
       title: "많다",
       content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
     },
     {
       title: "많다",
       content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
-    },
-    {
-      title: "못",
-      content: "넣으세요",
-      date: "2020-10-16",
-      isOpend: true,
     },
     {
       title: "하겠다",
       content: "넣으세요",
-      date: "2020-10-17",
-      isOpend: true,
-    },
-    {
-      title: "하겠다",
-      content: "넣으세요",
-      date: "2020-10-17",
-      isOpend: true,
     },
 
     {
       title: "하겠다",
       content: "넣으세요",
-      date: "2020-10-17",
-      isOpend: true,
     },
     {
       title: "못",
       content: "넣으세요",
-      date: "2020-10-16",
-      isOpend: true,
     },
     {
       title: "하겠다",
       content: "넣으세요",
-      date: "2020-10-17",
-      isOpend: true,
     },
     {
       title: "하겠다",
       content: "넣으세요",
-      date: "2020-10-17",
-      isOpend: true,
     },
     {
       title: "하겠다",
       content: "넣으세요",
-      date: "2020-10-17",
-      isOpend: true,
     },
   ]);
-  const data = hiringData.sort((a, b) => (a.date > b.date ? 1 : -1));
+  const data = hiringData.slice();
+
   return (
     <ScrollView>
-      <View>
-        <Text style={{ textAlign: "center", fontWeight: "bold", fontSize: 30 }}>
-          Hiring Page
-        </Text>
-        {data.map((value) => {
-          return (
-            <View
-              style={{
-                borderWidth: 1,
-                flexDirection: "row",
-                justifyContent: "space-between",
-              }}
-            >
-              <View>
-                <Text>`제목 : {value.title}`</Text>
-                <Text>`본문 : {value.content}`</Text>
-              </View>
-              <View>
-                {value.isOpend ? (
-                  <Button style={{ backgroundColor: "lightblue" }}>
-                    <Text> 지원 </Text>
-                  </Button>
-                ) : (
-                  <Button style={{ backgroundColor: "orange" }}>
-                    <Text> 마감 </Text>
-                  </Button>
-                )}
-              </View>
-            </View>
-          );
-        })}
+      <View style={styles.container}>
+        <View style={styles.imageLine}>
+          <Image source={require("../images/book_icon.png")} />
+          <Text style={styles.header}> Folio Chain</Text>
+        </View>
+        <View style={styles.card}>
+          {data.map((value, i) => {
+            return (
+              <TouchableOpacity
+                key={i}
+                style={{
+                  borderWidth: 1,
+                  backgroundColor: "#112f4c",
+                  paddingBottom: "10%",
+                  marginBottom: "5%",
+                }}
+                onPress={() => {
+                  alert(`${i + 1}번째 공고에 지원합니다.(test)`);
+                }}
+              >
+                <View>
+                  <Text style={styles.title}>{value.title}</Text>
+                  <Text style={styles.content}>{value.content}</Text>
+                </View>
+                {/* <View>
+                  {value.isOpend ? (
+                    <Button style={{ backgroundColor: "lightblue" }}>
+                      <Text> 지원 </Text>
+                    </Button>
+                  ) : (
+                    <Button style={{ backgroundColor: "orange" }}>
+                      <Text> 마감 </Text>
+                    </Button>
+                  )}
+                </View> */}
+              </TouchableOpacity>
+            );
+          })}
+        </View>
       </View>
     </ScrollView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    width: screenWidth,
+    backgroundColor: "white",
+  },
+  imageLine: {
+    paddingLeft: 10,
+    flexDirection: "row",
+    paddingTop: 30,
+    marginBottom: 20,
+    paddingBottom: 10,
+    backgroundColor: "#112f4c",
+  },
+  header: {
+    fontSize: 30,
+    paddingTop: 5,
+    fontWeight: "bold",
+    color: "white",
+  },
+  card: {
+    width: "93%",
+    alignSelf: "center",
+  },
+  title: {
+    fontSize: 40,
+    color: "#f1c40f",
+    fontWeight: "bold",
+    paddingBottom: "8%",
+  },
+  content: {
+    fontSize: 20,
+    color: "#f1c40f",
+  },
+});
 
 export default Hiring;
