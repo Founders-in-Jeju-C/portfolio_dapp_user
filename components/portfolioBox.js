@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { StyleSheet, View, TextInput, Text, Dimensions } from "react-native";
+import {
+  StyleSheet,
+  View,
+  TextInput,
+  Text,
+  Dimensions,
+  ScrollView,
+} from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import { Input, Form, Label, Item, Button } from "native-base";
 
@@ -24,56 +31,59 @@ const PortfolioBox = ({ data }) => {
 
   const head = ["NAME", "FROM", "VALUE", "VERIFY"];
   return (
-    <View style={{ alignItems: "center" }}>
-      <View style={styles.big_container}>
-        <View
-          style={{
-            flexDirection: "row",
-            margin: 20,
-            justifyContent: "space-between",
-          }}
-        >
-          <TextInput
-            style={styles.input}
-            placeholder="검색어 입력란"
-            value={searchWord}
-            onChangeText={(value) => setSearchWord(value)}
-          />
-          <Button style={styles.searchBtn} onPress={onKeyPress}>
-            <Text style={styles.text}>검색</Text>
-          </Button>
-        </View>
-        <View style={{ alignItems: "center" }}>
-          <Table
-            style={styles.small_container}
-            borderStyle={{ borderWidth: 1.5 }}
+    <ScrollView>
+      <View style={{ alignItems: "center" }}>
+        <View style={styles.big_container}>
+          <View
+            style={{
+              flexDirection: "row",
+              margin: 20,
+              justifyContent: "space-between",
+            }}
           >
-            <Row
-              style={styles.head}
-              textStyle={styles.textheader}
-              data={head}
+            <TextInput
+              style={styles.input}
+              placeholder="검색어 입력란"
+              value={searchWord}
+              onChangeText={(value) => setSearchWord(value)}
             />
-            <Rows
-              textStyle={styles.text}
-              data={currentData.map((v) => [
-                v["name"],
-                v["from"],
-                v["value"],
-                v["verify"],
-              ])}
-            />
-          </Table>
+            <Button style={styles.searchBtn} onPress={onKeyPress}>
+              <Text style={styles.text}>검색</Text>
+            </Button>
+          </View>
+
+          <View style={{ alignItems: "center" }}>
+            <Table
+              style={styles.small_container}
+              borderStyle={{ borderWidth: 1.5 }}
+            >
+              <Row
+                style={styles.head}
+                textStyle={styles.textheader}
+                data={head}
+              />
+              <Rows
+                textStyle={styles.text}
+                data={currentData.map((v) => [
+                  v["name"],
+                  v["from"],
+                  v["value"],
+                  v["verify"],
+                ])}
+              />
+            </Table>
+          </View>
         </View>
       </View>
-    </View>
+    </ScrollView>
   );
 };
 
 const styles = StyleSheet.create({
   big_container: {
     borderWidth: 2,
-    width: deviceWidth - 20,
-    height: deviceHeight - 200,
+    // width: deviceWidth - 20,
+    // height: deviceHeight / 2,
     backgroundColor: "lightgrey",
   },
   small_container: { backgroundColor: "#fff", width: 350 },
