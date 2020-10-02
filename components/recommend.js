@@ -27,7 +27,9 @@ const Recommend = ({ navigation }) => {
       <View>
         <TouchableOpacity
           style={{ flexDirection: "row", paddingLeft: 50 }}
-          onPress={() => alert("관심기업")}
+          onPress={() => {
+            navigation.navigate("Recommend_search");
+          }}
         >
           <Ionicons name="md-search" size={50} color="#f1c40f" />
           <Text style={styles.text}> 관심 기업 검색하기</Text>
@@ -37,7 +39,9 @@ const Recommend = ({ navigation }) => {
         </View>
         <TouchableOpacity
           style={{ flexDirection: "row", paddingLeft: 50 }}
-          onPress={() => alert("챗봇")}
+          onPress={() => {
+            navigation.navigate("Recommend_chatbot");
+          }}
         >
           <Ionicons name="md-chatbubbles" size={50} color="#f1c40f" />
           <Text style={styles.text}> Chat bot</Text>

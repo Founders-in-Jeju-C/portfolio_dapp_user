@@ -8,7 +8,8 @@ import Portfolio from "./portfolio";
 import Portfolio_enrollment from "./portfolio_enrollment";
 import Hiring from "./hiring";
 import Recommend from "./recommend";
-import Recommend_result from "./recommend_result";
+import Recommend_search from "./recommend_search";
+import Recommend_chatbot from "./recommend_chatbot";
 import { Ionicons } from "@expo/vector-icons";
 import Issuer from "./issuer";
 
@@ -52,10 +53,17 @@ const RecommendStack = createStackNavigator({
       headerShown: false,
     },
   },
-  Recommend_result: {
-    screen: Recommend_result,
+  Recommend_search: {
+    screen: Recommend_search,
     navigationOptions: {
-      title: "결과",
+      title: "검색",
+      headerShown: false,
+    },
+  },
+  Recommend_chatbot: {
+    screen: Recommend_chatbot,
+    navigationOptions: {
+      title: "챗봇",
       headerShown: false,
     },
   },
