@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet } from "react-native";
+import { Text, Alert, View, StyleSheet, Image } from "react-native";
 import {
   Container,
   Item,
@@ -40,8 +40,7 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          <Portfolio address={this.state.address} />;
-          this.props.gotoPage("Portfolio");
+          this.props.gotoPage("Portfolio", { ids: this.state.user });
         });
     } else {
       return fetch(`${database}/company.json`, {
@@ -89,56 +88,108 @@ export default class App extends Component {
 
   render() {
     return (
-      <Container key={this.state.id}>
-        <Form>
-          <Item floatingLabel>
-            <Label>Name</Label>
-            <Input
-              autoCapitalize="none"
-              value={this.state.name}
-              autoCorrect={false}
-              onChangeText={(name) => {
-                this.setState({ name });
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Address</Label>
-            <Input
-              autoCapitalize="none"
-              value={this.state.address}
-              autoCorrect={false}
-              onChangeText={(address) => {
-                this.setState({ address });
-              }}
-            />
-          </Item>
-          <Item floatingLabel>
-            <Label>Private Key</Label>
-            <Input
-              autoCapitalize="none"
-              secureTextEntry={true}
-              value={this.state.key}
-              onChangeText={(key) => {
-                this.setState({ key });
-              }}
-            />
-          </Item>
-          <Text>기업 회원가입 체크 </Text>
+      <Container style={styles.container}>
+        <View style={{ marginTop: '30%', alignItems: "center", flexDirection: "row" }}>
+          <Image source={require('../images/book.jpg')} style={styles.image} />
+          <Text style={styles.title}>Folio Chain</Text>
+        </View>
+        <Form style={{ marginTop: '10%', height: 270, width: '100%', alignItems: 'center' }}>
+          <Input
+            autoCapitalize="none"
+            value={this.state.name}
+            placeholder=' Name'
+            style={styles.input}
+            autoCorrect={false}
+            onChangeText={(name) => {
+              this.setState({ name });
+            }}
+          />
+
+          <Input
+            autoCapitalize="none"
+            value={this.state.address}
+            placeholder=' Address'
+            autoCorrect={false}
+            style={styles.input}
+            onChangeText={(address) => {
+              this.setState({ address });
+            }}
+          />
+
+
+          <Input
+            autoCapitalize="none"
+            secureTextEntry={true}
+            placeholder=' Private Key'
+            value={this.state.key}
+            style={styles.input}
+            onChangeText={(key) => {
+              this.setState({ key });
+            }}
+          />
+        </Form>
+        <View style={{ alignItems: 'center', flexDirection: "row", marginTop: '5%' }}>
+          <Text style={{ fontSize: 19, color: '#f1c40f', fontWeight: 'bold', textDecorationLine: 'underline' }}>기업회원</Text>
+          <Text style={{ color: 'white', fontWeight: 'bold' }}> 이신가요?</Text>
           <CheckBox
+            style={styles.checkbox}
             checked={this.state.checked}
             onPress={() => this.setState({ checked: !this.state.checked })}
           />
+        </View>
+        <Button
+          block
+          style={styles.register_btn}
+          onPress={this.handleSubmit.bind(this)}
+        >
+          <Text style={{
+            color: '#112f4c',
+            fontWeight: 'bold',
+            fontSize: 21
+          }}>Register</Text>
+        </Button>
 
-          <Button
-            block
-            style={{ marginTop: 20, backgroundColor: "white" }}
-            onPress={this.handleSubmit.bind(this)}
-          >
-            <Text>Register</Text>
-          </Button>
-        </Form>
       </Container>
     );
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#112f4c',
+    alignItems: 'center'
+    , color: 'white',
+  },
+  title: {
+    fontSize: 28,
+    fontWeight: 'bold',
+    marginLeft: 20,
+    color: 'white'
+  },
+  image: {
+    width: 38,
+    height: 38,
+
+  },
+  input: {
+    borderRadius: 7,
+    borderColor: '#000000',
+    borderWidth: 0.5,
+    backgroundColor: 'white',
+    color: 'black',
+    width: '85%',
+    height: 3,
+    marginTop: 45
+  },
+  register_btn: {
+    alignSelf: 'center',
+    marginTop: '22%',
+    width: 100,
+    borderRadius: 6,
+    backgroundColor: '#f1c40f',
+  },
+  checkbox: {
+    borderColor: '#112f4c'
+  }
+
+});
