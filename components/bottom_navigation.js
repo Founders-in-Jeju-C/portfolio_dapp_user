@@ -124,7 +124,7 @@ const Bottom_navigation = createBottomTabNavigator(
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Ionicons
-            name="logo-android"
+            name="md-thumbs-up"
             size={40}
             style={{ color: tintColor }}
           />

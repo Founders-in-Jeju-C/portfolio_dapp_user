@@ -102,7 +102,10 @@ const Portfolio = ({ navigation, ids }) => {
         }}
       >
         <Text style={styles.userText}>{getData.user} 님</Text>
-        <Button style={styles.enrollmentBtn}>
+        <Button
+          style={styles.enrollmentBtn}
+          onPress={() => navigation.navigate("Portfolio_enrollment")}
+        >
           <View style={{ flex: 1, alignItems: "center" }}>
             <Text style={styles.enrollmentText}>등록</Text>
           </View>
