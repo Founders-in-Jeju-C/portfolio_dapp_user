@@ -9,6 +9,8 @@ import {
   ScrollView,
   List,
   TouchableOpacity,
+  Modal,
+  Alert,
 } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import sample from "../database/sample";
@@ -38,13 +40,30 @@ const Portfolio = ({ navigation, ids }) => {
   useEffect(() => {
     setCurrentData(data);
   }, data);
+  let isOpened = false;
 
-  const onKeyPress = () => {
+  const onSearch = () => {
     const tempData = data.filter((v) => v["name"].includes(searchWord));
-    if (tempData.length === 0) {
+    if (searchWord === "") alert("검색어를 입력해주세요");
+    else if (tempData.length === 0) {
       alert("검색 결과가 없습니다. 다시 입력해주세요");
-      setCurrentData(data);
-    } else setCurrentData(tempData);
+    } else {
+      let tempString = "";
+      tempData
+        .slice()
+        .sort((a, b) => (a.type > b.type ? -1 : 1))
+        .forEach((value, index) => {
+          tempString += `${value["type"]} / ${index + 1}. ${value["name"]} ${
+            value["value"]
+          } ${value["verify"]}\n`;
+        });
+      Alert.alert(`"${searchWord}" 검색 결과`, tempString, [
+        {
+          text: "확인",
+          onPress: () => {},
+        },
+      ]);
+    }
     setSearchWord("");
   };
 
@@ -103,7 +122,7 @@ const Portfolio = ({ navigation, ids }) => {
             value={searchWord}
             onChangeText={(value) => setSearchWord(value)}
           />
-          <Button style={styles.searchBtn} onPress={onKeyPress}>
+          <Button style={styles.searchBtn} onPress={onSearch}>
             <Entypo
               name="magnifying-glass"
               size={35}
@@ -174,6 +193,7 @@ const styles = StyleSheet.create({
     width: 60,
     height: 40,
     backgroundColor: "#f1c40f",
+    marginRight: 20,
   },
   enrollmentText: {
     color: "#112f4c",

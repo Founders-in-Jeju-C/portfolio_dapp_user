@@ -33,7 +33,7 @@ const Portfolio_info = ({ navigation }) => {
               <View style={styles.messageBox}>
                 {info.info.map((value, i) => {
                   return (
-                    <View style={styles.infoBox}>
+                    <View key={i + 1} style={styles.infoBox}>
                       <Text style={styles.index}> {i + 1}. </Text>
                       <View
                         style={{
