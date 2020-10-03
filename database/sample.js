@@ -1,6 +1,34 @@
 let sample = {
-  user: "OOO",
+  user: "James",
   data: [
+    {
+      name: "운전면허",
+      from: "서울",
+      value: "Y",
+      type: "자격증",
+      verify: "O",
+    },
+    {
+      name: "토익",
+      from: "토익발급기관",
+      value: "888",
+      type: "자격증",
+      verify: "O",
+    },
+    {
+      name: "운전면허",
+      from: "서울",
+      value: "Y",
+      type: "자격증",
+      verify: "O",
+    },
+    {
+      name: "토익",
+      from: "토익발급기관",
+      value: "888",
+      type: "자격증",
+      verify: "O",
+    },
     {
       name: "운전면허",
       from: "서울",

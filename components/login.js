@@ -17,25 +17,25 @@ export default class App extends Component {
   }
 
   onLogin = () => {
-    // this.props.navigation.navigate("After");
     this.props.navigation.navigate("After");
-    Object.keys(this.state.users).map((id) => {
-      const user = this.state.users[id];
-      if (user.address == this.state.address) {
-        if (user.key == this.state.key) {
-          this.props.navigation.navigate("After");
-        }
-      }
-    });
 
-    Object.keys(this.state.company).map((id) => {
-      const cp = this.state.company[id];
-      if (cp.address == this.state.address) {
-        if (cp.key == this.state.key) {
-          alert("기업뷰 이동");
-        }
-      }
-    });
+    // Object.keys(this.state.users).map((id) => {
+    //   const user = this.state.users[id];
+    //   if (user.address == this.state.address) {
+    //     if (user.key == this.state.key) {
+    //       this.props.navigation.navigate("After");
+    //     }
+    //   }
+    // });
+
+    // Object.keys(this.state.company).map((id) => {
+    //   const cp = this.state.company[id];
+    //   if (cp.address == this.state.address) {
+    //     if (cp.key == this.state.key) {
+    //       alert("기업뷰 이동");
+    //     }
+    //   }
+    // });
   };
 
   _get() {

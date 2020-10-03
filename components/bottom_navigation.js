@@ -2,19 +2,21 @@ import React from "react";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
 import { createSwitchNavigator } from "@react-navigation/compat";
+import { Dimensions } from "react-native";
 import Community from "./community";
 import Community_pass from "./community_pass";
 import Community_free from "./community_free";
 import Portfolio from "./portfolio";
+import Portfolio_enrollment from "./portfolio_enrollment";
+import Portfolio_info from "./portfolio_info";
 import Recommend from "./recommend";
 import Recommend_search from "./recommend_search";
 import Recommend_chatbot from "./recommend_chatbot";
 import { Ionicons } from "@expo/vector-icons";
-import Recommend_result from "./recommend_result";
-import Portfolio_enrollment from "./portfolio_enrollment";
 import Issuer from "./issuer";
 import { NavigationContainer } from "@react-navigation/native";
 import Hiring from "./hiring";
+const screenHeight = Math.round(Dimensions.get("window").height);
 
 const CommunityStack = createStackNavigator({
   Community: { screen: Community, navigationOptions: { headerShown: false } },
@@ -40,6 +42,13 @@ const PortfolioStack = createStackNavigator({
     screen: Portfolio_enrollment,
     navigationOptions: {
       title: "등록",
+      headerShown: false,
+    },
+  },
+  Portfolio_info: {
+    screen: Portfolio_info,
+    navigationOptions: {
+      title: "정보",
       headerShown: false,
     },
   },
@@ -82,7 +91,7 @@ const Bottom_navigation = createBottomTabNavigator(
       screen: CommunityStack,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
-          <Ionicons name="md-people" size={25} style={{ color: tintColor }} />
+          <Ionicons name="md-people" size={40} style={{ color: tintColor }} />
         ),
       },
     },
@@ -92,7 +101,7 @@ const Bottom_navigation = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Ionicons
             name="md-finger-print"
-            size={25}
+            size={40}
             style={{ color: tintColor }}
           />
         ),
@@ -104,7 +113,7 @@ const Bottom_navigation = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Ionicons
             name="md-clipboard"
-            size={25}
+            size={40}
             style={{ color: tintColor }}
           />
         ),
@@ -116,7 +125,7 @@ const Bottom_navigation = createBottomTabNavigator(
         tabBarIcon: ({ tintColor }) => (
           <Ionicons
             name="logo-android"
-            size={25}
+            size={40}
             style={{ color: tintColor }}
           />
         ),
@@ -125,6 +134,14 @@ const Bottom_navigation = createBottomTabNavigator(
   },
   {
     initialRouteName: "Portfolio",
+    tabBarOptions: {
+      style: {
+        height: 70,
+        backgroundColor: "white",
+      },
+      inactiveTintColor: "#112f4c",
+      activeTintColor: "#f1c40f",
+    },
   }
 );
 
