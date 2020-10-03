@@ -17,34 +17,48 @@ const Recommend = ({ navigation }) => {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
-        <Image style={styles.bookIcon} source={require("../images/book_icon2.png")} />
+        <Image
+          style={styles.bookIcon}
+          source={require("../images/book_icon2.png")}
+        />
         <Text style={styles.logoText}>Folio Chain</Text>
-        <Image style={styles.listIcon} source={require("../images/list_icon.png")} />
-        </View>
-          <View style={{ backgroundColor: '#112f4c', flexDirection: "row" }} >
-          <Text style={styles.item1}>
-            AI 비서
-          </Text>
-          </View>
-        <View style={{ flex: 0.5,backgroundColor: '#112f4c' , alignItems: "center"}}>
+        <Image
+          style={styles.listIcon}
+          source={require("../images/list_icon.png")}
+        />
+      </View>
+      <View style={{ backgroundColor: "#112f4c", flexDirection: "row" }}>
+        <Text style={styles.item1}>AI 비서</Text>
+      </View>
+      <View
+        style={{ flex: 0.5, backgroundColor: "#112f4c", alignItems: "center" }}
+      >
         <TouchableOpacity
           style={{ flexDirection: "column", alignItems: "center" }}
           onPress={() => {
             navigation.navigate("Recommend_search");
           }}
         >
-          <Image style={styles.aiIcon1} source={require("../images/ai_search.png")} />
+          <Image
+            style={styles.aiIcon1}
+            source={require("../images/ai_search.png")}
+          />
           <Text style={styles.text}> 관심 기업 검색하기</Text>
         </TouchableOpacity>
-        </View>
-        <View style={{ flex: 1,backgroundColor: '#112f4c' , alignItems: "center" }}>
+      </View>
+      <View
+        style={{ flex: 1, backgroundColor: "#112f4c", alignItems: "center" }}
+      >
         <TouchableOpacity
-          style={{ flexDirection: "column", alignItems: "center"}}
+          style={{ flexDirection: "column", alignItems: "center" }}
           onPress={() => {
             navigation.navigate("Recommend_chatbot");
           }}
         >
-          <Image style={styles.aiIcon2} source={require("../images/ai_bot.png")} />
+          <Image
+            style={styles.aiIcon2}
+            source={require("../images/ai_bot.png")}
+          />
           <Text style={styles.text}>챗봇</Text>
         </TouchableOpacity>
       </View>
@@ -90,11 +104,11 @@ const styles = StyleSheet.create({
     marginLeft: "6%",
     fontSize: 25,
     fontWeight: "bold",
-    color: 'rgb(241, 196, 15)',
+    color: "rgb(241, 196, 15)",
   },
   text: {
     fontSize: 20,
-    marginTop:"5%",
+    marginTop: "5%",
     fontWeight: "bold",
     color: "rgb(241, 196, 15)",
   },
@@ -105,7 +119,7 @@ const styles = StyleSheet.create({
   },
   aiIcon2: {
     marginTop: "5%",
-    width: "400%",
+    width: 160,
     height: "70%",
     resizeMode: "contain",
   },
