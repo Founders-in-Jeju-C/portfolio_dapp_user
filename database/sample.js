@@ -15,6 +15,12 @@ let sample = {
     },
 
     {
+      name: "오픽",
+      from: "오픽처",
+      value: "AL",
+      verify: "O",
+    },
+    {
       name: "유사토익",
       from: "ㅋㅋ",
       value: 111,
@@ -26,12 +32,7 @@ let sample = {
       value: 1112,
       verify: "X",
     },
-    {
-      name: "포크레인",
-      from: "ㅋㅋ",
-      value: 111,
-      verify: "X",
-    },
+
   ],
 };
 

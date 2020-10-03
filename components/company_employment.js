@@ -209,4 +209,3 @@ const styles = StyleSheet.create({
     backgroundColor: "rgb(241, 196, 15)"
   }
 });
-
