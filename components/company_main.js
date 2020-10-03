@@ -5,6 +5,7 @@ import { createStackNavigator } from "react-navigation-stack";
 import "react-native-gesture-handler";
 import Company from "./company_list";
 import Company_employment from "./company_employment";
+import Content from './content';
 
 function CompanyMainScreen({ navigation }) {
   return (
@@ -16,7 +17,7 @@ function CompanyMainScreen({ navigation }) {
       <View style={styles.case1}>
         <Text style={styles.item1}>현재 채용 공고</Text>
         <View style={styles.card1}>
-          <Text style={styles.information}>(채용 공고)</Text>
+          <Content />
         </View>
       </View>
       <View style={styles.case2}>
