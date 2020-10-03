@@ -1,15 +1,20 @@
 import { StatusBar } from "expo-status-bar";
 import React from "react";
 import { createAppContainer } from "react-navigation";
+import { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
+import Start from "./components/start";
+import Login from "./components/login";
 import Start_navigation from "./components/start_navigation";
 import Bottom_navigation from "./components/bottom_navigation";
 import Company_navigation from "./components/company_navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import fire from "./firebase";
 import Register from "./components/register";
-import Company_main from "./components/company_main";
 import { NavigationContainer } from "@react-navigation/native";
-import { createStackNavigator } from "react-navigation-stack";
+import Portfolio from "./components/portfolio";
+import Enroll from "./components/portfolio_enrollment";
+import Company_main from "./components/company_main";
 
 const temp = createStackNavigator(
   {
@@ -60,9 +65,15 @@ export default function App() {
 
   const Navi = createAppContainer(temp);
   return (
+    // <View style={styles.container}>
+    //   {notNaviPages.includes(page) ? (
+    //     content
+    //   ) : (
     <NavigationContainer>
       <Navi />
     </NavigationContainer>
+    //     )}
+    // </View>
   );
 }
 const styles = StyleSheet.create({

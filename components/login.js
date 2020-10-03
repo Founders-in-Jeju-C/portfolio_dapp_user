@@ -100,6 +100,7 @@ export default class App extends Component {
             style={styles.registerText}
             onPress={() => {
               this.props.navigation.navigate("Register");
+              // this.props.gotoPage('Register');
             }}
           >
             <Text style={{ color: "#f1c40f", textDecorationLine: "underline" }}>

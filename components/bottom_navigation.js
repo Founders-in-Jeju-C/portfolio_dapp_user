@@ -1,31 +1,25 @@
 import React from "react";
 import { createBottomTabNavigator } from "react-navigation-tabs";
 import { createStackNavigator } from "react-navigation-stack";
+import { createSwitchNavigator } from "@react-navigation/compat";
 import Community from "./community";
 import Community_pass from "./community_pass";
 import Community_free from "./community_free";
 import Portfolio from "./portfolio";
-import Portfolio_enrollment from "./portfolio_enrollment";
-import Hiring from "./hiring";
 import Recommend from "./recommend";
 import Recommend_search from "./recommend_search";
 import Recommend_chatbot from "./recommend_chatbot";
 import { Ionicons } from "@expo/vector-icons";
+import Recommend_result from "./recommend_result";
+import Portfolio_enrollment from "./portfolio_enrollment";
 import Issuer from "./issuer";
+import { NavigationContainer } from "@react-navigation/native";
+import Hiring from "./hiring";
 
 const CommunityStack = createStackNavigator({
-  Community: {
-    screen: Community,
-    navigationOptions: { title: "커뮤니티", headerShown: false },
-  },
-  Community_pass: {
-    screen: Community_pass,
-    navigationOptions: { title: "합격게시판", headerShown: false },
-  },
-  Community_free: {
-    screen: Community_free,
-    navigationOptions: { title: "자유게시판", headerShown: false },
-  },
+  Community: { screen: Community, headerShown: false },
+  Community_pass: { screen: Community_pass, headerShown: false },
+  Community_free: { screen: Community_free, headerShown: false },
 });
 
 const PortfolioStack = createStackNavigator({
@@ -63,7 +57,7 @@ const RecommendStack = createStackNavigator({
   Recommend_chatbot: {
     screen: Recommend_chatbot,
     navigationOptions: {
-      title: "챗봇",
+      title: "검색",
       headerShown: false,
     },
   },

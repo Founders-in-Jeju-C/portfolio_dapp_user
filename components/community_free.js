@@ -119,8 +119,8 @@ const Community_free = () => {
                   {user.image ? (
                     <Entypo name="image" size={14} color="#4A485C" />
                   ) : (
-                    <Text />
-                  )}
+                      <Text />
+                    )}
                   <AntDesign name="like2" size={14} color="red" />
                   <FontAwesome name="comment-o" size={14} color="blue" />
                 </View>

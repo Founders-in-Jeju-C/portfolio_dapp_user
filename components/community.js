@@ -1,18 +1,12 @@
 import React, { useState } from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  ScrollView,
-  Dimensions,
-  Image,
-} from "react-native";
+import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import {
   MaterialIcons,
   Entypo,
   FontAwesome,
   AntDesign,
 } from "@expo/vector-icons";
+import { Container } from "native-base";
 import { Button } from "native-base";
 
 const screenWidth = Math.round(Dimensions.get("window").width);
@@ -24,7 +18,7 @@ const Community = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.imageLine}>
           <Image source={require("../images/book_icon.png")} />
-          <Text style={styles.header}> Folio Chain</Text>
+          <Text style={styles.header}> FolioChain</Text>
         </View>
         <View>
           <Button
@@ -61,12 +55,6 @@ const styles = StyleSheet.create({
     paddingTop: 30,
     paddingBottom: 50,
   },
-  boradName: {
-    fontSize: 25,
-    color: "#112f4c",
-    fontWeight: "bold",
-    paddingLeft: 20,
-  },
   header: {
     fontSize: 30,
     paddingTop: 5,
@@ -76,14 +64,14 @@ const styles = StyleSheet.create({
   button: {
     width: screenWidth - 80,
     height: screenHeight - 600,
-    marginVertical: "8%",
+    marginVertical: 30,
     alignSelf: "center",
     backgroundColor: "#f1c40f",
   },
   buttonText: {
     fontWeight: "bold",
     fontSize: 30,
-    color: "#f1c40f",
+    color: "#112f4c",
   },
 });
 

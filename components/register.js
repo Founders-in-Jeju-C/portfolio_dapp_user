@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Text, Alert, View, StyleSheet } from "react-native";
+import { Text, Alert, View, StyleSheet, Image } from "react-native";
 import {
   Container,
   Item,
@@ -10,25 +10,28 @@ import {
   CheckBox,
 } from "native-base";
 import Portfolio from "./portfolio";
+import Company_main from "./company_main";
 // import firebase from '../firebase';
 
 const database = "https://react-dapp.firebaseio.com";
 
 export default class App extends Component {
   constructor(props) {
-    super();
+    super(props);
 
     this.state = {
       user: {},
       name: "",
       address: "",
       key: "",
-      checked: true,
+      ids: "",
+      company_checked: true,
+      agency_checked: false,
     };
   }
 
   _post(user) {
-    if (!this.state.checked) {
+    if (!this.state.company_checked && !this.state.agency_checked) {
       return fetch(`${database}/address.json`, {
         method: "POST",
         body: JSON.stringify(user),
@@ -43,6 +46,21 @@ export default class App extends Component {
           <Portfolio address={this.state.address} />;
           this.props.navigation.navigate("After");
           // this.props.gotoPage("Portfolio", { ids: this.state.user });
+          // this.props.gotoPage("Portfolio");
+        });
+    } else if (this.state.agency_checked) {
+      return fetch(`${database}/agency.json`, {
+        method: "POST",
+        body: JSON.stringify(user),
+      })
+        .then((res) => {
+          if (res.status != 200) {
+            throw new Error(res.statusText);
+          }
+          return res.json();
+        })
+        .then((data) => {
+          alert("기관뷰로 이동");
         });
     } else {
       return fetch(`${database}/company.json`, {
@@ -162,8 +180,37 @@ export default class App extends Component {
           </Text>
           <Text style={{ color: "white", fontWeight: "bold" }}> 이신가요?</Text>
           <CheckBox
-            checked={this.state.checked}
-            onPress={() => this.setState({ checked: !this.state.checked })}
+            style={styles.checkbox}
+            checked={this.state.company_checked}
+            onPress={() =>
+              this.setState({ company_checked: !this.state.company_checked })
+            }
+          />
+        </View>
+        <View
+          style={{
+            alignItems: "center",
+            flexDirection: "row",
+            marginTop: "5%",
+          }}
+        >
+          <Text
+            style={{
+              fontSize: 19,
+              color: "#f1c40f",
+              fontWeight: "bold",
+              textDecorationLine: "underline",
+            }}
+          >
+            기관회원
+          </Text>
+          <Text style={{ color: "white", fontWeight: "bold" }}> 이신가요?</Text>
+          <CheckBox
+            style={styles.checkbox}
+            checked={this.state.agency_checked}
+            onPress={() =>
+              this.setState({ agency_checked: !this.state.agency_checked })
+            }
           />
         </View>
         <Button
