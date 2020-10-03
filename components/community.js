@@ -18,7 +18,7 @@ const Community = ({ navigation }) => {
       <View style={styles.container}>
         <View style={styles.imageLine}>
           <Image source={require("../images/book_icon.png")} />
-          <Text style={styles.header}> FolioChain</Text>
+          <Text style={styles.header}> Folio Chain</Text>
         </View>
         <View>
           <Button
@@ -53,13 +53,15 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     paddingTop: 30,
-    paddingBottom: 50,
+    paddingBottom: 10,
+    marginBottom: 40,
+    backgroundColor: "white",
   },
   header: {
     fontSize: 30,
     paddingTop: 5,
     fontWeight: "bold",
-    color: "white",
+    color: "#112f4c",
   },
   button: {
     width: screenWidth - 80,

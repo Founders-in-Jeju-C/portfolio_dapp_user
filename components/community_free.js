@@ -1,11 +1,20 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView, Image } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  ScrollView,
+  Image,
+  Dimensions,
+} from "react-native";
 import {
   MaterialIcons,
   Entypo,
   FontAwesome,
   AntDesign,
 } from "@expo/vector-icons";
+
+const screenWidth = Math.round(Dimensions.get("window").width);
 
 const Community_free = () => {
   const [title, content, time] = useState([
@@ -119,8 +128,8 @@ const Community_free = () => {
                   {user.image ? (
                     <Entypo name="image" size={14} color="#4A485C" />
                   ) : (
-                      <Text />
-                    )}
+                    <Text />
+                  )}
                   <AntDesign name="like2" size={14} color="red" />
                   <FontAwesome name="comment-o" size={14} color="blue" />
                 </View>
@@ -145,24 +154,29 @@ const styles = StyleSheet.create({
     paddingLeft: 10,
     flexDirection: "row",
     paddingTop: 30,
-    paddingBottom: 15,
+    paddingBottom: 10,
+    backgroundColor: "white",
   },
   _header: {
     fontSize: 30,
     paddingTop: 5,
     fontWeight: "bold",
-    color: "white",
+    color: "#112f4c",
   },
   boradName: {
     fontSize: 25,
     color: "white",
     fontWeight: "bold",
     paddingLeft: "5%",
+    color: "#f1c40f",
+    marginBottom: 10,
   },
   container: {
     backgroundColor: "white",
     borderWidth: 2,
+    width: screenWidth - 50,
     alignItems: "center",
+    alignSelf: "center",
   },
   title: {
     fontSize: 15,

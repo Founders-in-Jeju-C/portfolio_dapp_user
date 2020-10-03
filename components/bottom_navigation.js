@@ -17,9 +17,15 @@ import { NavigationContainer } from "@react-navigation/native";
 import Hiring from "./hiring";
 
 const CommunityStack = createStackNavigator({
-  Community: { screen: Community, headerShown: false },
-  Community_pass: { screen: Community_pass, headerShown: false },
-  Community_free: { screen: Community_free, headerShown: false },
+  Community: { screen: Community, navigationOptions: { headerShown: false } },
+  Community_pass: {
+    screen: Community_pass,
+    navigationOptions: { headerShown: false },
+  },
+  Community_free: {
+    screen: Community_free,
+    navigationOptions: { headerShown: false },
+  },
 });
 
 const PortfolioStack = createStackNavigator({
