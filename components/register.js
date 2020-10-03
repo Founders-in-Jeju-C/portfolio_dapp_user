@@ -61,6 +61,7 @@ export default class App extends Component {
         })
         .then((data) => {
           alert("기관뷰로 이동");
+          this.props.navigation.navigate("After_Institution");
         });
     } else {
       return fetch(`${database}/company.json`, {
@@ -209,7 +210,9 @@ export default class App extends Component {
             style={styles.checkbox}
             checked={this.state.institution_checked}
             onPress={() =>
-              this.setState({ institution_checked: !this.state.institution_checked })
+              this.setState({
+                institution_checked: !this.state.institution_checked,
+              })
             }
           />
         </View>

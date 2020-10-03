@@ -8,6 +8,7 @@ import Login from "./components/login";
 import Start_navigation from "./components/start_navigation";
 import Bottom_navigation from "./components/bottom_navigation";
 import Company_navigation from "./components/company_navigation";
+import Institution_navigation from "./components/institution_navigation";
 import { createStackNavigator } from "react-navigation-stack";
 import fire from "./firebase";
 import Register from "./components/register";
@@ -28,6 +29,10 @@ const temp = createStackNavigator(
     },
     After_Company: {
       screen: Company_navigation,
+      navigationOptions: { headerShown: false },
+    },
+    After_Institution: {
+      screen: Institution_navigation,
       navigationOptions: { headerShown: false },
     },
   },
