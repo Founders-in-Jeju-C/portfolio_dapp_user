@@ -16,36 +16,35 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 const Recommend = ({ navigation }) => {
   return (
     <View style={styles.container}>
-      <View style={styles.header}>
-        <Image style={styles.bookIcon} source={require("../images/book_icon2.png")} />
-        <Text style={styles.logoText}>Folio Chain</Text>
-        <Image style={styles.listIcon} source={require("../images/list_icon.png")} />
-        </View>
-          <View style={{ backgroundColor: '#112f4c', flexDirection: "row" }} >
-          <Text style={styles.item1}>
-            AI 비서
-          </Text>
-          </View>
-        <View style={{ flex: 0.5,backgroundColor: '#112f4c' , alignItems: "center"}}>
+      <View style={styles.imageLine}>
+        <Image source={require("../images/book_icon.png")} />
+        <Text style={styles.header}> Folio Chain</Text>
+      </View>
+      <View style={{ alignItems: "center", paddingBottom: "12%" }}>
+        <Text style={styles._header}>안녕하세요 !</Text>
+        <Image source={require("../images/AI.png")} />
+      </View>
+      <View>
         <TouchableOpacity
-          style={{ flexDirection: "column", alignItems: "center" }}
+          style={{ flexDirection: "row", paddingLeft: "12%" }}
           onPress={() => {
             navigation.navigate("Recommend_search");
           }}
         >
-          <Image style={styles.aiIcon1} source={require("../images/ai_search.png")} />
+          <Ionicons name="md-search" size={50} color="#f1c40f" />
           <Text style={styles.text}> 관심 기업 검색하기</Text>
         </TouchableOpacity>
+        <View>
+          <Text style={{ paddingBottom: "8%" }}></Text>
         </View>
-        <View style={{ flex: 1,backgroundColor: '#112f4c' , alignItems: "center" }}>
         <TouchableOpacity
-          style={{ flexDirection: "column", alignItems: "center"}}
+          style={{ flexDirection: "row", paddingLeft: "12%" }}
           onPress={() => {
             navigation.navigate("Recommend_chatbot");
           }}
         >
-          <Image style={styles.aiIcon2} source={require("../images/ai_bot.png")} />
-          <Text style={styles.text}>챗봇</Text>
+          <Ionicons name="md-chatbubbles" size={50} color="#f1c40f" />
+          <Text style={styles.text}> Chat bot</Text>
         </TouchableOpacity>
       </View>
     </View>
@@ -57,57 +56,32 @@ const styles = StyleSheet.create({
     height: screenHeight,
     backgroundColor: "#112f4c",
   },
-  header: {
-    flex: 0.3,
+  imageLine: {
+    paddingLeft: 10,
     flexDirection: "row",
-    backgroundColor: "white",
+    paddingTop: 30,
+    paddingBottom: 50,
   },
-  bookIcon: {
-    marginLeft: "4%",
-    marginTop: "10%",
-    width: "10%",
-    height: "50%",
-    resizeMode: "contain",
-  },
-  listIcon: {
-    marginLeft: "25%",
-    marginTop: "10%",
-    width: "20%",
-    height: "50%",
-    resizeMode: "contain",
-  },
-  logoText: {
-    textAlign: "center",
-    fontWeight: "bold",
+  header: {
     fontSize: 30,
-    marginLeft: "2%",
-    marginTop: "11%",
-    color: "#112f4c",
-  },
-  item1: {
-    marginTop: "5%",
-    marginBottom: "10%",
-    marginLeft: "6%",
-    fontSize: 25,
+    paddingTop: 5,
     fontWeight: "bold",
-    color: 'rgb(241, 196, 15)',
+    color: "white",
+  },
+  _header: {
+    fontSize: 30,
+    paddingTop: 5,
+    fontWeight: "bold",
+    color: "white",
+    textAlign: "center",
+    paddingBottom: "8%",
   },
   text: {
-    fontSize: 20,
-    marginTop:"5%",
+    fontSize: 30,
+    paddingTop: 5,
     fontWeight: "bold",
-    color: "rgb(241, 196, 15)",
-  },
-  aiIcon1: {
-    width: "110%",
-    height: "75%",
-    resizeMode: "contain",
-  },
-  aiIcon2: {
-    marginTop: "5%",
-    width: "400%",
-    height: "70%",
-    resizeMode: "contain",
+    color: "white",
+    paddingLeft: 15,
   },
 });
 
