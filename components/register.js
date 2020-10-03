@@ -26,12 +26,12 @@ export default class App extends Component {
       key: "",
       ids: "",
       company_checked: true,
-      agency_checked: false,
+      institution_checked: false,
     };
   }
 
   _post(user) {
-    if (!this.state.company_checked && !this.state.agency_checked) {
+    if (!this.state.company_checked && !this.state.institution_checked) {
       return fetch(`${database}/address.json`, {
         method: "POST",
         body: JSON.stringify(user),
@@ -48,7 +48,7 @@ export default class App extends Component {
           // this.props.gotoPage("Portfolio", { ids: this.state.user });
           // this.props.gotoPage("Portfolio");
         });
-    } else if (this.state.agency_checked) {
+    } else if (this.state.institution_checked) {
       return fetch(`${database}/agency.json`, {
         method: "POST",
         body: JSON.stringify(user),
@@ -207,9 +207,9 @@ export default class App extends Component {
           <Text style={{ color: "white", fontWeight: "bold" }}> 이신가요?</Text>
           <CheckBox
             style={styles.checkbox}
-            checked={this.state.agency_checked}
+            checked={this.state.institution_checked}
             onPress={() =>
-              this.setState({ agency_checked: !this.state.agency_checked })
+              this.setState({ institution_checked: !this.state.institution_checked })
             }
           />
         </View>
