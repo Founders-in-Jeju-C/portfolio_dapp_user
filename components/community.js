@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { StyleSheet, Text, View, ScrollView, Dimensions } from "react-native";
+import { StyleSheet, Text, View, Dimensions, Image } from "react-native";
 import {
   MaterialIcons,
   Entypo,
@@ -7,173 +7,71 @@ import {
   AntDesign,
 } from "@expo/vector-icons";
 import { Container } from "native-base";
+import { Button } from "native-base";
 
+const screenWidth = Math.round(Dimensions.get("window").width);
+const screenHeight = Math.round(Dimensions.get("window").height);
 
-const deviceHeight = Dimensions.get("window").height;
-const deviceWidth = Dimensions.get("window").width;
-
-const Community = () => {
-  const [title, content, time] = useState([
-    {
-      image: true,
-      key: 1,
-      time: "1분 전",
-      title: "토익 100점",
-      content: "하하 저 토익 100점 입니다~! 이딴 거 안보내줘도 괜찮은데 ",
-    },
-    {
-      image: false,
-      key: 2,
-      time: "4분 전",
-      title: "근황",
-      content:
-        "전 해커톤에 참여하고 있어서 얼른 수료증이 나왔으면 좋겠어요 얼른 트랜잭션을 받았으면 좋겠습니다.",
-    },
-    {
-      image: false,
-      key: 3,
-      time: "12:55",
-      title: "포트폴리오",
-      content:
-        "전 백수입니다. 아무것도 없어요 뭐하고 살죠? 전 힘든 일도 싫습니다 다음에는 돌로 태어날래요",
-    },
-    {
-      image: true,
-      key: 4,
-      time: "07:34",
-      title: "인생",
-      content: "다음에는 우리집 반려 식물 우각이로 태어날래요 ",
-    },
-    {
-      image: false,
-      key: 5,
-      time: "03:12",
-      title: "folio app",
-      content:
-        "이 앱 너무 좋네요 편리하고 커뮤니티 기능이 있어서 너무 좋습니다 하하하 ",
-    },
-    {
-      image: false,
-      key: 6,
-      time: "01:00",
-      title: "개발",
-      content:
-        "진지하게 개발을 그만둘 생각을 하고 있습니다 그냥 침대랑 결혼할래요",
-    },
-    {
-      image: false,
-      key: 7,
-      time: "09/27",
-      title: "지금 죽고싶다",
-      content:
-        "팀원들이 좋아서 아직까지 HP:1 남은 상태에서 생존해나가고 있습니다",
-    },
-    {
-      image: false,
-      key: 8,
-      time: "09/27",
-      title: "인생",
-      content: "다음에는 우리집 반려 식물 우각이로 태어남 ",
-    },
-    {
-      image: false,
-      key: 9,
-      time: "09/27",
-      title: "삼성전자",
-      content:
-        "여러분 ㅋ 저 이정도면 ㅋ 하반기 ㅋ삼ㅋ성ㅋ전ㅋ자ㅋ 합격 가능 ?ㅋ  그냥 Easy 하게 가겠네요 ㅋ",
-    },
-    {
-      image: false,
-      key: 10,
-      time: "09/26",
-      title: "개발",
-      content:
-        "진지하게 개발을 그만둘 생각을 하고 있습니다 그냥 침대랑 결혼할래요",
-    },
-    {
-      image: false,
-      key: 11,
-      time: "09/25",
-      title: "행복",
-      content: "다 했어요 이제 곧 회의해요 ",
-    },
-  ]);
+const Community = ({ navigation }) => {
   return (
-    <View style={styles.container}>
-      <View ></View>
-      <ScrollView>
-        {title.map((user) => {
-          return (
-            <View key={user.key} style={styles.data}>
-              <View style={styles.profile_wrap}>
-                <MaterialIcons name="person-pin" size={24} color="#4A485C" />
-                <Text style={styles.name}> 익명 </Text>
-                <Text style={styles.date}>{user.time}</Text>
-              </View>
-              <Text style={styles.title}>{user.title}</Text>
-              <Text style={{ width: deviceWidth - 60 }}>{user.content}</Text>
-              <View style={styles.icon_wrap}>
-                {user.image ? (
-                  <Entypo name="image" size={14} color="#4A485C" />
-                ) : (
-                    <Text />
-                  )}
-                <AntDesign name="like2" size={14} color="red" />
-                <FontAwesome name="comment-o" size={14} color="blue" />
-              </View>
+    <View style={{ backgroundColor: "white" }}>
+      <View style={styles.container}>
+        <View style={styles.imageLine}>
+          <Image source={require("../images/book_icon.png")} />
+          <Text style={styles.header}> FolioChain</Text>
+        </View>
+        <View>
+          <Button
+            style={styles.button}
+            onPress={() => navigation.navigate("Community_pass")}
+          >
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Text style={styles.buttonText}> 합격 게시판 </Text>
             </View>
-          );
-        })}
-      </ScrollView>
+          </Button>
+          <Button
+            style={styles.button}
+            onPress={() => navigation.navigate("Community_free")}
+          >
+            <View style={{ flex: 1, alignItems: "center" }}>
+              <Text style={styles.buttonText}> 자유 게시판 </Text>
+            </View>
+          </Button>
+        </View>
+      </View>
     </View>
   );
 };
 
 const styles = StyleSheet.create({
-  header: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#025880",
-  },
   container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+    width: screenWidth,
+    height: screenHeight,
+    backgroundColor: "#112f4c",
   },
-  title: {
-    fontSize: 15,
-    fontWeight: "700",
-  },
-  content: {
-    textAlign: "center",
-  },
-  profile_wrap: {
+  imageLine: {
+    paddingLeft: 10,
     flexDirection: "row",
-    alignItems: "center",
-    paddingBottom: "1%",
+    paddingTop: 30,
+    paddingBottom: 50,
   },
-  data: {
-    width: "90%",
-    padding: 13,
-    borderBottomColor: "gray",
-    borderBottomWidth: 0.3,
-    marginTop: "2%"
+  header: {
+    fontSize: 30,
+    paddingTop: 5,
+    fontWeight: "bold",
+    color: "white",
   },
-  name: {
-    paddingLeft: 2,
+  button: {
+    width: screenWidth - 80,
+    height: screenHeight - 600,
+    marginVertical: 30,
+    alignSelf: "center",
+    backgroundColor: "#f1c40f",
   },
-  date: {
-    paddingLeft: deviceWidth - 110,
-    fontSize: 13,
-  },
-  icon_wrap: {
-    width: "15%",
-    flexDirection: "row",
-    marginTop: 5,
-    justifyContent: "space-between",
-    marginLeft: deviceWidth - 100,
+  buttonText: {
+    fontWeight: "bold",
+    fontSize: 30,
+    color: "#112f4c",
   },
 });
 
