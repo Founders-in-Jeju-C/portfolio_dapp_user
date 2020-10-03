@@ -5,56 +5,77 @@ import { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
 import Start from "./components/start";
 import Login from "./components/login";
+import Start_navigation from "./components/start_navigation";
 import Bottom_navigation from "./components/bottom_navigation";
+import Company_navigation from "./components/company_navigation";
+import { createStackNavigator } from "react-navigation-stack";
 import fire from "./firebase";
 import Register from "./components/register";
 import { NavigationContainer } from "@react-navigation/native";
-import Portfolio from './components/portfolio';
-import Enroll from './components/portfolio_enrollment';
-import Company_main from './components/company_main';
+import Portfolio from "./components/portfolio";
+import Enroll from "./components/portfolio_enrollment";
+import Company_main from "./components/company_main";
 
+const temp = createStackNavigator(
+  {
+    Before: {
+      screen: Start_navigation,
+      navigationOptions: { headerShown: false },
+    },
+    After: {
+      screen: Bottom_navigation,
+      navigationOptions: { headerShown: false },
+    },
+    After_Company: {
+      screen: Company_navigation,
+      navigationOptions: { headerShown: false },
+    },
+  },
+  {
+    initialRouteName: "Before",
+  }
+);
 const BottomNavi = createAppContainer(Bottom_navigation);
 export default function App() {
-  const [page, setPage] = useState("Start");
-  const [props, setProps] = useState({});
+  // const [page, setPage] = useState("Start");
 
-  const gotoPage = (page, props) => {
-    setPage(page);
-    setProps(props);
-  };
+  // const gotoPage = (page) => {
+  //   setPage(page);
+  // };
 
-  //화면 이동
-  let content = <Start gotoPage={gotoPage} />;
-  if (page === "Login") content = <Login gotoPage={gotoPage} />;
-  else if (page === "Register") content = <Register gotoPage={gotoPage} />;
-  else if (page === "Portfolio") {
-    content = <Portfolio gotoPage={gotoPage} />;
-    return (
-      <NavigationContainer>
-        <BottomNavi />
-      </NavigationContainer>
-    )
-  }
-  else if (page === "Portfolio_Enroll") content = <Enroll gotoPage={gotoPage} />
-  else if (page === "Company_main") content = <Company_main gotoPage={gotoPage} />
-  else {
-  }
+  // //화면 이동
+  // let content = <Start gotoPage={gotoPage} />;
+  // if (page === "Login") content = <Login gotoPage={gotoPage} />;
+  // else if (page === "Register") content = <Register gotoPage={gotoPage} />;
+  // else if (page === "Company_main")
+  //   content = <Company_main gotoPage={gotoPage} />;
 
-  const notNaviPages = ["Start", "Login", "Register", "Portfolio", "Portfolio_Enroll", "Company_main"];
+  // const notNaviPages = ["Start", "Login", "Register", "Company_main"];
+  // return (
+  //   <View style={styles.container}>
+  //     {notNaviPages.includes(page) ? (
+  //       content
+  //     ) : (
+  //       <NavigationContainer>
+  //         <BottomNavi />
+  //       </NavigationContainer>
+  //     )}
+  //   </View>
+  // );
 
+  const Navi = createAppContainer(temp);
   return (
-    <View style={styles.container}>
-      {notNaviPages.includes(page) ? (
-        content
-      ) : (
-          <NavigationContainer>
-            <BottomNavi />
-          </NavigationContainer>
-        )}
-    </View>
+    // <View style={styles.container}>
+    //   {notNaviPages.includes(page) ? (
+    //     content
+    //   ) : (
+    <NavigationContainer>
+      <Navi />
+    </NavigationContainer>
+    //     )}
+    // </View>
   );
 }
-
 const styles = StyleSheet.create({
   container: {
     flex: 1,
