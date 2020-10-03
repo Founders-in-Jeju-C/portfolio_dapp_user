@@ -22,18 +22,12 @@ const Recommend_search = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <View
-        style={{
-          justifyContent: "space-between",
-          flexDirection: "row",
-          marginTop: "5%",
-        }}
-      >
-        <Feather name="menu" size={27} color="black" />
-        <Text style={{ letterSpacing: 1, fontSize: 20, fontWeight: "900" }}>
-          FOLIO CHAIN
-        </Text>
-        <MaterialCommunityIcons name="bell" size={27} color="black" />
+       <View style={styles.header}>
+        <Image
+          style={styles.bookIcon}
+          source={require("../images/book_icon2.png")}
+        />
+        <Text style={styles.logoText}>Folio Chain</Text>
       </View>
       <View style={styles.searchBox}>
         <TextInput
@@ -41,12 +35,12 @@ const Recommend_search = ({ navigation }) => {
           onChangeText={(v) => setCompanyName(v)}
           placeholder="회사명을 입력해주세요"
           backgroundColor="white"
-          style={{ height: 50, fontSize: 20, width: screenWidth - 50 }}
+          style={{  height: "100%", fontSize: 20, width: screenWidth - 50 }}
         />
         <Ionicons
           name="md-search"
           size={50}
-          style={{ paddingLeft: 5 }}
+          style={{ paddingLeft: "1%", color:"black" }}
           onPress={() => {
             alert("검색");
             setCompanyName("");
@@ -65,7 +59,7 @@ const Recommend_search = ({ navigation }) => {
         ></Textarea>
         <View style={styles.logoStyle}>
           <View>
-            <Ionicons name="logo-android" size={80} color={"#112f4c"} />
+            <Ionicons name="logo-android" size={80} color={"#f1c40f"} />
           </View>
         </View>
       </View>
@@ -76,40 +70,49 @@ const styles = StyleSheet.create({
   container: {
     width: screenWidth,
     height: screenHeight,
-    backgroundColor: "white",
-  },
-  imageLine: {
-    paddingLeft: 10,
-    flexDirection: "row",
-    paddingTop: 30,
-    paddingBottom: 50,
+    backgroundColor: "#112f4c",
   },
   searchBox: {
     flexDirection: "row",
-    backgroundColor: "#112f4c",
-    marginBottom: 50,
+    backgroundColor: "#f1c40f",
+    marginBottom: "11%",
+    marginHorizontal:"1%",
+    marginVertical:"3%",
   },
   header: {
-    fontSize: 30,
-    paddingTop: 5,
+    flex: 0.215,
+    flexDirection: "row",
+    backgroundColor: "white",
+  },
+  bookIcon: {
+    marginLeft: "4%",
+    marginTop: "10%",
+    width: "10%",
+    height: "50%",
+    resizeMode: "contain",
+  },
+  logoText: {
+    textAlign: "center",
     fontWeight: "bold",
-    color: "white",
+    fontSize: 30,
+    marginLeft: "2%",
+    marginTop: "11%",
+    color: "#112f4c",
   },
   messageHeader: {
     color: "#f1c40f",
     fontWeight: "bold",
     fontSize: 30,
-    width: 300,
-    marginLeft: 20,
+    width: "70%",
+    marginLeft: "3%",
     textAlign: "center",
-    backgroundColor: "#112f4c",
+    backgroundColor: "white",
   },
   messageBox: {
-    width: 300,
-    height: 400,
-    backgroundColor: "#112f4c",
-    borderWidth: 2,
-    marginLeft: 20,
+    width: "70%",
+    height: "300%",
+    backgroundColor: "white",
+    marginLeft: "3%",
     fontSize: 17,
   },
   logoStyle: {

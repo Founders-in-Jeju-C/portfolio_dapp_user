@@ -22,10 +22,6 @@ const Recommend = ({ navigation }) => {
           source={require("../images/book_icon2.png")}
         />
         <Text style={styles.logoText}>Folio Chain</Text>
-        <Image
-          style={styles.listIcon}
-          source={require("../images/list_icon.png")}
-        />
       </View>
       <View style={{ backgroundColor: "#112f4c", flexDirection: "row" }}>
         <Text style={styles.item1}>AI 비서</Text>
