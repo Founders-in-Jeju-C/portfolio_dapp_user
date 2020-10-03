@@ -5,7 +5,7 @@ import { AntDesign } from '@expo/vector-icons';
 
 const database = "https://react-dapp.firebaseio.com";
 
-export default class Agnecy_approve extends Component {
+export default class Organization_approve extends Component {
 
   constructor() {
     super()
