@@ -45,6 +45,12 @@ let sample = {
     },
 
     {
+      name: "오픽",
+      from: "오픽처",
+      value: "AL",
+      verify: "O",
+    },
+    {
       name: "유사토익",
       from: "ㅋㅋ",
       type: "자격증",
