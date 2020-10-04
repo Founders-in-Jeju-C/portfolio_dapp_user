@@ -53,14 +53,13 @@ const Portfolio = ({ navigation, ids }) => {
         .slice()
         .sort((a, b) => (a.type > b.type ? -1 : 1))
         .forEach((value, index) => {
-          tempString += `${value["type"]} / ${index + 1}. ${value["name"]} ${
-            value["value"]
-          } ${value["verify"]}\n`;
+          tempString += `${value["type"]} / ${index + 1}. ${value["name"]} ${value["value"]
+            } ${value["verify"]}\n`;
         });
       Alert.alert(`"${searchWord}" 검색 결과`, tempString, [
         {
           text: "확인",
-          onPress: () => {},
+          onPress: () => { },
         },
       ]);
     }

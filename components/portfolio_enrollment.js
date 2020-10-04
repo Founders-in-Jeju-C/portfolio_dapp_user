@@ -1,12 +1,13 @@
-import { Container, Button, Form, Input, Label, Item, CheckBox } from "native-base";
+import { Container, Button, Form, Input, Label, Item } from "native-base";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, Alert } from "react-native";
+import { View, Text, Image, StyleSheet, Alert, CheckBox } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import sample from "../database/sample";
 import { withNavigation } from "react-navigation";
 import {
   AntDesign,
 } from "@expo/vector-icons";
+import Institution_approve from "./institution_approve";
 
 const database = 'https://react-dapp.firebaseio.com';
 const Portfolio_enrollment = (props) => {
@@ -21,17 +22,18 @@ const Portfolio_enrollment = (props) => {
     verify: false,
   };
 
+
   const [enrollData, setEnrollData] = useState(firstData);
+  const [checked, check] = useState(true);
+  const [userName, setData] = useState('');
+  const [userContent, setContent] = useState('');
+  const [userInstitution, setInstitution] = useState('');
 
-  const onChangeName = (e) => setEnrollData({ ...enrollData, name: e });
-  const onChangeFrom = (e) => setEnrollData({ ...enrollData, from: e });
-  const onChangeValue = (e) => setEnrollData({ ...enrollData, value: e });
 
-
-  const _post = () => {
-    return fetch(`${database}/address/approve.json`, {
+  _approve = (tmp) => {
+    return fetch(`${database}/agency/approve.json`, {
       method: "POST",
-      body: JSON.stringify(firstData),
+      body: JSON.stringify(tmp),
     })
       .then((res) => {
         if (res.status != 200) {
@@ -41,18 +43,48 @@ const Portfolio_enrollment = (props) => {
       })
       .then((data) => {
 
+
       });
+  }
+  const _post = (approve) => {
+    const tmp = {
+      name: userName,
+      content: userContent,
+      institution: userInstitution,
+      verify: false
+    }
+    if (approve) {
+      _approve(tmp);
+    }
+
+    return fetch(`${database}/address/approve.json`, {
+      method: "POST",
+      body: JSON.stringify(tmp),
+    })
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((data) => {
+
+
+      });
+
+
   }
 
 
   const onClickEnrollment = () => {
     let element = ["name", "from", "value"];
-    for (let i = 0; i < element.length; i++)
-      if (enrollData[element[i]] === "") {
-        alert("모두 입력해주세요");
-        return;
-      }
-    if (!this.state.checked) {
+
+    if (userName == "" && userContent == "" && userInstitution == "") {
+      alert("모두 입력해주세요");
+      return;
+    }
+
+    if (!checked) {
       Alert.alert(
         "확인을 누르면 미검증 자격으로 남게 됩니다.",
         "계속 진행하시려면 확인을 눌러주세요. ",
@@ -61,14 +93,12 @@ const Portfolio_enrollment = (props) => {
             text: "확인",
             onPress: () => {
               setEnrollData({ ...enrollData, verify: "X" });
-              _post();
               Alert.alert("", "등록 완료. 페이지를 이동합니다.", [
                 {
                   text: "확인",
                   onPress: () => {
-                    // datalist.push(enrollData);
-                    // setEnrollData(firstData);
-                    props.navigation.navigate("Portfolio", datalist);
+                    _post(false);
+                    props.navigation.navigate("Portfolio");
                   },
                 },
               ]);
@@ -89,7 +119,10 @@ const Portfolio_enrollment = (props) => {
       Alert.alert("", "승인 요청 완료", [
         {
           text: "확인",
-          onPress: () => props.navigation.navigate("Portfolio", datalist),
+          onPress: () => {
+            _post(true);
+            props.navigation.navigate("Portfolio");
+          },
         },
       ]);
     }
@@ -112,28 +145,28 @@ const Portfolio_enrollment = (props) => {
       </View>
       <Form style={{ height: 300 }}>
         <Input
-          value={enrollData.name}
+          value={userName}
           autoCorrect={false}
           style={styles.input}
           placeholder='Name'
-          onChangeText={onChangeName}
+          onChangeText={value => setData(value)}
         />
 
         <Input
-          value={enrollData.from}
+          value={userInstitution}
           autoCorrect={false}
           style={styles.input}
           placeholder='Institution'
-          onChangeText={onChangeFrom}
+          onChangeText={value => setInstitution(value)}
         />
 
 
         <Input
-          value={enrollData.value}
+          value={userContent}
           autoCorrect={false}
           style={styles.input}
           placeholder='Content'
-          onChangeText={onChangeValue}
+          onChangeText={value => setContent(value)}
         />
       </Form>
       <View style={{
@@ -152,7 +185,8 @@ const Portfolio_enrollment = (props) => {
         <CheckBox
 
           style={{ borderColor: "gray" }}
-
+          value={checked}
+          onValueChange={value => check(!checked)}
         />
       </View>
 
@@ -206,10 +240,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textDecorationLine: 'underline',
     textDecorationColor: '#f1c40f'
-  }, 
+  },
   header: {
     flex: 1,
-    marginTop:"10%",
+    marginTop: "10%",
     flexDirection: "row",
     justifyContent: 'flex-start',
     backgroundColor: '#112f4c',

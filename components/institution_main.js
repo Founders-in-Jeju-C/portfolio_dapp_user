@@ -6,6 +6,9 @@ import {
   Image,
   FlatList,
 } from 'react-native';
+import { ScrollView } from 'react-native-gesture-handler';
+
+const database = "https://react-dapp.firebaseio.com";
 
 export default class Institution_main extends Component {
 
@@ -23,9 +26,27 @@ export default class Institution_main extends Component {
         { id: 8, username: "승인대기자 8", value: '토플 점수 요청' },
         { id: 9, username: "승인대기자 9", value: '컴퓨터 활용 능력 2급' },
       ],
+      users: {},
+      id: 1,
     };
   }
 
+  _get = () => {
+    fetch(`${database}/agency/approve.json`)
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((agency) => this.setState({ users: agency }));
+
+
+  }
+
+  componentDidMount() {
+    this._get();
+  }
 
   render() {
     return (
@@ -45,22 +66,22 @@ export default class Institution_main extends Component {
             현황
         </Text>
         </View>
-        <FlatList
-          style={styles.notificationList}
-          enableEmptySections={true}
-          data={this.state.data}
-          keyExtractor={(item) => {
-            return item.id;
-          }}
-          renderItem={({ item }) => {
-            return (
-              <View style={styles.notificationBox} onPress={this.approve}>
-                <Image style={styles.icon}
-                  source={require('../images/personal-information.png')} />
-                <Text style={styles.username}>{item.username}</Text>
-              </View>
-            )
-          }} />
+        <ScrollView
+          style={styles.notificationList}>
+          {
+            Object.keys(this.state.users).map((id) => {
+              const user = this.state.users[id];
+              return (
+                <View style={styles.notificationBox} onPress={this.approve}>
+                  <Image style={styles.icon}
+                    source={require('../images/personal-information.png')} />
+                  <Text style={styles.username}>{user.name}</Text>
+                  <Text style={styles.username}>{user.content} 인증 요청</Text>
+                </View>
+              )
+            })
+          }
+        </ScrollView>
       </View>
 
 
