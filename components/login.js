@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, useState } from "react";
 import { Text, Alert, View, StyleSheet, Image, Dimensions } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import Portfolio from "./portfolio";
@@ -16,26 +16,35 @@ export default class App extends Component {
     };
   }
 
+
   onLogin = () => {
-    this.props.navigation.navigate("After");
 
-    // Object.keys(this.state.users).map((id) => {
-    //   const user = this.state.users[id];
-    //   if (user.address == this.state.address) {
-    //     if (user.key == this.state.key) {
-    //       this.props.navigation.navigate("After");
-    //     }
-    //   }
-    // });
+    Object.keys(this.state.users).map((id) => {
+      const user = this.state.users[id];
+      if (user.address == this.state.address) {
+        if (user.key == this.state.key) {
+          this.props.navigation.navigate("After");
+        }
+      }
+    });
 
-    // Object.keys(this.state.company).map((id) => {
-    //   const cp = this.state.company[id];
-    //   if (cp.address == this.state.address) {
-    //     if (cp.key == this.state.key) {
-    //       alert("기업뷰 이동");
-    //     }
-    //   }
-    // });
+    Object.keys(this.state.company).map((id) => {
+      const cp = this.state.company[id];
+      if (cp.address == this.state.address) {
+        if (cp.key == this.state.key) {
+          this.props.navigation.navigate("After_Company");
+        }
+      }
+    });
+
+    Object.keys(this.state.agency).map((id) => {
+      const cp = this.state.agency[id];
+      if (cp.address == this.state.address) {
+        if (cp.key == this.state.key) {
+          this.props.navigation.navigate("After_Institution");
+        }
+      }
+    });
   };
 
   _get() {
@@ -56,6 +65,15 @@ export default class App extends Component {
         return res.json();
       })
       .then((company) => this.setState({ company: company }));
+
+    fetch(`${database}/agency.json`)
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((agency) => this.setState({ agency: agency }));
   }
 
   componentDidMount() {

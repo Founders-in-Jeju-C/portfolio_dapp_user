@@ -105,7 +105,7 @@ const Portfolio_enrollment = (props) => {
         </Text>
         <AntDesign name="back" size={35} color="#f1c40f" style={{ marginTop: '14%', marginLeft: '37%' }} />
       </View>
-      <View style={{ marginLeft: '3%', marginBottom: '5%', flexDirection: 'row', alignItems: 'center' }}>
+      <View style={{ marginLeft: '3%', marginBottom: '1%', flexDirection: 'row', alignItems: 'center' }}>
         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 28 }}>자격증 </Text>
         <Text style={{ color: "#f1c40f", fontWeight: 'bold', fontSize: 28 }}>추가</Text>
         <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 28 }}>하기</Text>
@@ -141,7 +141,7 @@ const Portfolio_enrollment = (props) => {
         alignItems: 'center',
         backgroundColor: '#112f4c',
         marginTop: '10%',
-        marginLeft: '8%'
+        marginLeft: '5%'
       }}>
 
         <Text style={styles.text}>해당 </Text>
@@ -206,8 +206,10 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     textDecorationLine: 'underline',
     textDecorationColor: '#f1c40f'
-  }, header: {
+  }, 
+  header: {
     flex: 1,
+    marginTop:"10%",
     flexDirection: "row",
     justifyContent: 'flex-start',
     backgroundColor: '#112f4c',
