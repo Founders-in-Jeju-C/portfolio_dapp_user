@@ -1,19 +1,23 @@
 import { Button } from "native-base";
-import React, { createRef, useState } from "react";
+import React, { createRef, useState, Component } from "react";
 import {
   View,
   Text,
   ScrollView,
   StyleSheet,
   Image,
-  Dimensions,
+  Dimensions, ViewComponent
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
+const database = "https://react-dapp.firebaseio.com";
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
-const Hiring = () => {
+const Hiring = (props) => {
+
+  const [userData, setData] = useState({});
+
   const [hiringData, setHiringData] = useState([
     {
       title: "SAMSUNG",
@@ -84,6 +88,22 @@ const Hiring = () => {
     },
   ]);
   const data = hiringData.slice();
+
+  _get = () => {
+
+    fetch(`${database}/company/post.json`)
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((company) => setData(company));
+
+  }
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -92,35 +112,39 @@ const Hiring = () => {
           source={require("../images/book_icon2.png")}
         />
         <Text style={styles.logoText}>Folio Chain</Text>
+
       </View>
-    <ScrollView >
-    <View>
+      <ScrollView >
+        <View>
           <View style={styles.card}>
-            {data.map((value, i) => {
-              return (
-                <TouchableOpacity
-                  key={i}
-                  style={{
-                    borderWidth: 1,
-                    backgroundColor: "#112f4c",
-                    paddingBottom: 40,
-                    marginBottom: 20,
-                  }}
-                  onPress={() => {
-                    alert(`${i + 1}번째 공고에 지원합니다.(test)`);
-                  }}
-                >
-                  <View>
-                    <Text style={styles.title}>{value.title}</Text>
-                    <Text style={styles.content}>{value.content}</Text>
-                  </View>
-                </TouchableOpacity>
-              );
-            })}
+            {_get()}
+            {
+              Object.keys(userData).map((id) => {
+                const cp = userData[id];
+                return (
+                  <TouchableOpacity
+                    style={{
+                      borderWidth: 1,
+                      backgroundColor: "#112f4c",
+                      paddingBottom: 40,
+                      marginBottom: 20,
+                    }}
+                    onPress={() => {
+                      alert(`${cp.name} 공고에 지원합니다.`);
+                    }}
+                  >
+                    <View>
+                      <Text style={styles.title}>{cp.name}</Text>
+                      <Text style={styles.content}>{cp.notice}</Text>
+                    </View>
+                  </TouchableOpacity>
+                )
+              })
+            }
           </View>
         </View>
-      
-    </ScrollView>
+
+      </ScrollView>
     </View>
   );
 };
@@ -149,7 +173,7 @@ const styles = StyleSheet.create({
     marginLeft: "2%",
     marginTop: "11%",
     color: "#112f4c",
-    marginBottom:"5.8%",
+    marginBottom: "5.8%",
   },
   card: {
     width: "93%",
@@ -159,14 +183,14 @@ const styles = StyleSheet.create({
     fontSize: 40,
     color: "#f1c40f",
     fontWeight: "bold",
-    paddingTop:"3%",
+    paddingTop: "3%",
     paddingBottom: "10%",
-    paddingLeft:"3%",
+    paddingLeft: "3%",
   },
   content: {
     fontSize: 20,
     color: "#f1c40f",
-    paddingLeft:"3%",
+    paddingLeft: "3%",
   },
 });
 
