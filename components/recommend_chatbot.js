@@ -20,12 +20,9 @@ export default class Recommend_chatbot extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      result: '',
+      result: "",
       msg: "",
-      messages: [
-        { id: 1, sent: true, msg: "Message1" },
-        { id: 2, sent: false, msg: "Message2" },
-      ],
+      messages: [],
     };
     this.send = this.send.bind(this);
     this.reply = this.reply.bind(this);
@@ -34,41 +31,40 @@ export default class Recommend_chatbot extends Component {
   }
 
   _get() {
-    return fetch('http://svc.saltlux.ai:31781', {
-      headers: { 'Content-Type': 'application/json;' },
-      method: 'POST',
+    return fetch("http://svc.saltlux.ai:31781", {
+      headers: { "Content-Type": "application/json;" },
+      method: "POST",
       body: JSON.stringify({
-        "key": "eeb05e5c-5bf7-4e9e-a923-4c40b89a537b",
-        "serviceId": "01880175149",
-        "argument": {
-          "question": this.state.msg
+        key: "8109ab77-0547-4dcc-bfbb-65cf87c88cc6",
+        serviceId: "01880175149",
+        argument: {
+          question: this.state.msg,
+        },
+      }),
+    })
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
         }
+        return res.json();
       })
-    }).then(res => {
-      if (res.status != 200) {
-        throw new Error(res.statusText);
-      }
-      return res.json();
-
-    }).then(data => {
-      this.setState({ result: data.answer });
-    }).catch(function (err) {
-      console.log('서버 오류');
-    });
+      .then((data) => {
+        this.setState({ result: data.answer }, () => {
+          var messages = this.state.messages;
+          messages.push({
+            id: Math.floor(Math.random() * 99999999999999999 + 1),
+            sent: false,
+            msg: this.state.result,
+          });
+          this.setState({ msg: "", messages: messages });
+        });
+      })
+      .catch(function (err) {
+        console.log("서버 오류");
+      });
   }
   reply() {
-
     this._get();
-
-    var messages = this.state.messages;
-    messages.push({
-      id: Math.floor(Math.random() * 99999999999999999 + 1),
-      sent: false,
-      msg: this.state.result,
-    });
-    this.setState({ msg: "", messages: messages });
-
-
   }
 
   send() {
@@ -82,7 +78,6 @@ export default class Recommend_chatbot extends Component {
       this.setState({ messages: messages });
 
       this.reply();
-
     }
   }
 
@@ -132,7 +127,6 @@ export default class Recommend_chatbot extends Component {
           >
             챗봇과 대화를 시작합니다.
           </Text>
-          <Text>{this.state.result}</Text>
         </View>
 
         <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>

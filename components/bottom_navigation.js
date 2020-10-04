@@ -20,14 +20,14 @@ const screenHeight = Math.round(Dimensions.get("window").height);
 
 const CommunityStack = createStackNavigator({
   Community: { screen: Community, navigationOptions: { headerShown: false } },
-  Community_pass: {
-    screen: Community_pass,
-    navigationOptions: { headerShown: false },
-  },
-  Community_free: {
-    screen: Community_free,
-    navigationOptions: { headerShown: false },
-  },
+  // Community_pass: {
+  //   screen: Community_pass,
+  //   navigationOptions: { headerShown: false },
+  // },
+  // Community_free: {
+  //   screen: Community_free,
+  //   navigationOptions: { headerShown: false },
+  // },
 });
 
 const PortfolioStack = createStackNavigator({
