@@ -22,8 +22,8 @@ const Portfolio_info = ({ navigation }) => {
       <View style={{ backgroundColor: "#112f4c", height: screenHeight }}>
         <View style={styles.container}>
           <View style={styles.imageLine}>
-            <Image style={styles.bookIcon} 
-            source={require("../images/book_icon2.png")} />
+            <Image style={styles.bookIcon}
+              source={require("../images/book_icon2.png")} />
             <Text style={styles.header}> Folio Chain</Text>
           </View>
 
@@ -84,13 +84,13 @@ const styles = StyleSheet.create({
   header: {
     fontSize: 30,
     paddingTop: "3%",
-    paddingBottom:"3.3%",
+    paddingBottom: "3.3%",
     fontWeight: "bold",
     color: "#112f4c",
   },
   bookIcon: {
     marginLeft: "0.01%",
-    marginRight:"0.7%",
+    marginRight: "0.7%",
     marginTop: "0.6%",
     width: "10.3%",
     height: "100%",
