@@ -20,25 +20,51 @@ export default class Recommend_chatbot extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      result: "",
       msg: "",
-      messages: [
-        { id: 1, sent: true, msg: "Message1" },
-        { id: 2, sent: false, msg: "Message2" },
-      ],
+      messages: [],
     };
     this.send = this.send.bind(this);
     this.reply = this.reply.bind(this);
     this.renderItem = this._renderItem.bind(this);
+    this._get = this._get.bind(this);
   }
 
+  _get() {
+    return fetch("http://svc.saltlux.ai:31781", {
+      headers: { "Content-Type": "application/json;" },
+      method: "POST",
+      body: JSON.stringify({
+        key: "8109ab77-0547-4dcc-bfbb-65cf87c88cc6",
+        serviceId: "01880175149",
+        argument: {
+          question: this.state.msg,
+        },
+      }),
+    })
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((data) => {
+        this.setState({ result: data.answer }, () => {
+          var messages = this.state.messages;
+          messages.push({
+            id: Math.floor(Math.random() * 99999999999999999 + 1),
+            sent: false,
+            msg: this.state.result,
+          });
+          this.setState({ msg: "", messages: messages });
+        });
+      })
+      .catch(function (err) {
+        console.log("서버 오류");
+      });
+  }
   reply() {
-    var messages = this.state.messages;
-    messages.push({
-      id: Math.floor(Math.random() * 99999999999999999 + 1),
-      sent: false,
-      msg: this.state.msg,
-    });
-    this.setState({ msg: "", messages: messages });
+    this._get();
   }
 
   send() {
@@ -50,9 +76,8 @@ export default class Recommend_chatbot extends Component {
         msg: this.state.msg,
       });
       this.setState({ messages: messages });
-      setTimeout(() => {
-        this.reply();
-      }, 2000);
+
+      this.reply();
     }
   }
 
