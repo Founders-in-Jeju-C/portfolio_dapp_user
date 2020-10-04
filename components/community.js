@@ -16,10 +16,13 @@ const Community = ({ navigation }) => {
   return (
     <View style={{ backgroundColor: "white" }}>
       <View style={styles.container}>
-        <View style={styles.imageLine}>
-          <Image source={require("../images/book_icon.png")} />
-          <Text style={styles.header}> Folio Chain</Text>
-        </View>
+      <View style={styles.header}>
+        <Image
+          style={styles.bookIcon}
+          source={require("../images/book_icon2.png")}
+        />
+        <Text style={styles.logoText}>Folio Chain</Text>
+      </View>
         <View>
           <Button
             style={styles.button}
@@ -49,18 +52,24 @@ const styles = StyleSheet.create({
     height: screenHeight,
     backgroundColor: "#112f4c",
   },
-  imageLine: {
-    paddingLeft: 10,
+  header: {
+    flex: 0.235,
     flexDirection: "row",
-    paddingTop: 30,
-    paddingBottom: 10,
-    marginBottom: 40,
     backgroundColor: "white",
   },
-  header: {
-    fontSize: 30,
-    paddingTop: 5,
+  bookIcon: {
+    marginLeft: "4%",
+    marginTop: "10%",
+    width: "10%",
+    height: "50%",
+    resizeMode: "contain",
+  },
+  logoText: {
+    textAlign: "center",
     fontWeight: "bold",
+    fontSize: 30,
+    marginLeft: "2%",
+    marginTop: "11%",
     color: "#112f4c",
   },
   button: {

@@ -87,7 +87,7 @@ export default class Recommend_chatbot extends Component {
         <View style={styles.header}>
           <Image
             style={styles.bookIcon}
-            source={require("../images/book.png")}
+            source={require("../images/book_icon2.png")}
           />
           <Text style={styles.logoText}>Folio Chain</Text>
         </View>
@@ -211,7 +211,7 @@ const styles = StyleSheet.create({
   header: {
     flex: 0.2,
     flexDirection: "row",
-    backgroundColor: "#112f4c",
+    backgroundColor: "white",
   },
   bookIcon: {
     marginLeft: 13,
@@ -227,6 +227,6 @@ const styles = StyleSheet.create({
     marginLeft: 7,
     marginTop: 42,
     marginBottom: 10,
-    color: "white",
+    color: "#112f4c",
   },
 });

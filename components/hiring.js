@@ -85,13 +85,16 @@ const Hiring = () => {
   ]);
   const data = hiringData.slice();
   return (
-    <ScrollView>
-      <View>
-        <View style={styles.container}>
-          <View style={styles.imageLine}>
-            <Image source={require("../images/book_icon.png")} />
-            <Text style={styles.header}> Folio Chain</Text>
-          </View>
+    <View style={styles.container}>
+      <View style={styles.header}>
+        <Image
+          style={styles.bookIcon}
+          source={require("../images/book_icon2.png")}
+        />
+        <Text style={styles.logoText}>Folio Chain</Text>
+      </View>
+    <ScrollView >
+    <View>
           <View style={styles.card}>
             {data.map((value, i) => {
               return (
@@ -116,42 +119,54 @@ const Hiring = () => {
             })}
           </View>
         </View>
-      </View>
+      
     </ScrollView>
+    </View>
   );
 };
 const styles = StyleSheet.create({
   container: {
+    flex: 1,
     width: screenWidth,
     backgroundColor: "white",
   },
-  imageLine: {
-    paddingLeft: 10,
-    flexDirection: "row",
-    paddingTop: 30,
-    marginBottom: 20,
-    paddingBottom: 10,
-    backgroundColor: "#112f4c",
-  },
   header: {
-    fontSize: 30,
-    paddingTop: 5,
+    //flex: 1,
+    flexDirection: "row",
+    backgroundColor: "white",
+  },
+  bookIcon: {
+    marginLeft: "4%",
+    marginTop: "10%",
+    width: "10%",
+    height: "50%",
+    resizeMode: "contain",
+  },
+  logoText: {
+    textAlign: "center",
     fontWeight: "bold",
-    color: "white",
+    fontSize: 30,
+    marginLeft: "2%",
+    marginTop: "11%",
+    color: "#112f4c",
+    marginBottom:"5.8%",
   },
   card: {
-    width: 380,
+    width: "93%",
     alignSelf: "center",
   },
   title: {
     fontSize: 40,
     color: "#f1c40f",
     fontWeight: "bold",
-    paddingBottom: 30,
+    paddingTop:"3%",
+    paddingBottom: "10%",
+    paddingLeft:"3%",
   },
   content: {
     fontSize: 20,
     color: "#f1c40f",
+    paddingLeft:"3%",
   },
 });
 

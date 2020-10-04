@@ -106,7 +106,8 @@ const Community_free = () => {
   return (
     <View style={{ backgroundColor: "#112f4c" }}>
       <View style={styles.imageLine}>
-        <Image source={require("../images/book_icon.png")} />
+        <Image style={{width:"10%", height:"100%"}}
+        source={require("../images/book_icon2.png")} />
         <Text style={styles._header}> Folio Chain</Text>
       </View>
       <View>
@@ -151,10 +152,10 @@ const styles = StyleSheet.create({
     backgroundColor: "#025880",
   },
   imageLine: {
-    paddingLeft: 10,
+    paddingLeft: "3%",
     flexDirection: "row",
-    paddingTop: 30,
-    paddingBottom: 10,
+    paddingTop: "10%",
+    paddingBottom: "5.5%",
     backgroundColor: "white",
   },
   _header: {
@@ -169,7 +170,8 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     paddingLeft: "5%",
     color: "#f1c40f",
-    marginBottom: 10,
+    marginTop: "3%",
+    marginBottom: "3%",
   },
   container: {
     backgroundColor: "white",

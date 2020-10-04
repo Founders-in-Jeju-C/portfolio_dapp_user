@@ -90,9 +90,12 @@ const Portfolio = ({ navigation, ids }) => {
 
   return (
     <View style={styles.container}>
-      <View style={styles.imageLine}>
-        <Image source={require("../images/book_icon.png")} />
-        <Text style={styles.header}> Folio Chain</Text>
+      <View style={styles.header}>
+        <Image
+          style={styles.bookIcon}
+          source={require("../images/book_icon2.png")}
+        />
+        <Text style={styles.logoText}>Folio Chain</Text>
       </View>
       <View
         style={{
@@ -162,17 +165,24 @@ const styles = StyleSheet.create({
     width: screenWidth,
     height: screenHeight,
   },
-  imageLine: {
-    paddingLeft: 10,
-    flexDirection: "row",
-    paddingTop: "7%",
-    backgroundColor: "white",
-    paddingBottom: 10,
-  },
   header: {
-    fontSize: 30,
-    paddingTop: 5,
+    flex: 0.455,
+    flexDirection: "row",
+    backgroundColor: "white",
+  },
+  bookIcon: {
+    marginLeft: "4%",
+    marginTop: "10%",
+    width: "10%",
+    height: "50%",
+    resizeMode: "contain",
+  },
+  logoText: {
+    textAlign: "center",
     fontWeight: "bold",
+    fontSize: 30,
+    marginLeft: "2%",
+    marginTop: "11%",
     color: "#112f4c",
   },
   title: {
