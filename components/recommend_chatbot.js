@@ -20,6 +20,7 @@ export default class Recommend_chatbot extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      result: '',
       msg: "",
       messages: [
         { id: 1, sent: true, msg: "Message1" },
@@ -29,16 +30,45 @@ export default class Recommend_chatbot extends Component {
     this.send = this.send.bind(this);
     this.reply = this.reply.bind(this);
     this.renderItem = this._renderItem.bind(this);
+    this._get = this._get.bind(this);
   }
 
+  _get() {
+    return fetch('http://svc.saltlux.ai:31781', {
+      headers: { 'Content-Type': 'application/json;' },
+      method: 'POST',
+      body: JSON.stringify({
+        "key": "eeb05e5c-5bf7-4e9e-a923-4c40b89a537b",
+        "serviceId": "01880175149",
+        "argument": {
+          "question": this.state.msg
+        }
+      })
+    }).then(res => {
+      if (res.status != 200) {
+        throw new Error(res.statusText);
+      }
+      return res.json();
+
+    }).then(data => {
+      this.setState({ result: data.answer });
+    }).catch(function (err) {
+      console.log('서버 오류');
+    });
+  }
   reply() {
+
+    this._get();
+
     var messages = this.state.messages;
     messages.push({
       id: Math.floor(Math.random() * 99999999999999999 + 1),
       sent: false,
-      msg: this.state.msg,
+      msg: this.state.result,
     });
     this.setState({ msg: "", messages: messages });
+
+
   }
 
   send() {
@@ -50,9 +80,9 @@ export default class Recommend_chatbot extends Component {
         msg: this.state.msg,
       });
       this.setState({ messages: messages });
-      setTimeout(() => {
-        this.reply();
-      }, 2000);
+
+      this.reply();
+
     }
   }
 
@@ -102,6 +132,7 @@ export default class Recommend_chatbot extends Component {
           >
             챗봇과 대화를 시작합니다.
           </Text>
+          <Text>{this.state.result}</Text>
         </View>
 
         <KeyboardAvoidingView behavior="padding" style={styles.keyboard}>
