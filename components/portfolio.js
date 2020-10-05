@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, Component } from "react";
 import {
   StyleSheet,
   Text,
@@ -11,7 +11,9 @@ import {
   TouchableOpacity,
   Modal,
   Alert,
+  AsyncStorage
 } from "react-native";
+
 import { Table, Row, Rows } from "react-native-table-component";
 import sample from "../database/sample";
 // import userCertification from '../build/contracts/UserCertification.json';
@@ -32,11 +34,18 @@ const screenHeight = Dimensions.get("window").height;
 const screenWidth = Dimensions.get("window").width;
 const head = ["학력", "자격증", "수상내역", "대외활동", "기타"];
 
-const Portfolio = ({ navigation, ids }) => {
+const Portfolio = ({ navigation }) => {
+
   let getData = { ...sample };
   const data = [...getData.data];
   let [currentData, setCurrentData] = useState(data);
   const [searchWord, setSearchWord] = useState("");
+  const [name, setName] = useState(AsyncStorage.getItem('name').then((mobileNo) => {
+
+    setName(mobileNo);
+  }));
+
+
   useEffect(() => {
     setCurrentData(data);
   }, data);
@@ -87,6 +96,9 @@ const Portfolio = ({ navigation, ids }) => {
   //     });
   // };
 
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -103,7 +115,7 @@ const Portfolio = ({ navigation, ids }) => {
           marginBottom: "5%",
         }}
       >
-        <Text style={styles.userText}>{getData.user} 님</Text>
+        <Text style={styles.userText}>{JSON.stringify(name)} 님</Text>
         <Button
           style={styles.enrollmentBtn}
           onPress={() => navigation.navigate("Portfolio_enrollment")}
