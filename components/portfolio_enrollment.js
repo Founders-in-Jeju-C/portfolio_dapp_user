@@ -115,7 +115,6 @@ const Portfolio_enrollment = (props) => {
     } else {
       // datalist.push(enrollData);
       // setEnrollData(firstData);
-      _post();
       Alert.alert("", "승인 요청 완료", [
         {
           text: "확인",
