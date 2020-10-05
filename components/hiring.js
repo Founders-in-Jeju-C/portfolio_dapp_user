@@ -6,7 +6,8 @@ import {
   ScrollView,
   StyleSheet,
   Image,
-  Dimensions, ViewComponent
+  Dimensions,
+  ViewComponent,
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -15,7 +16,6 @@ const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
 const Hiring = (props) => {
-
   const [userData, setData] = useState({});
 
   const [hiringData, setHiringData] = useState([
@@ -90,7 +90,6 @@ const Hiring = (props) => {
   const data = hiringData.slice();
 
   _get = () => {
-
     fetch(`${database}/company/post.json`)
       .then((res) => {
         if (res.status != 200) {
@@ -99,10 +98,7 @@ const Hiring = (props) => {
         return res.json();
       })
       .then((company) => setData(company));
-
-  }
-
-
+  };
 
   return (
     <View style={styles.container}>
@@ -112,38 +108,35 @@ const Hiring = (props) => {
           source={require("../images/book_icon2.png")}
         />
         <Text style={styles.logoText}>Folio Chain</Text>
-
       </View>
-      <ScrollView >
+      <ScrollView>
         <View>
           <View style={styles.card}>
             {_get()}
-            {
-              Object.keys(userData).map((id) => {
-                const cp = userData[id];
-                return (
-                  <TouchableOpacity
-                    style={{
-                      borderWidth: 1,
-                      backgroundColor: "#112f4c",
-                      paddingBottom: 40,
-                      marginBottom: 20,
-                    }}
-                    onPress={() => {
-                      alert(`${cp.name} 공고에 지원합니다.`);
-                    }}
-                  >
-                    <View>
-                      <Text style={styles.title}>{cp.name}</Text>
-                      <Text style={styles.content}>{cp.notice}</Text>
-                    </View>
-                  </TouchableOpacity>
-                )
-              })
-            }
+            {Object.keys(userData).map((id, idx) => {
+              const cp = userData[id];
+              return (
+                <TouchableOpacity
+                  style={{
+                    borderWidth: 1,
+                    backgroundColor: "#112f4c",
+                    paddingBottom: 40,
+                    marginBottom: 20,
+                  }}
+                  key={idx}
+                  onPress={() => {
+                    alert(`${cp.name} 공고에 지원합니다.`);
+                  }}
+                >
+                  <View>
+                    <Text style={styles.title}>{cp.name}</Text>
+                    <Text style={styles.content}>{cp.notice}</Text>
+                  </View>
+                </TouchableOpacity>
+              );
+            })}
           </View>
         </View>
-
       </ScrollView>
     </View>
   );
