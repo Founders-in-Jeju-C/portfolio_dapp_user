@@ -4,12 +4,11 @@ import { View, Text, Image, StyleSheet, Alert, CheckBox } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import sample from "../database/sample";
 import { withNavigation } from "react-navigation";
-import {
-  AntDesign,
-} from "@expo/vector-icons";
+import { AntDesign } from "@expo/vector-icons";
 import Institution_approve from "./institution_approve";
+import SelectPicker from "react-native-form-select-picker";
 
-const database = 'https://react-dapp.firebaseio.com';
+const database = "https://react-dapp.firebaseio.com";
 const Portfolio_enrollment = (props) => {
   useEffect(() => {
     setEnrollData(enrollData);
@@ -22,14 +21,14 @@ const Portfolio_enrollment = (props) => {
     verify: false,
   };
 
-
   const [enrollData, setEnrollData] = useState(firstData);
   const [checked, check] = useState(true);
-  const [userName, setData] = useState('');
-  const [userContent, setContent] = useState('');
-  const [userInstitution, setInstitution] = useState('');
-
-
+  const [userName, setData] = useState("");
+  const [userContent, setContent] = useState("");
+  const [userInstitution, setInstitution] = useState("");
+  const [userType, setUserType] = useState("");
+  const typeOptions = ["학력", "자격증", "수상내역", "대외활동", "기타"];
+  console.log(userType);
   _approve = (tmp) => {
     return fetch(`${database}/agency/approve.json`, {
       method: "POST",
@@ -41,18 +40,16 @@ const Portfolio_enrollment = (props) => {
         }
         return res.json();
       })
-      .then((data) => {
-
-
-      });
-  }
+      .then((data) => {});
+  };
   const _post = (approve) => {
     const tmp = {
+      type: userType,
       name: userName,
       content: userContent,
       institution: userInstitution,
-      verify: false
-    }
+      verify: false,
+    };
     if (approve) {
       _approve(tmp);
     }
@@ -67,19 +64,18 @@ const Portfolio_enrollment = (props) => {
         }
         return res.json();
       })
-      .then((data) => {
-
-
-      });
-
-
-  }
-
+      .then((data) => {});
+  };
 
   const onClickEnrollment = () => {
     let element = ["name", "from", "value"];
 
-    if (userName == "" && userContent == "" && userInstitution == "") {
+    if (
+      userType === "" ||
+      userName === "" ||
+      userContent === "" ||
+      userInstitution === ""
+    ) {
       alert("모두 입력해주세요");
       return;
     }
@@ -127,82 +123,121 @@ const Portfolio_enrollment = (props) => {
     }
   };
   return (
-    <Container style={{ backgroundColor: '#112f4c' }}>
+    <Container style={{ backgroundColor: "#112f4c" }}>
       {/* <Image source={require("../images/logo_renew_remove.png")} /> */}
       <View style={styles.header}>
-        <Image style={styles.bookIcon}
-          source={require('../images/book.png')} />
-        <Text style={styles.logoText}>
-          Folio Chain
+        <Image style={styles.bookIcon} source={require("../images/book.png")} />
+        <Text style={styles.logoText}>Folio Chain</Text>
+        <AntDesign
+          name="back"
+          size={35}
+          color="#f1c40f"
+          style={{ marginTop: "14%", marginLeft: "37%" }}
+        />
+      </View>
+      <View
+        style={{
+          marginLeft: "3%",
+          marginBottom: "1%",
+          flexDirection: "row",
+          alignItems: "center",
+        }}
+      >
+        <Text style={{ color: "white", fontWeight: "bold", fontSize: 28 }}>
+          자격증{" "}
         </Text>
-        <AntDesign name="back" size={35} color="#f1c40f" style={{ marginTop: '14%', marginLeft: '37%' }} />
+        <Text style={{ color: "#f1c40f", fontWeight: "bold", fontSize: 28 }}>
+          추가
+        </Text>
+        <Text style={{ color: "white", fontWeight: "bold", fontSize: 28 }}>
+          하기
+        </Text>
       </View>
-      <View style={{ marginLeft: '3%', marginBottom: '1%', flexDirection: 'row', alignItems: 'center' }}>
-        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 28 }}>자격증 </Text>
-        <Text style={{ color: "#f1c40f", fontWeight: 'bold', fontSize: 28 }}>추가</Text>
-        <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 28 }}>하기</Text>
-      </View>
-      <Form style={{ height: 300 }}>
+      <Form style={{ height: 300, marginTop: "5%" }}>
+        <SelectPicker
+          style={{
+            alignSelf: "center",
+            borderRadius: 6,
+            width: "85%",
+            backgroundColor: "white",
+          }}
+          onValueChange={(value) => setUserType(value)}
+          selected={userType}
+          placeholder="Select Type"
+        >
+          {Object.values(typeOptions).map((val, index) => (
+            <SelectPicker.Item label={val} value={val} key={`type:${index}`} />
+          ))}
+        </SelectPicker>
         <Input
           value={userName}
           autoCorrect={false}
           style={styles.input}
-          placeholder='Name'
-          onChangeText={value => setData(value)}
+          placeholder="Name"
+          onChangeText={(value) => setData(value)}
         />
 
         <Input
           value={userInstitution}
           autoCorrect={false}
           style={styles.input}
-          placeholder='Institution'
-          onChangeText={value => setInstitution(value)}
+          placeholder="Institution"
+          onChangeText={(value) => setInstitution(value)}
         />
-
 
         <Input
           value={userContent}
           autoCorrect={false}
           style={styles.input}
-          placeholder='Content'
-          onChangeText={value => setContent(value)}
+          placeholder="Content"
+          onChangeText={(value) => setContent(value)}
         />
       </Form>
-      <View style={{
-        flexDirection: "row",
-        alignItems: 'center',
-        backgroundColor: '#112f4c',
-        marginTop: '10%',
-        marginLeft: '5%'
-      }}>
-
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          backgroundColor: "#112f4c",
+          marginTop: "10%",
+          marginLeft: "5%",
+        }}
+      >
         <Text style={styles.text}>해당 </Text>
         <Text style={styles.text_effect}>기관</Text>
         <Text style={styles.text}>으로부터</Text>
         <Text style={styles.text_effect}> 인증 </Text>
         <Text style={styles.text}>받으시겠습니까? </Text>
         <CheckBox
-
           style={{ borderColor: "gray" }}
           value={checked}
-          onValueChange={value => check(!checked)}
+          onValueChange={(value) => check(!checked)}
         />
       </View>
 
-      <Button style={{
-        alignSelf: 'center', borderRadius: 7, borderColor: '#112f4c', width: 130,
-        height: 50,
-        marginTop: '20%',
-        marginBottom: '30%',
-        backgroundColor: '#f1c40f'
-      }} onPress={onClickEnrollment}>
-        <Text style={{
-          color: '#112f4c', fontWeight: 'bold'
-          , fontSize: 21, marginLeft: '32%'
-        }}>Add</Text>
+      <Button
+        style={{
+          alignSelf: "center",
+          borderRadius: 7,
+          borderColor: "#112f4c",
+          width: 130,
+          height: 50,
+          marginTop: "20%",
+          marginBottom: "30%",
+          backgroundColor: "#f1c40f",
+        }}
+        onPress={onClickEnrollment}
+      >
+        <Text
+          style={{
+            color: "#112f4c",
+            fontWeight: "bold",
+            fontSize: 21,
+            marginLeft: "32%",
+          }}
+        >
+          Add
+        </Text>
       </Button>
-
-
     </Container>
   );
 };
@@ -211,19 +246,17 @@ const styles = StyleSheet.create({
   head: { height: 40, backgroundColor: "#f1f8ff" },
   textheader: { margin: 6, textAlign: "center", fontWeight: "bold" },
   text: {
-    color: 'white',
-    fontWeight: 'bold',
+    color: "white",
+    fontWeight: "bold",
     fontSize: 20,
-
   },
   input: {
-    alignSelf: 'center',
-    width: '85%',
+    alignSelf: "center",
+    width: "85%",
     borderWidth: 1,
     borderRadius: 6,
-    backgroundColor: 'white',
+    backgroundColor: "white",
     marginTop: 45,
-
   },
   searchBtn: {
     borderWidth: 1,
@@ -236,23 +269,23 @@ const styles = StyleSheet.create({
   text_effect: {
     color: "#f1c40f",
     fontSize: 20,
-    fontWeight: 'bold',
-    textDecorationLine: 'underline',
-    textDecorationColor: '#f1c40f'
+    fontWeight: "bold",
+    textDecorationLine: "underline",
+    textDecorationColor: "#f1c40f",
   },
   header: {
     flex: 1,
     marginTop: "10%",
     flexDirection: "row",
-    justifyContent: 'flex-start',
-    backgroundColor: '#112f4c',
+    justifyContent: "flex-start",
+    backgroundColor: "#112f4c",
   },
   bookIcon: {
     marginLeft: "4%",
     marginTop: "7%",
     width: "10%",
     height: "50%",
-    resizeMode: 'contain',
+    resizeMode: "contain",
   },
   logoText: {
     textAlign: "center",
@@ -260,7 +293,7 @@ const styles = StyleSheet.create({
     fontSize: 29,
     marginLeft: "2%",
     marginTop: "14%",
-    color: 'white',
+    color: "white",
   },
 });
 export default Portfolio_enrollment;
