@@ -1,5 +1,5 @@
 import React, { Component, useState } from "react";
-import { Text, Alert, View, StyleSheet, Image, Dimensions } from "react-native";
+import { Text, Alert, View, StyleSheet, Image, Dimensions, AsyncStorage } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import Portfolio from "./portfolio";
 
@@ -13,6 +13,7 @@ export default class App extends Component {
     this.state = {
       address: "",
       key: "",
+      id: '',
     };
   }
 
@@ -23,6 +24,10 @@ export default class App extends Component {
       const user = this.state.users[id];
       if (user.address == this.state.address) {
         if (user.key == this.state.key) {
+          this.setState({ id: id });
+          AsyncStorage.setItem('id', this.state.id);
+          AsyncStorage.setItem('name', user.name);
+          AsyncStorage.setItem('userData', user);
           this.props.navigation.navigate("After");
         }
       }
@@ -32,6 +37,8 @@ export default class App extends Component {
       const cp = this.state.company[id];
       if (cp.address == this.state.address) {
         if (cp.key == this.state.key) {
+          this.setState({ id: id });
+          AsyncStorage.setItem('id', this.state.id);
           this.props.navigation.navigate("After_Company");
         }
       }
@@ -41,6 +48,8 @@ export default class App extends Component {
       const cp = this.state.agency[id];
       if (cp.address == this.state.address) {
         if (cp.key == this.state.key) {
+          this.setState({ id: id });
+          AsyncStorage.setItem('id', this.state.id);
           this.props.navigation.navigate("After_Institution");
         }
       }
