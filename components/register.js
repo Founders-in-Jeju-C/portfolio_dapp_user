@@ -7,7 +7,9 @@ import {
   Input,
   Label,
   Button,
+
   CheckBox,
+  AsyncStorage
 } from "native-base";
 import Portfolio from "./portfolio";
 import Company_main from "./company_main";
@@ -43,7 +45,9 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          <Portfolio address={this.state.address} />;
+          AsyncStorage.setItem('id', this.state.ids);
+          AsyncStorage.setItem('name', this.state.name);
+          AsyncStorage.setItem('userData', this.state.user);
           this.props.navigation.navigate("After");
           // this.props.gotoPage("Portfolio", { ids: this.state.user });
           // this.props.gotoPage("Portfolio");
@@ -60,7 +64,8 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          alert("기관뷰로 이동");
+          AsyncStorage.setItem('id', this.state.ids);
+
           this.props.navigation.navigate("After_Institution");
         });
     } else {
@@ -75,7 +80,8 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          <Company_main address={this.state.address} />;
+          AsyncStorage.setItem('companyname', this.state.name);
+          AsyncStorage.setItem('companyId', this.state.ids);
           this.props.navigation.navigate("After_Company");
         });
     }
