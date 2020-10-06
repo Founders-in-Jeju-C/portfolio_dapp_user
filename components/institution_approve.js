@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, AsyncStorage } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import { AntDesign } from '@expo/vector-icons';
+import web3 from '../web3'; 
+import userCertification from "../UserCertification.js";
+
 
 const database = "https://react-dapp.firebaseio.com";
 
@@ -10,6 +13,7 @@ export default class Institution_approve extends Component {
   constructor() {
     super()
     this.state = {
+      userCertification: userCertification,
       from: '',
       to: '',
       value: '',
@@ -18,7 +22,17 @@ export default class Institution_approve extends Component {
       id: '',
       approve: {}
     }
+
+    this._post = this._post.bind(this);
+
   }
+
+  async componentDidMount() {
+    const certificate = await userCertification.methods.setInstitution().call();
+    
+    this.setState({certificate});
+}
+
 
   _get = () => {
     fetch(`${database}/agency/approve/${this.state.id}.json`)
@@ -72,7 +86,22 @@ export default class Institution_approve extends Component {
       }
     })
   }
-  _post = () => {
+
+  
+
+  _post = async (evt) => {
+
+    evt.preventDefault();
+
+    const accounts = await web3.eth.getAccounts();
+  
+    await userCertification.methods.setInstitution().send(
+      this.state.certificate,
+      {from : accounts[0],
+        // ,
+         gas : 4000000
+    });
+
     if (this.state.from != '' && this.state.to != '' && this.state.certificate != '' && this.state.value != '') {
 
       Object.keys(this.state.insititution).map((in_id) => {
@@ -91,7 +120,7 @@ export default class Institution_approve extends Component {
                 name: this.state.value,
                 verify: true
               }
-
+                
               return fetch(`${database}/address/approve.json`, {
                 method: "POST",
                 body: JSON.stringify(data)
@@ -105,7 +134,7 @@ export default class Institution_approve extends Component {
                 .then((data) => {
 
                   alert('승인 되었습니다!');
-
+                  
                 });
 
             }
