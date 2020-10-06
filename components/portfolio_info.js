@@ -14,14 +14,12 @@ import { ScrollView } from "react-native-gesture-handler";
 const database = "https://react-dapp.firebaseio.com";
 const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
-let infoLen;
 
 const Portfolio_info = ({ navigation }) => {
   const [info, setInfo] = useState(navigation.state.params);
   const [user, setUserData] = useState({});
 
-
-  _post = () => {
+  const _post = () => {
     fetch(`${database}/address/approve.json`)
       .then((res) => {
         if (res.status != 200) {
@@ -29,17 +27,19 @@ const Portfolio_info = ({ navigation }) => {
         }
         return res.json();
       })
-      .then((users) => setUserData(users));
-
-
-  }
+      .then((users) => {
+        setUserData(users);
+      });
+  };
   return (
     <View style={{ backgroundColor: "white" }}>
       <View style={{ backgroundColor: "#112f4c", height: screenHeight }}>
         <View style={styles.container}>
           <View style={styles.imageLine}>
-            <Image style={styles.bookIcon}
-              source={require("../images/book_icon2.png")} />
+            <Image
+              style={styles.bookIcon}
+              source={require("../images/book_icon2.png")}
+            />
             <Text style={styles.header}> Folio Chain</Text>
           </View>
 
@@ -49,31 +49,34 @@ const Portfolio_info = ({ navigation }) => {
             <ScrollView>
               <View style={styles.messageBox}>
                 {Object.keys(user).map((id) => {
-                  const data = user[id]
-                  if (data.institution != null) {
-                    return (
-                      <View style={styles.infoBox}>
-                        <View
-                          style={{
-                            flexDirection: "column",
-                            justifyContent: "space-around",
-                          }}
-                        >
-                          <Text style={styles.name}>
-                            {" "}
-                          이름:{JSON.stringify(data.content)}
-                          </Text>
-                          <Text style={styles.name}>
-                            {" "}
-                          기관:{JSON.stringify(data.institution)}
-                          </Text>
-                          <Text style={styles.verify}>
-                            {" "}
-                          검증 : {(data.verify) ? 'O' : 'X'}
-                          </Text>
+                  const data = user[id];
+                  // console.log(id);
+                  if (data.type === info.type) {
+                    if (data.institution != null) {
+                      return (
+                        <View style={styles.infoBox}>
+                          <View
+                            style={{
+                              flexDirection: "column",
+                              justifyContent: "space-around",
+                            }}
+                          >
+                            <Text style={styles.name}>
+                              {" "}
+                              이름:{JSON.stringify(data.content)}
+                            </Text>
+                            <Text style={styles.name}>
+                              {" "}
+                              기관:{JSON.stringify(data.institution)}
+                            </Text>
+                            <Text style={styles.verify}>
+                              {" "}
+                              검증 : {data.verify ? "O" : "X"}
+                            </Text>
+                          </View>
                         </View>
-                      </View>
-                    );
+                      );
+                    }
                   }
                 })}
               </View>
@@ -145,7 +148,7 @@ const styles = StyleSheet.create({
   name: {
     fontWeight: "bold",
     fontSize: 20,
-    color: 'black'
+    color: "black",
   },
   value: {
     fontWeight: "bold",

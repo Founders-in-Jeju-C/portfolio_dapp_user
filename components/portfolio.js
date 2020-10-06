@@ -11,7 +11,7 @@ import {
   TouchableOpacity,
   Modal,
   Alert,
-  AsyncStorage
+  AsyncStorage,
 } from "react-native";
 
 import { Table, Row, Rows } from "react-native-table-component";
@@ -35,24 +35,41 @@ const screenWidth = Dimensions.get("window").width;
 const head = ["학력", "자격증", "수상내역", "대외활동", "기타"];
 
 const Portfolio = ({ navigation }) => {
-
   let getData = { ...sample };
   const data = [...getData.data];
   let [currentData, setCurrentData] = useState(data);
+  const [user, setUserData] = useState({});
   const [searchWord, setSearchWord] = useState("");
-  const [name, setName] = useState(AsyncStorage.getItem('name').then((mobileNo) => {
-
-    setName(mobileNo);
-  }));
-
+  const [name, setName] = useState(
+    AsyncStorage.getItem("name").then((mobileNo) => {
+      setName(mobileNo);
+    })
+  );
 
   useEffect(() => {
     setCurrentData(data);
   }, data);
-  let isOpened = false;
+
+  const _post = () => {
+    fetch(`${database}/address/approve.json`)
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((users) => {
+        setUserData(users);
+      });
+  };
 
   const onSearch = () => {
-    const tempData = data.filter((v) => v["name"].includes(searchWord));
+    _post();
+    const tempData = Object.keys(user)
+      .slice()
+      .map((id) => user[id])
+      .filter((v) => v["content"].includes(searchWord));
+
     if (searchWord === "") alert("검색어를 입력해주세요");
     else if (tempData.length === 0) {
       alert("검색 결과가 없습니다. 다시 입력해주세요");
@@ -62,13 +79,16 @@ const Portfolio = ({ navigation }) => {
         .slice()
         .sort((a, b) => (a.type > b.type ? -1 : 1))
         .forEach((value, index) => {
-          tempString += `${value["type"]} / ${index + 1}. ${value["name"]} ${value["value"]
-            } ${value["verify"]}\n`;
+          tempString += `${value["type"]} /\n ${index + 1}.\n\t 내용 : ${
+            value["content"]
+          }\n\t 기관 : ${value["institution"]}\n\t 검증여부 : ${
+            value["verify"] ? "O" : "X"
+          }\n\n`;
         });
       Alert.alert(`"${searchWord}" 검색 결과`, tempString, [
         {
           text: "확인",
-          onPress: () => { },
+          onPress: () => {},
         },
       ]);
     }
@@ -95,9 +115,6 @@ const Portfolio = ({ navigation }) => {
   //       });
   //     });
   // };
-
-
-
 
   return (
     <View style={styles.container}>
