@@ -28,7 +28,7 @@ const Portfolio_enrollment = (props) => {
   const [userInstitution, setInstitution] = useState("");
   const [userType, setUserType] = useState("");
   const typeOptions = ["학력", "자격증", "수상내역", "대외활동", "기타"];
-  console.log(userType);
+
   _approve = (tmp) => {
     return fetch(`${database}/agency/approve.json`, {
       method: "POST",
@@ -40,7 +40,7 @@ const Portfolio_enrollment = (props) => {
         }
         return res.json();
       })
-      .then((data) => {});
+      .then((data) => { });
   };
   const _post = (approve) => {
     const tmp = {
@@ -64,7 +64,7 @@ const Portfolio_enrollment = (props) => {
         }
         return res.json();
       })
-      .then((data) => {});
+      .then((data) => { });
   };
 
   const onClickEnrollment = () => {

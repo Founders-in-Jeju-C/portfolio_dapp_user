@@ -63,24 +63,7 @@ function CompanyMainScreen({ navigation }) {
 }
 export default CompanyMainScreen;
 
-// const Stack = createStackNavigator();
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <NavigationContainer>
-//         <Stack.Navigator screenOptions={{ headerShown: false }}>
-//           <Stack.Screen name="Home" component={CompanyMainScreen} />
-//           <Stack.Screen name="Company" component={Company} />
-//           <Stack.Screen
-//             name="Company_employment"
-//             component={Company_employment}
-//           />
-//         </Stack.Navigator>
-//       </NavigationContainer>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   container: {
