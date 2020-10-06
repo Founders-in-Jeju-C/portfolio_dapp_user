@@ -38,7 +38,8 @@ export default class App extends Component {
       if (cp.address == this.state.address) {
         if (cp.key == this.state.key) {
           this.setState({ id: id });
-          AsyncStorage.setItem('id', this.state.id);
+          AsyncStorage.setItem('companyname', cp.name);
+          AsyncStorage.setItem('companyId', this.state.id);
           this.props.navigation.navigate("After_Company");
         }
       }

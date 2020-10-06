@@ -2,9 +2,7 @@ import React, { Component } from "react";
 import { StyleSheet, Text, View, Image, AsyncStorage } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import { AntDesign } from '@expo/vector-icons';
-import web3 from '../web3'; 
-import userCertification from "../UserCertification.js";
-
+import SelectPicker from "react-native-form-select-picker";
 
 const database = "https://react-dapp.firebaseio.com";
 
@@ -12,27 +10,19 @@ export default class Institution_approve extends Component {
 
   constructor() {
     super()
+
     this.state = {
-      userCertification: userCertification,
       from: '',
       to: '',
       value: '',
       certificate: '',
       insititution: {},
       id: '',
-      approve: {}
+      approve: {},
+      type: '',
+      typeOptions: ["학력", "자격증", "수상내역", "대외활동", "기타"]
     }
-
-    this._post = this._post.bind(this);
-
   }
-
-  async componentDidMount() {
-    const certificate = await userCertification.methods.setInstitution().call();
-    
-    this.setState({certificate});
-}
-
 
   _get = () => {
     fetch(`${database}/agency/approve/${this.state.id}.json`)
@@ -70,8 +60,9 @@ export default class Institution_approve extends Component {
   _deleteAgency = (name) => {
     Object.keys(this.state.insititution).map((data) => {
       const tmp = this.state.insititution[data];
+
       if (tmp.name == name) {
-        return fetch(`${database}/address/approve/${data}.json`, {
+        return fetch(`${database}/agency/approve/${data}.json`, {
           method: "DELETE"
         })
           .then((res) => {
@@ -86,22 +77,7 @@ export default class Institution_approve extends Component {
       }
     })
   }
-
-  
-
-  _post = async (evt) => {
-
-    evt.preventDefault();
-
-    const accounts = await web3.eth.getAccounts();
-  
-    await userCertification.methods.setInstitution().send(
-      this.state.certificate,
-      {from : accounts[0],
-        // ,
-         gas : 4000000
-    });
-
+  _post = () => {
     if (this.state.from != '' && this.state.to != '' && this.state.certificate != '' && this.state.value != '') {
 
       Object.keys(this.state.insititution).map((in_id) => {
@@ -110,7 +86,6 @@ export default class Institution_approve extends Component {
 
           Object.keys(this.state.approve).map((id) => {
             const user = this.state.approve[id];
-            alert(user.name);
             if (user.name == this.state.to) {
               this._deleteUser(id);
               this._deleteAgency(user.name);
@@ -118,9 +93,10 @@ export default class Institution_approve extends Component {
                 content: this.state.certificate,
                 institution: this.state.from,
                 name: this.state.value,
+                type: this.state.type,
                 verify: true
               }
-                
+
               return fetch(`${database}/address/approve.json`, {
                 method: "POST",
                 body: JSON.stringify(data)
@@ -134,7 +110,7 @@ export default class Institution_approve extends Component {
                 .then((data) => {
 
                   alert('승인 되었습니다!');
-                  
+
                 });
 
             }
@@ -173,6 +149,23 @@ export default class Institution_approve extends Component {
           <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25 }}>하기</Text>
         </View>
         <Form style={{ height: 400, marginBottom: '35%' }}>
+
+          <SelectPicker
+            style={{
+              alignSelf: "center",
+              borderRadius: 6,
+              width: "85%",
+              backgroundColor: "white",
+            }}
+            onValueChange={(value) => this.setState({ type: value })}
+            selected={this.state.type}
+            placeholder="Select Type"
+          >
+            {Object.values(this.state.typeOptions).map((val, index) => (
+              <SelectPicker.Item label={val} value={val} key={`type:${index}`} />
+            ))}
+          </SelectPicker>
+
           <Input placeholder=' 자격증'
             style={styles.input}
             value={this.state.certificate}

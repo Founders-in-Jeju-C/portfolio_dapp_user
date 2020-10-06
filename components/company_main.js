@@ -1,5 +1,5 @@
-import React, { Component } from "react";
-import { Text, View, StyleSheet, Image, TouchableOpacity } from "react-native";
+import React, { Component, useState } from "react";
+import { Text, View, StyleSheet, Image, TouchableOpacity, AsyncStorage } from "react-native";
 import { NavigationContainer } from "@react-navigation/native";
 import { createStackNavigator } from "react-navigation-stack";
 import "react-native-gesture-handler";
@@ -8,14 +8,18 @@ import Company_employment from "./company_employment";
 import Content from './content';
 
 function CompanyMainScreen({ navigation }) {
+
+
   return (
     <View style={styles.container}>
+
       <View style={styles.header}>
         <Image style={styles.bookIcon} source={require("../images/book.png")} />
         <Text style={styles.logoText}>Folio Chain</Text>
       </View>
       <View style={styles.case1}>
         <Text style={styles.item1}>현재 채용 공고</Text>
+
         <View style={styles.card1}>
           <Content />
         </View>
@@ -26,7 +30,11 @@ function CompanyMainScreen({ navigation }) {
           <TouchableOpacity>
             <Text
               style={styles.item2}
-              onPress={() => navigation.navigate("Company_list")}
+
+              onPress={() => {
+
+                navigation.navigate("Company_list")
+              }}
             >
               더보기
             </Text>
@@ -55,24 +63,7 @@ function CompanyMainScreen({ navigation }) {
 }
 export default CompanyMainScreen;
 
-// const Stack = createStackNavigator();
 
-// class App extends Component {
-//   render() {
-//     return (
-//       <NavigationContainer>
-//         <Stack.Navigator screenOptions={{ headerShown: false }}>
-//           <Stack.Screen name="Home" component={CompanyMainScreen} />
-//           <Stack.Screen name="Company" component={Company} />
-//           <Stack.Screen
-//             name="Company_employment"
-//             component={Company_employment}
-//           />
-//         </Stack.Navigator>
-//       </NavigationContainer>
-//     );
-//   }
-// }
 
 const styles = StyleSheet.create({
   container: {

@@ -6,7 +6,7 @@ import {
   ScrollView,
   StyleSheet,
   Image,
-  Dimensions, ViewComponent
+  Dimensions, ViewComponent, AsyncStorage
 } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 
@@ -15,81 +15,20 @@ const screenWidth = Math.round(Dimensions.get("window").width);
 const screenHeight = Math.round(Dimensions.get("window").height);
 
 const Hiring = (props) => {
-
   const [userData, setData] = useState({});
+  const [comapnyData, setCompany] = useState({});
+  const [userID, setID] = useState('');
+  const [applicant, setApply] = useState({});
+  const [datas, setDatas] = useState();
 
-  const [hiringData, setHiringData] = useState([
-    {
-      title: "SAMSUNG",
-      content: "삼성전자 2020 신입사원 채용",
-    },
-    {
-      title: "LG",
-      content: "LG CNS 공개 채용",
-    },
-    {
-      title: "NAVER",
-      content: "네이버웹툰 2020 하반기 채용",
-    },
-    {
-      title: "한국전력공사",
-      content: "한국전력공사 2020 하반기 신입직원 채용",
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-      date: "2020-10-15",
-      isOpend: false,
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-    },
-    {
-      title: "많다",
-      content: "넣으세요",
-    },
-    {
-      title: "하겠다",
-      content: "넣으세요",
-    },
-    {
-      title: "하겠다",
-      content: "넣으세요",
-    },
 
-    {
-      title: "하겠다",
-      content: "넣으세요",
-    },
-    {
-      title: "못",
-      content: "넣으세요",
-    },
-    {
-      title: "하겠다",
-      content: "넣으세요",
-    },
-    {
-      title: "하겠다",
-      content: "넣으세요",
-    },
-    {
-      title: "하겠다",
-      content: "넣으세요",
-    },
-  ]);
-  const data = hiringData.slice();
+  AsyncStorage.getItem('name').then((id) => {
+    setID(id);
+  })
 
   _get = () => {
+
+
 
     fetch(`${database}/company/post.json`)
       .then((res) => {
@@ -100,9 +39,46 @@ const Hiring = (props) => {
       })
       .then((company) => setData(company));
 
+    fetch(`${database}/company.json`)
+      .then((res) => {
+        if (res.status != 200) {
+          throw new Error(res.statusText);
+        }
+        return res.json();
+      })
+      .then((data) => setCompany(data));
+
+
+
+
   }
 
+  _apply = (name) => {
+    Object.keys(comapnyData).map(id => {
+      const tmp = comapnyData[id];
+      const datas = {
+        company: name,
+        name: userID
+      }
+      if (id != 'post' && tmp.name == name) {
+        return fetch(`${database}/company/apply.json`, {
+          method: "POST",
+          body: JSON.stringify(datas)
+        })
+          .then((res) => {
+            if (res.status != 200) {
+              throw new Error(res.statusText);
+            }
+            return res.json();
+          })
+          .then((data) => {
+            alert('지원되었습니다! ');
+          });
+      }
+    })
 
+
+  }
 
   return (
     <View style={styles.container}>
@@ -112,17 +88,19 @@ const Hiring = (props) => {
           source={require("../images/book_icon2.png")}
         />
         <Text style={styles.logoText}>Folio Chain</Text>
-
       </View>
-      <ScrollView >
+      <ScrollView>
         <View>
           <View style={styles.card}>
             {_get()}
+
+
             {
               Object.keys(userData).map((id) => {
                 const cp = userData[id];
                 return (
                   <TouchableOpacity
+
                     style={{
                       borderWidth: 1,
                       backgroundColor: "#112f4c",
@@ -130,6 +108,7 @@ const Hiring = (props) => {
                       marginBottom: 20,
                     }}
                     onPress={() => {
+                      _apply(cp.name);
                       alert(`${cp.name} 공고에 지원합니다.`);
                     }}
                   >
@@ -143,7 +122,6 @@ const Hiring = (props) => {
             }
           </View>
         </View>
-
       </ScrollView>
     </View>
   );

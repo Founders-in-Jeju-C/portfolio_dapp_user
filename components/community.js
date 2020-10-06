@@ -96,7 +96,7 @@ const Community = () => {
           <View style={{ marginBottom: 230, alignItems: "center" }}>
             {tempData.map((card, i) => {
               return (
-                <View style={styles.cardContainer}>
+                <View style={styles.cardContainer} key={i}>
                   <View>
                     <View
                       style={{
