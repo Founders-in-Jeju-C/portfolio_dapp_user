@@ -3,8 +3,9 @@ import {
   StyleSheet,
   Text,
   View,
+  ScrollView,
   Image,
-  FlatList,
+  FlatList, AsyncStorage
 } from 'react-native';
 
 
@@ -14,30 +15,31 @@ export default class Company extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [
-        { id: 1, username: "지원자 1" },
-        { id: 2, username: "지원자 2" },
-        { id: 3, username: "지원자 3" },
-        { id: 4, username: "지원자 4" },
-        { id: 5, username: "지원자 5" },
-        { id: 6, username: "지원자 6" },
-        { id: 7, username: "지원자 7" },
-        { id: 8, username: "지원자 8" },
-        { id: 9, username: "지원자 9" },
-      ],
-      users: {},
+      id: '',
+      apply: {},
+      companys: {}
+      , compnyName: ''
     };
   }
 
   _get = () => {
-    fetch(`${database}/company/post.json`)
+    AsyncStorage.getItem('companyname').then((name) => {
+      this.setState({ compnyName: name });
+    })
+
+    fetch(`${database}/company/apply.json`)
       .then((res) => {
         if (res.status != 200) {
           throw new Error(res.statusText);
         }
         return res.json();
       })
-      .then((users) => this.setState({ users: users }))
+      .then((apply) => this.setState({ apply: apply }))
+
+
+
+
+
   }
   componentDidMount() {
     this._get();
@@ -63,17 +65,24 @@ export default class Company extends Component {
         <ScrollView
           style={styles.notificationList}>
           {
-            Object.keys(this.state.users).map((id) => {
-              const user = this.state.users[id];
-              return (
-                <View style={styles.notificationBox} onPress={this.approve}>
-                  <Image style={styles.icon}
-                    source={require('../images/personal-information.png')} />
-                  <Text style={styles.username}>{user.name}</Text>
-                  <Text style={styles.username}>{user.content} 인증 요청</Text>
-                </View>
-              )
+
+
+            Object.keys(this.state.apply).map((data) => {
+
+              const applicant = this.state.apply[data];
+              if (applicant.company == this.state.compnyName) {
+                return (
+                  <View style={styles.notificationBox} onPress={this.approve}>
+                    <Image style={styles.icon}
+                      source={require('../images/personal-information.png')} />
+                    <Text style={styles.username}>{applicant.name} 지원</Text>
+                    <Text style={styles.username}>{this.state.compnyName} 지원</Text>
+                  </View>
+                )
+
+              }
             })
+
           }
         </ScrollView>
 
