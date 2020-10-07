@@ -173,7 +173,7 @@ const Portfolio_enrollment = (props) => {
           value={userName}
           autoCorrect={false}
           style={styles.input}
-          placeholder="Name"
+          placeholder="Address"
           onChangeText={(value) => setData(value)}
         />
 
