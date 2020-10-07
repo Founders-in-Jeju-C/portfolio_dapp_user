@@ -3,6 +3,8 @@ import { StyleSheet, Text, View, Image, AsyncStorage } from "react-native";
 import { Container, Item, Form, Input, Label, Button } from "native-base";
 import { AntDesign } from '@expo/vector-icons';
 import SelectPicker from "react-native-form-select-picker";
+import web3 from '../web3';
+import userCertification from "../UserCertification.js";
 
 const database = "https://react-dapp.firebaseio.com";
 
@@ -12,6 +14,7 @@ export default class Institution_approve extends Component {
     super()
 
     this.state = {
+      userCertification: userCertification,
       from: '',
       to: '',
       value: '',
@@ -77,6 +80,39 @@ export default class Institution_approve extends Component {
       }
     })
   }
+
+  _sendTransaction = async () => {
+
+    await userCertification.methods.setInstitution().send(
+      this.state.certificate,
+      {
+        from: this.state.from,
+        // ,
+        gas: 4000000
+      });
+
+
+    await userCertification.methods.setUser().send(
+      this.state.to,
+      {
+        to: this.state.to,
+        // ,
+        gas: 4000000
+      });
+
+
+    web3.eth.sendTransaction({
+      from: this.state.from,
+      to: this.state.to,
+      value: '1'
+    }), function (err) {
+      alert(err);
+    }
+  }
+
+
+
+
   _post = () => {
     if (this.state.from != '' && this.state.to != '' && this.state.certificate != '' && this.state.value != '') {
 
@@ -124,7 +160,11 @@ export default class Institution_approve extends Component {
   }
 
 
-  componentDidMount() {
+  async componentDidMount() {
+
+    const certificate = await userCertification.methods.setInstitution().call();
+
+    this.setState({ certificate: certificate });
 
     AsyncStorage.getItem('id').then((id) => {
 
@@ -132,6 +172,7 @@ export default class Institution_approve extends Component {
     })
     this._get();
   }
+
 
   render() {
     return (

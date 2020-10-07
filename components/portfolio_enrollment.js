@@ -68,6 +68,28 @@ const Portfolio_enrollment = (props) => {
       .then((data) => { });
   };
 
+
+
+  const _sendTransaction = async () => {
+
+    await userCertification.methods.setUser().send(
+      this.state.name,
+      {
+        to: this.state.to,
+        // ,
+        gas: 4000000
+      });
+
+
+    web3.eth.sendTransaction({
+      from: this.state.from,
+      to: this.state.to,
+      value: '1'
+    }), function (err) {
+      alert(err);
+    }
+  }
+
   const onClickEnrollment = () => {
     let element = ["name", "from", "value"];
 
