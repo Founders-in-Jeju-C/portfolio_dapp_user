@@ -75,7 +75,7 @@ export default class Institution_main extends Component {
                 <View style={styles.notificationBox} onPress={this.approve}>
                   <Image style={styles.icon}
                     source={require('../images/personal-information.png')} />
-                  <Text style={styles.username}>{user.name}</Text>
+
                   <Text style={styles.username}>{user.content} 인증 요청</Text>
                 </View>
               )
@@ -100,17 +100,17 @@ const styles = StyleSheet.create({
   },
   bookIcon: {
     marginLeft: "4%",
-    marginTop: "10%",
-    width: "10%",
+    marginTop: "9%",
+    width: "9.5%",
     height: "50%",
     resizeMode: 'contain',
   },
   logoText: {
     textAlign: "center",
     fontWeight: "bold",
-    fontSize: 30,
-    marginLeft: "2%",
-    marginTop: "11%",
+    fontSize: 29,
+    marginLeft: "2.5%",
+    marginTop: "10%",
     color: 'white',
   },
   notificationList: {

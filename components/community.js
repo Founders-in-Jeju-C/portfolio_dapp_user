@@ -18,7 +18,7 @@ const Community = () => {
   let tempData = [
     {
       user_id: "관리자",
-      image: require("../images/ai_bot.png"),
+      image: require("../images/card_portfolio.png"),
       date: "2020.10.01",
       title: "완벽한 포트폴리오 작성하는 법!",
       content: "당신의 완벽한 포트폴리오를 위해서.. ",
@@ -26,7 +26,7 @@ const Community = () => {
     },
     {
       user_id: "Good Person",
-      image: require("../images/book.png"),
+      image: require("../images/card_company.png"),
       date: "2020.10.11",
       title: "좋은 회사를 선택하는 Tip!!",
       content: "오늘은 좋은 회사를 선택하는 꿀팁을 가져왔습니다! 재미있게 봐주세요~",
@@ -34,7 +34,7 @@ const Community = () => {
     },
     {
       user_id: "zzxc2313zvcz",
-      image: require("../images/chatbot.png"),
+      image: require("../images/card_1.png"),
       date: "2020.09.10",
       title: "자격증 시험 준비",
       content:
@@ -43,7 +43,7 @@ const Community = () => {
     },
     {
       user_id: "관리자",
-      image: require("../images/cardnews.png"),
+      image: require("../images/card_ai.png"),
       date: "2020.11.01",
       title: "AI 서비스",
       content: "Folio App에 AI 서비스를 간단하게 소개하려고 합니다~ 블로그. 뉴스. 트위터. 이 3가지 부분에서 저희가 원하고자 하는 회사에 대한 검색을 하실 수 있어요! 정말 멋진 기능이죠 ? 한번 사용해보세요! ",
@@ -51,7 +51,7 @@ const Community = () => {
     },
     {
       user_id: "haha",
-      image: require("../images/me.png"),
+      image: require("../images/smile.png"),
       date: "2020.09.10",
       title: "항상 웃는 얼굴",
       content: "웃으면서 건강하게 살아요!",
@@ -59,7 +59,7 @@ const Community = () => {
     },
     {
       user_id: "data",
-      image: require("../images/ai_search.png"),
+      image: require("../images/data.png"),
       date: "2020.09.10",
       title: "데이터 분석",
       content: "제가 지금 특정 회사 합격자 스펙에 관한 데이터 분석을 하고 있는데 데이터가 너무 적네요.. 도움 주실 분 있으실까요? 여기 커뮤니티에 한번 글 써봅니다! ",
@@ -128,7 +128,7 @@ const Community = () => {
                     <View style={styles.content}>
                       <Text style={{ fontSize: 15 }}>{card.content}</Text>
                     </View>
-                    <View style={{ flexDirection: "row", padding: 10 }}>
+                    <View style={{ flexDirection: "row", paddingTop: 20,paddingLeft: 20 }}>
                       <Ionicons name="md-heart" size={15} color="red" />
                       <Text style={{ paddingLeft: 3 }}>{card.like}</Text>
                     </View>
@@ -155,9 +155,9 @@ const styles = StyleSheet.create({
   },
   bookIcon: {
     marginLeft: "4%",
-    marginTop: "10%",
+    marginTop: "11%",
     width: "10%",
-    height: "50%",
+    height: "55%",
     resizeMode: "contain",
   },
   logoText: {
@@ -192,9 +192,10 @@ const styles = StyleSheet.create({
   content: {
     paddingTop: 10,
     paddingLeft: 20,
+    paddingRight: 20,
   },
   like: {
-    paddingLeft: 10,
+    paddingLeft: 30,
   },
   boradName: {
     fontSize: 25,

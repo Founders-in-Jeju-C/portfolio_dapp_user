@@ -25,9 +25,8 @@ export default class App extends Component {
       if (user.address == this.state.address) {
         if (user.key == this.state.key) {
           this.setState({ id: id });
-          AsyncStorage.setItem('id', this.state.id);
           AsyncStorage.setItem('name', user.name);
-          AsyncStorage.setItem('userData', user);
+
           this.props.navigation.navigate("After");
         }
       }
@@ -165,7 +164,7 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     width: 100,
     backgroundColor: "#f1c40f",
-    marginTop: "23%",
+    marginTop: "10%",
   },
   loginText: {
     fontWeight: "bold",
@@ -173,7 +172,7 @@ const styles = StyleSheet.create({
   },
   registerText: {
     textAlign: "center",
-    marginTop: 80,
+    marginTop: "10%",
     color: "white",
     fontSize: 15,
     fontWeight: "bold",

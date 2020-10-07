@@ -142,13 +142,12 @@ export default class Institution_approve extends Component {
           <Text style={styles.logoText}>
             Folio Chain
         </Text>
-          <AntDesign name="back" size={35} color="#f1c40f" style={{ marginTop: '14%', marginLeft: '37%' }} />
         </View>
-        <View style={{ flexDirection: 'row' }}>
+        <View style={{ flex: 0.5,flexDirection: 'row', marginTop: 1}}>
           <Text style={{ marginLeft: '5%', color: '#f1c40f', fontWeight: 'bold', fontSize: 25 }}>승인</Text>
           <Text style={{ color: 'white', fontWeight: 'bold', fontSize: 25 }}>하기</Text>
         </View>
-        <Form style={{ height: 400, marginBottom: '35%' }}>
+        <Form style={{ flex: 5, height: 400, marginTop: '3%', marginBottom: 10 }}>
 
           <SelectPicker
             style={{
@@ -156,6 +155,7 @@ export default class Institution_approve extends Component {
               borderRadius: 6,
               width: "85%",
               backgroundColor: "white",
+              marginBottom: '5%',
             }}
             onValueChange={(value) => this.setState({ type: value })}
             selected={this.state.type}
@@ -199,7 +199,7 @@ export default class Institution_approve extends Component {
 
         <Button
           onPress={this._post}
-          style={{ paddingRight: 20, marginBottom: '19%', paddingLeft: 20, borderRadius: 8, backgroundColor: '#f1c40f', alignSelf: 'center' }}>
+          style={{ flex: 0.5, paddingRight: 20, marginBottom: '5%', paddingLeft: 20, borderRadius: 8, backgroundColor: '#f1c40f', alignSelf: 'center' }}>
           <Text style={{ color: '#112f4c', fontWeight: 'bold', fontSize: 20 }}>Approve</Text>
         </Button>
 
@@ -216,6 +216,7 @@ const styles = StyleSheet.create({
   },
   header: {
     flex: 1,
+    marginBottom: 20,
     flexDirection: "row",
     justifyContent: 'flex-start',
     backgroundColor: '#112f4c',
@@ -232,16 +233,16 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
     fontSize: 29,
     marginLeft: "2%",
-    marginTop: "14%",
+    marginTop: "10%",
     color: 'white',
   },
   input: {
-    width: '80%',
+    width: '85%',
     backgroundColor: "white",
     borderRadius: 5,
     alignItems: "center",
     textAlignVertical: "center",
-    marginTop: '10%',
+    marginBottom: "6%",
     alignSelf: 'center'
   }
 });

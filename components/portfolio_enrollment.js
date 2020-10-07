@@ -1,12 +1,13 @@
 import { Container, Button, Form, Input, Label, Item } from "native-base";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, Alert, CheckBox } from "react-native";
+import { View, Text, Image, StyleSheet, Alert } from "react-native";
 import { Table, Row, Rows } from "react-native-table-component";
 import sample from "../database/sample";
 import { withNavigation } from "react-navigation";
 import { AntDesign } from "@expo/vector-icons";
 import Institution_approve from "./institution_approve";
 import SelectPicker from "react-native-form-select-picker";
+import { CheckBox } from "react-native-elements";
 
 const database = "https://react-dapp.firebaseio.com";
 const Portfolio_enrollment = (props) => {
@@ -199,18 +200,19 @@ const Portfolio_enrollment = (props) => {
           alignItems: "center",
           backgroundColor: "#112f4c",
           marginTop: "10%",
-          marginLeft: "5%",
+          marginLeft: "3%",
         }}
       >
         <Text style={styles.text}>해당 </Text>
         <Text style={styles.text_effect}>기관</Text>
         <Text style={styles.text}>으로부터</Text>
         <Text style={styles.text_effect}> 인증 </Text>
-        <Text style={styles.text}>받으시겠습니까? </Text>
+        <Text style={styles.text}>받으시겠습니까?</Text>
         <CheckBox
           style={{ borderColor: "gray" }}
-          value={checked}
-          onValueChange={(value) => check(!checked)}
+          size={30}
+          checked={checked}
+          onPress={() => check(!checked)}
         />
       </View>
 
@@ -221,7 +223,7 @@ const Portfolio_enrollment = (props) => {
           borderColor: "#112f4c",
           width: 130,
           height: 50,
-          marginTop: "20%",
+          marginTop: "5%",
           marginBottom: "30%",
           backgroundColor: "#f1c40f",
         }}
