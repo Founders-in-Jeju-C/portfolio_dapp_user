@@ -120,7 +120,8 @@ const styles = StyleSheet.create({
     backgroundColor: "white",
     marginHorizontal: "5%",
     paddingHorizontal: "3%",
-    paddingVertical: "15%",
+    paddingTop: "9%",
+    paddingBottom: "17%",
   },
   card2: {
     marginVertical: "3%",

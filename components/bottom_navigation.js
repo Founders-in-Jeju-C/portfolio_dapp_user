@@ -120,7 +120,7 @@ const Bottom_navigation = createBottomTabNavigator(
       },
     },
     Recommend: {
-      screen: RecommendStack,
+      screen: Recommend_chatbot,
       navigationOptions: {
         tabBarIcon: ({ tintColor }) => (
           <Ionicons

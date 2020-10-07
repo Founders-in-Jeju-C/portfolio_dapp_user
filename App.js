@@ -1,5 +1,9 @@
+import  './global' ;
+import  './shim' ;
+import web3 from './web3';
+import crypto from 'crypto'
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, {Component } from "react";
 import { createAppContainer } from "react-navigation";
 import { useState } from "react";
 import { View, StyleSheet, Text } from "react-native";
@@ -16,6 +20,12 @@ import { NavigationContainer } from "@react-navigation/native";
 import Portfolio from "./components/portfolio";
 import Enroll from "./components/portfolio_enrollment";
 import Company_main from "./components/company_main";
+import { render } from 'react-dom';
+
+
+
+
+
 
 const temp = createStackNavigator(
   {
@@ -40,8 +50,25 @@ const temp = createStackNavigator(
     initialRouteName: "Before",
   }
 );
+
 const BottomNavi = createAppContainer(Bottom_navigation);
+
+
 export default function App() {
+
+
+  //var network_version = web3.version.network;
+  //console.log(network_version);
+  //web3.eth.getBlock('latest').then(console.log);
+
+
+
+  
+
+
+  
+
+  
   // const [page, setPage] = useState("Start");
 
   // const gotoPage = (page) => {
@@ -69,7 +96,10 @@ export default function App() {
   // );
 
   const Navi = createAppContainer(temp);
+
+ 
   return (
+   
     // <View style={styles.container}>
     //   {notNaviPages.includes(page) ? (
     //     content
@@ -80,10 +110,15 @@ export default function App() {
     //     )}
     // </View>
   );
-}
+  }
+
+
+
+
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "flex-end",
   },
 });
+
