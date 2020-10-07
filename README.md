@@ -10,7 +10,7 @@
 
 - [x] 로그인 및 회원가입 
 
-  ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/39898938/95290785-17662f00-08a9-11eb-8404-714944f93ace.gif)                                  ![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/39898938/95290825-306ee000-08a9-11eb-9be5-c040a1aedf80.gif)
+  ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/39898938/95290785-17662f00-08a9-11eb-8404-714944f93ace.gif)                                                                         ![ezgif com-gif-maker (2)](https://user-images.githubusercontent.com/39898938/95290825-306ee000-08a9-11eb-9be5-c040a1aedf80.gif)
 
   
 
