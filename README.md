@@ -38,4 +38,4 @@
 
   
 
-  ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/39898938/95304740-02e16100-08c0-11eb-982b-974ad872a275.gif)  ![KakaoTalk_20201006_233534037](C:\Users\630su\Documents\카카오톡 받은 파일\KakaoTalk_20201006_233534037.png)   ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/39898938/95305022-666b8e80-08c0-11eb-87c1-e5fd653703e9.gif) 
+  ![ezgif com-gif-maker (1)](https://user-images.githubusercontent.com/39898938/95304740-02e16100-08c0-11eb-982b-974ad872a275.gif)  ![KakaoTalk_20201006_233534037](https://user-images.githubusercontent.com/39898938/95333413-b873da80-08e7-11eb-96b4-f991da361389.png)    ![ezgif com-gif-maker (6)](https://user-images.githubusercontent.com/39898938/95305022-666b8e80-08c0-11eb-87c1-e5fd653703e9.gif) 
