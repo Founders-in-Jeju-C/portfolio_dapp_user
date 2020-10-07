@@ -1,6 +1,7 @@
 import { Container, Button, Form, Input, Label, Item } from "native-base";
 import React, { useEffect, useState } from "react";
-import { View, Text, Image, StyleSheet, Alert, CheckBox } from "react-native";
+import { View, Text, Image, StyleSheet, Alert } from "react-native";
+import { CheckBox } from "react-native-elements";
 import { Table, Row, Rows } from "react-native-table-component";
 import sample from "../database/sample";
 import { withNavigation } from "react-navigation";
@@ -173,7 +174,7 @@ const Portfolio_enrollment = (props) => {
           value={userName}
           autoCorrect={false}
           style={styles.input}
-          placeholder="Address"
+          placeholder="Name"
           onChangeText={(value) => setData(value)}
         />
 
@@ -209,8 +210,9 @@ const Portfolio_enrollment = (props) => {
         <Text style={styles.text}>받으시겠습니까? </Text>
         <CheckBox
           style={{ borderColor: "gray" }}
-          value={checked}
-          onValueChange={(value) => check(!checked)}
+          size={30}
+          checked={checked}
+          onPress={() => check(!checked)}
         />
       </View>
 
