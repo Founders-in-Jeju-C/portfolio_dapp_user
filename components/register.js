@@ -7,9 +7,8 @@ import {
   Input,
   Label,
   Button,
-
   CheckBox,
-  AsyncStorage
+  AsyncStorage,
 } from "native-base";
 import Portfolio from "./portfolio";
 import Company_main from "./company_main";
@@ -32,7 +31,7 @@ export default class App extends Component {
     };
   }
 
-  _post(user) {
+  _post = (user) => {
     if (!this.state.company_checked && !this.state.institution_checked) {
       return fetch(`${database}/address.json`, {
         method: "POST",
@@ -45,9 +44,7 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          AsyncStorage.setItem('id', this.state.ids);
-          AsyncStorage.setItem('name', this.state.name);
-          AsyncStorage.setItem('userData', this.state.user);
+          AsyncStorage.setItem("name", this.state.name);
           this.props.navigation.navigate("After");
           // this.props.gotoPage("Portfolio", { ids: this.state.user });
           // this.props.gotoPage("Portfolio");
@@ -64,7 +61,7 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          AsyncStorage.setItem('id', this.state.ids);
+          AsyncStorage.setItem("id", this.state.ids);
 
           this.props.navigation.navigate("After_Institution");
         });
@@ -80,12 +77,12 @@ export default class App extends Component {
           return res.json();
         })
         .then((data) => {
-          AsyncStorage.setItem('companyname', this.state.name);
-          AsyncStorage.setItem('companyId', this.state.ids);
+          AsyncStorage.setItem("companyname", this.state.name);
+          AsyncStorage.setItem("companyId", this.state.ids);
           this.props.navigation.navigate("After_Company");
         });
     }
-  }
+  };
 
   handleNameChange = (e) => {
     this.setState({
@@ -142,10 +139,9 @@ export default class App extends Component {
             style={styles.input}
             autoCorrect={false}
             onChangeText={(name) => {
-              this.setState({ name });
+              this.setState({ name: name });
             }}
           />
-
           <Input
             autoCapitalize="none"
             value={this.state.address}
@@ -153,7 +149,7 @@ export default class App extends Component {
             autoCorrect={false}
             style={styles.input}
             onChangeText={(address) => {
-              this.setState({ address });
+              this.setState({ address: address });
             }}
           />
 
@@ -164,7 +160,7 @@ export default class App extends Component {
             value={this.state.key}
             style={styles.input}
             onChangeText={(key) => {
-              this.setState({ key });
+              this.setState({ key: key });
             }}
           />
         </Form>

@@ -40,7 +40,7 @@ const Portfolio_enrollment = (props) => {
         }
         return res.json();
       })
-      .then((data) => { });
+      .then((data) => {});
   };
   const _post = (approve) => {
     const tmp = {
@@ -64,7 +64,7 @@ const Portfolio_enrollment = (props) => {
         }
         return res.json();
       })
-      .then((data) => { });
+      .then((data) => {});
   };
 
   const onClickEnrollment = () => {
