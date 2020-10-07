@@ -27,22 +27,6 @@ const Recommend = ({ navigation }) => {
         <Text style={styles.item1}>AI 비서</Text>
       </View>
       <View
-        style={{ flex: 0.5, backgroundColor: "#112f4c", alignItems: "center" }}
-      >
-        <TouchableOpacity
-          style={{ flexDirection: "column", alignItems: "center" }}
-          onPress={() => {
-            navigation.navigate("Recommend_search");
-          }}
-        >
-          <Image
-            style={styles.aiIcon1}
-            source={require("../images/ai_search.png")}
-          />
-          <Text style={styles.text}> 관심 기업 검색하기</Text>
-        </TouchableOpacity>
-      </View>
-      <View
         style={{ flex: 1, backgroundColor: "#112f4c", alignItems: "center" }}
       >
         <TouchableOpacity
